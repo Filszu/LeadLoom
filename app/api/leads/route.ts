@@ -20,7 +20,19 @@ export async function POST(request: NextRequest) {
     console.log('------req.json----->res', res)
     await postLead(res)
 
-    return NextResponse.json({ message: 'posted' })
+    // return NextResponse.json({ message: 'posted' })
+
+  
+
+  return new NextResponse('Hello, Next.js!', {
+    status: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    },
+  })
+
 
 
 
