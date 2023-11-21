@@ -9,7 +9,36 @@ export async function middleware(request: NextRequest) {
 
     // Refresh session if expired - required for Server Components
     // https://supabase.com/docs/guides/auth/auth-helpers/nextjs#managing-session-with-middleware
-    await supabase.auth.getSession()
+    // const session = await supabase.auth.getSession()
+    const {
+      data: { session },
+    }  = await supabase.auth.getSession()
+
+    // if(!session) {
+    //   return NextResponse.redirect('/login')
+    // }
+
+    
+    console.log('----------->session', session)
+    if (!session) {
+      console.log("unauthorized")
+      // return NextResponse.redirect('/login')
+      // NextResponse.redirect(new URL('/home', request.url))
+      return NextResponse.redirect(new URL('/login', request.url))
+    }
+    // if (!session || session?.user.user_metadata?.role !== "admin") {
+      // if (req.nextUrl.pathname.startsWith(apiAdminPath)) {
+      //   return new NextResponse(
+      //     JSON.stringify({ message: "authorization failed" }),
+      //     { status: 403, headers: { "Content-Type": "application/json" } }
+      //   );
+      // } else if (req.nextUrl.pathname.startsWith(adminPath)) {
+      //   const redirectUrl = req.nextUrl.clone();
+      //   redirectUrl.pathname = "/";
+      //   return NextResponse.redirect(redirectUrl);
+      // }
+    //   return NextResponse.redirect('/login')
+    // }
 
     return response
   } catch (e) {
@@ -23,3 +52,17 @@ export async function middleware(request: NextRequest) {
     })
   }
 }
+
+
+export const config = {
+  matcher: ["/"],
+};
+
+
+
+ 
+// // This function can be marked `async` if using `await` inside
+// export function middleware(request: NextRequest) {
+//   return NextResponse.redirect(new URL('/home', request.url))
+// }
+
