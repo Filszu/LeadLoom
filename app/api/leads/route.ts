@@ -16,44 +16,47 @@ export async function POST(request: Request) {
 
     console.log('------searchParams----->', searchParams)
     
-    const lead: Lead = {
-      action: searchParams.get('action') || null,
-      action_id: searchParams.get('action_id') || null,
-      admitad_id: searchParams.get('admitad_id') || null,
-
-      // click_time: parseFloat(searchParams.get('click_time')) || null,
-
-      // click_time: searchParams.get('click_time')!== null ? parseFloat(searchParams.get('click_time')) : null
-
-      conversion_time: parseFloat(searchParams.get('conversion_time')) || null,
-      country_code: searchParams.get('country_code') || null,
-      created_at: new Date().toISOString(), // You may want to use the actual creation time here
-      currency: searchParams.get('currency') || null,
+    const lead: IAdmitadLead = {
+      action: searchParams.get('action') || '',
+      action_id: searchParams.get('action_id') || '',
+      admitad_id: searchParams.get('admitad_id') || '',
+      
+      country_code: searchParams.get('country_code') || '',
+      currency: searchParams.get('currency') || '',
+      offer_id: searchParams.get('offer_id') || '',
+      offer_name: searchParams.get('offer_name') || '',
      
-      info: searchParams.get('info') || null,
-      offer_id: searchParams.get('offer_id') || null,
-      offer_name: searchParams.get('offer_name') || null,
-      order_id: parseFloat(searchParams.get('order_id')) || null,
-      order_sum: parseFloat(searchParams.get('order_sum')) || null,
-      payment_status: searchParams.get('payment_status') || null,
-      payment_sum: parseFloat(searchParams.get('payment_sum')) || null,
-      reward_ready: parseInt(searchParams.get('reward_ready') || '0'), // Replace '0' with the default value if needed
-      subid: searchParams.get('subid') || null,
-      subid1: searchParams.get('subid1') || null,
-      subid2: searchParams.get('subid2') || null,
-      subid3: searchParams.get('subid3') || null,
-      subid4: searchParams.get('subid4') || null,
-      time: parseFloat(searchParams.get('time')) || null,
-      type: searchParams.get('type') || null,
-      user_agent: searchParams.get('user_agent') || null,
-      user_referer: searchParams.get('user_referer') || null,
-      website_id: parseInt(searchParams.get('website_id') || '0'), // Replace '0' with the default website ID if needed
-      website_name: searchParams.get('website_name') || null,
+     
+      payment_status: searchParams.get('payment_status') || '',
+
+    
+      subid: searchParams.get('subid') || '',
+      subid1: searchParams.get('subid1') || '',
+      subid2: searchParams.get('subid2') || '',
+      subid3: searchParams.get('subid3') || '',
+      subid4: searchParams.get('subid4') || '',
+      type: searchParams.get('type') || '',
+      user_agent: searchParams.get('user_agent') || '',
+      user_referer: searchParams.get('user_referer') || '',
+      website_name: searchParams.get('website_name') || '',
+      // time: searchParams.get('time') || '',
+      // click_time: searchParams.get('click_time') || '',
+      // conversion_time: searchParams.get('conversion_time') || '',
+      // order_id: searchParams.get('order_id') || '',
+      // order_sum: searchParams.get('order_sum') || '',
+      // payment_sum: searchParams.get('payment_sum') || '',
+      // reward_ready: searchParams.get('reward_ready') || '',
+      // website_id: searchParams.get('website_id') || '',
+
+
+
+
+
   };
    
 
 
-    await postLead()
+    await postLead(lead)
   }catch(e){
     console.log('------req.json----->res', e)
   }
