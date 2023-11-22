@@ -1,7 +1,9 @@
 "use client";
 import "../globals.css";
 import "./data-tables-css.css";
-import "./satoshi.css";
+
+//  wypuerdolic te ułone satoshi fon
+// import "./satoshi.css";
 import { useState, useEffect } from "react";
 import Loader from "@/components/common/Loader";
 
@@ -15,12 +17,13 @@ export default function DashboardLayout({
 }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const [loading, setLoading] = useState<boolean>(true);
+  // const [loading, setLoading] = useState<boolean>(true);
 
-  useEffect(() => {
-    setTimeout(() => setLoading(false), 1000);
-  }, []);
-
+  // useEffect(() => {
+  //   setTimeout(() => setLoading(false), 1000);
+  // }, []);
+  
+  const loading = false;
   return (
    
         <section className="dark:bg-boxdark-2 dark:text-bodydark w-full">
