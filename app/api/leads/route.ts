@@ -41,8 +41,13 @@ export async function POST(request: NextRequest) {
 
 }
 
-export async function GET(request: NextRequest) {
-  return NextResponse.json({ message: 'Hello from /api/leads' })
-
-
+export async function GET(request: Request) {
+  return new Response('Hello, Next.js!', {
+    status: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    },
+  })
 }

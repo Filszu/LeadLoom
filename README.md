@@ -1,6 +1,6 @@
-## radio Elektron
+## leadLoom - app to mantain your leads
 
-### Vote for your favorite songs
+### for free
 
 ## Environment Variables
 
@@ -8,9 +8,6 @@ To run this project, you will need to add the following environment variables to
 
 `NEXT_PUBLIC_SUPABASE_URL`
 `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-
-`SPOTIFY_CLIENT_ID`
-`SPOTIFY_CLIENT_SECRET`
 
 `DB_PASS`
 `ADMIN_PASS`
