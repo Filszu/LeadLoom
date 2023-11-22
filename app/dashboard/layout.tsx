@@ -8,7 +8,7 @@ import Loader from "@/components/common/Loader";
 import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
 
-export default function RootLayout({
+export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -22,9 +22,8 @@ export default function RootLayout({
   }, []);
 
   return (
-    <html lang="en">
-      <body suppressHydrationWarning={true}>
-        <div className="dark:bg-boxdark-2 dark:text-bodydark">
+   
+        <section className="dark:bg-boxdark-2 dark:text-bodydark w-full">
           {loading ? (
             <Loader />
           ) : (
@@ -56,8 +55,7 @@ export default function RootLayout({
               {/* <!-- ===== Content Area End ===== --> */}
             </div>
           )}
-        </div>
-      </body>
-    </html>
+        </section>
+      
   );
 }

@@ -61,7 +61,7 @@ export default function RootLayout({
     <html lang="en" className='dark'>
       <body className={inter.className}>
         {/* {newSongModal} */}
-        <main className="flex min-h-screen flex-col items-center p-14">
+        <main className="flex min-h-screen w-full">
       
      
         {children}
