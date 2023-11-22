@@ -14,8 +14,12 @@ export async function POST(request: Request) {
     // Search Params
     const { searchParams } = new URL(request.url)
 
-    console.log('------searchParams----->', searchParams)
+    console.log('------searchParams----->', searchParams??"")
     
+    // console.log('------searchParamsValues----->', searchParams.values())
+
+    console.log("request.url", request.url)
+
     const lead: IAdmitadLead = {
       action: searchParams.get('action') || '',
       action_id: searchParams.get('action_id') || '',
