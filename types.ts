@@ -30,4 +30,17 @@ interface IAdmitadLead {
 }
 
 
+export type TableLead = {
+    id: string,
+    created_at: string,
+    offer_name: string,
+    payment_status: string;
+    subid?: string;
+    subid1?: string;
+    subid2?: string;
+    currency?: string;
+
+}
+
+
 export type Lead = Database["public"]["Tables"]["leads"]["Row"]
