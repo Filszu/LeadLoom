@@ -1,3 +1,6 @@
+import { Database } from "./database.types";
+
+
 interface IAdmitadLead {
     action: string;
     action_id: string;
@@ -25,3 +28,6 @@ interface IAdmitadLead {
     website_id?: string;
     website_name?: string;
 }
+
+
+export type Lead = Database["public"]["Tables"]["leads"]["Row"]
