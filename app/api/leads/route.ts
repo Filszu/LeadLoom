@@ -1,4 +1,5 @@
 import { Lead } from '@/database.types';
+import {IAdmitadLead } from '@/types';
 import postLead from '@/lib/dbOperations/postNewLead';
 import { NextResponse, type NextRequest } from 'next/server'
 

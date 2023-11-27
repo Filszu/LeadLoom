@@ -1,7 +1,7 @@
 import { Database } from "./database.types";
 
 
-interface IAdmitadLead {
+export interface IAdmitadLead {
     action: string;
     action_id: string;
     admitad_id: string;
@@ -31,14 +31,14 @@ interface IAdmitadLead {
 
 
 export type TableLead = {
-    id: string,
+    id: string|number,
     created_at: string,
-    offer_name: string,
-    payment_status: string;
-    subid?: string;
-    subid1?: string;
-    subid2?: string;
-    currency?: string;
+    offer_name?: string | null,
+    payment_status?: string | null,
+    subid?: string | null;
+    subid1?: string | null;
+    subid2?: string | null;
+    currency?: string | null;
     // Other params
     [key: string]: any;
     

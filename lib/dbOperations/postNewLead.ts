@@ -2,6 +2,7 @@
 
 import supabase from "@/config/supaBaseClient"
 import { Lead } from "@/database.types"
+import { IAdmitadLead } from "@/types"
 
 
 

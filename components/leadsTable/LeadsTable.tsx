@@ -1,3 +1,4 @@
+
 import getLeads from '@/lib/dbOperations/getLeads'
 import { Lead, TableLead } from '@/types'
 import React from 'react'
@@ -6,10 +7,16 @@ import { DataTable } from './DataTable'
 const LeadsTable = async() => {
 
 
-const leads:Lead[] = await getLeads({})??[]
+const leads:Lead[] = await getLeads({limit:15})??[]
 
-
+  
   const tableLeads:TableLead[] = [...leads]
+
+  // const tableLeads: TableLead[] = leads.map((lead) => ({
+  //   ...lead,
+  //   id: String(lead.id),
+  // }));
+  
 
   console.log(tableLeads)
 
