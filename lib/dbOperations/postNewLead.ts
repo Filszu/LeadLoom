@@ -62,6 +62,11 @@ export default async function postLead(leadData: IAdmitadLead) {
 
     
    
+
+    // // subid 1 is connected with username
+    // if(leadData.subid1){
+
+    // }
  
    
 
@@ -71,4 +76,5 @@ export default async function postLead(leadData: IAdmitadLead) {
 
     // revalidatePath("/")
 }
+
 

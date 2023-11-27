@@ -2,6 +2,7 @@ import { Lead } from '@/database.types';
 import {IAdmitadLead } from '@/types';
 import postLead from '@/lib/dbOperations/postNewLead';
 import { NextResponse, type NextRequest } from 'next/server'
+import postUserLead from '@/lib/dbOperations/postUserLead';
 
  
 
@@ -146,6 +147,11 @@ export async function GET(request: Request) {
 
 
     await postLead(lead)
+
+     // subid 1 is connected with username
+     if(lead.subid1){
+     postUserLead({leadData: lead})
+     }
   }catch(e){
     console.log('------req.json----->res', e)
     return new Response(`Error ${e}`, {

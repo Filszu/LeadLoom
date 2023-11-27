@@ -192,6 +192,51 @@ export const columns: ColumnDef<TableLead>[] = [
     },
     cell: ({ row }) => <div className="lowercase">{row.getValue("payment_status")}</div>,
   },
+  {
+    accessorKey: "subid",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          subid
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+    cell: ({ row }) => <div className="lowercase">{row.getValue("subid")}</div>,
+  },
+  {
+    accessorKey: "subid1",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          subid1
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+    cell: ({ row }) => <div className="lowercase">{row.getValue("subid1")}</div>,
+  },
+  {
+    accessorKey: "subid2",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          subid2
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+    cell: ({ row }) => <div className="lowercase">{row.getValue("subid2")}</div>,
+  },
 //   {
 //     accessorKey: "amount",
 //     header: () => <div className="text-right">Amount</div>,

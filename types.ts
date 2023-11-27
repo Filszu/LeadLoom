@@ -50,3 +50,6 @@ export type Lead = Database["public"]["Tables"]["leads"]["Row"] & {
     // Other params
     [key: string]: any;
 }
+
+
+export type UserLead = Database["public"]["Tables"]["userLeads"]["Row"]
