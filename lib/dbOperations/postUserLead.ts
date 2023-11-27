@@ -52,6 +52,22 @@ export default async function postUserLead({
 
         console.log('programms', programms);
 
+        const { data, error:insertError } = await supabase
+        .from('userLeads')
+        .insert([
+        { 
+            userId: profiles[0].id,
+            programmId: programms[0].id,
+            userRef1: subid1,
+            userRef2: subid2??null,
+            status: 'pending',
+            // currency: leadData.currency??null,
+            currency: "PLN",
+            value: programms[0].cpaUserPL,
+        },
+        ])
+        .select()
+
 
 
         
