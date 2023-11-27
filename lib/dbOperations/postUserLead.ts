@@ -3,9 +3,9 @@ import supabase from '@/config/supaBaseClient';
 import { IAdmitadLead, UserLead } from '@/types';
 
 export default async function postUserLead({
-    leadData,
+    leadData, leadId,
 }: {
-    leadData: IAdmitadLead;
+    leadData: IAdmitadLead, leadId: number,
 }) {
     const { offer_id, subid1, subid2 } = { ...leadData };
 
@@ -61,6 +61,7 @@ export default async function postUserLead({
             userRef1: subid1,
             userRef2: subid2??null,
             status: 'pending',
+            leadId: leadId,
             // currency: leadData.currency??null,
             currency: "PLN",
             value: programms[0].cpaUserPL,

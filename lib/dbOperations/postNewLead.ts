@@ -3,6 +3,7 @@
 import supabase from "@/config/supaBaseClient"
 import { Lead } from "@/database.types"
 import { IAdmitadLead } from "@/types"
+import postUserLead from "./postUserLead"
 
 
 
@@ -53,11 +54,24 @@ export default async function postLead(leadData: IAdmitadLead) {
     const {data, error } = await supabase
     .from('leads')
     .insert({ ...dbLead})
+    .select('id')
    
 
     if (error) {
         console.error(error);
         return null;
+    }
+
+
+    // subid 1 is connected with username
+    if(dbLead.subid1){
+        try{
+          await postUserLead({leadData: leadData, leadId: data[0].id})  
+        }
+        catch(e){
+            console.error(e)
+        }
+        
     }
 
     
