@@ -39,8 +39,14 @@ export type TableLead = {
     subid1?: string;
     subid2?: string;
     currency?: string;
+    // Other params
+    [key: string]: any;
+    
 
 }
 
 
-export type Lead = Database["public"]["Tables"]["leads"]["Row"]
+export type Lead = Database["public"]["Tables"]["leads"]["Row"] & {
+    // Other params
+    [key: string]: any;
+}

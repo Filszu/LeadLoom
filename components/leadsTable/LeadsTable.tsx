@@ -1,5 +1,5 @@
 import getLeads from '@/lib/dbOperations/getLeads'
-import { Lead } from '@/types'
+import { Lead, TableLead } from '@/types'
 import React from 'react'
 import { DataTable } from './DataTable'
 
@@ -7,6 +7,16 @@ const LeadsTable = async() => {
 
 
 const leads:Lead[] = await getLeads({})??[]
+
+
+  const tableLeads:TableLead[] = [...leads]
+
+  console.log(tableLeads)
+
+
+
+
+
 
 
 
@@ -20,7 +30,7 @@ const leads:Lead[] = await getLeads({})??[]
         </div>
         ))} */}
     
-    <DataTable data={leads} />
+    <DataTable data={tableLeads} />
 
     
     

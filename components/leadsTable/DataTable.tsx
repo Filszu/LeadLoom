@@ -147,13 +147,28 @@ export const columns: ColumnDef<TableLead>[] = [
         header: "created_at",
         cell: ({ row }) => <div className="">{row.getValue("created_at")}</div>,
     },
+    // {
+    //     accessorKey:"offer_name",
+    //     header: "offer_name",
+    //     cell: ({ row }) => <div className="">{row.getValue("offer_name")}</div>,
+
+
+    // },
     {
-        accessorKey:"offer_name",
-        header: "offer_name",
+        accessorKey: "offer_name",
+        header: ({ column }) => {
+          return (
+            <Button
+              variant="ghost"
+              onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+            >
+              offer_name
+              <ArrowUpDown className="ml-2 h-4 w-4" />
+            </Button>
+          )
+        },
         cell: ({ row }) => <div className="">{row.getValue("offer_name")}</div>,
-
-
-    },
+      },
 
 //   {
 //     accessorKey: "payment_status",
@@ -225,9 +240,11 @@ export const columns: ColumnDef<TableLead>[] = [
 
 export async function DataTable(
     // data: Lead[]
+    // data: TableLead[]
+    {data}:{data:TableLead[]}
     ) {
 
-    // console.log(data)
+    console.log(data)
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -258,14 +275,14 @@ export async function DataTable(
   return (
     <div className="w-full">
       <div className="flex items-center py-4">
-        <Input
+        {/* <Input
           placeholder="Filter emails..."
           value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
             table.getColumn("email")?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
-        />
+        /> */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="ml-auto">
