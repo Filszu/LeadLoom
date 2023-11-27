@@ -2,6 +2,7 @@
 
 import supabase from "@/config/supaBaseClient"
 import { Lead } from "@/database.types"
+import { UserLead, IUserLeadExtended } from "@/types"
 
 
 
@@ -39,3 +40,23 @@ export default async function getLeads(props: props) {
 
 }
 
+
+export async function getUserLeads(props: props) {
+
+    try{
+        let { data: leads, error } = await supabase
+        .from('userLeads')
+        .select('*, programms(programName)')
+        .order(props.orderBy || 'created_at', { ascending: props.ascending || false } )
+        // .limit(props.limit || 5)
+
+        return leads as IUserLeadExtended[]
+
+    }catch(error){
+        console.error(error)
+    }
+
+        
+   
+
+}
