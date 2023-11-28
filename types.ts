@@ -58,6 +58,25 @@ export interface IqueryProps{
 
 }
 
+export interface ILeadTimelineChartPropsItem {
+    name: string;
+    data: [number, number][];
+}
+
+// export interface ILeadTimelineChartProps {
+//     data: ILeadTimelineChartPropsItem[];
+//   }
+
+export type TLeadTimelineChartProps  = ILeadTimelineChartPropsItem[]
+
+
+// export interface ILeadTimelineChartProps {
+//     data: {
+//       name: string;
+//       data: [number, number][];
+//     }[];
+//   }
+
 
 
 export type Lead = Database["public"]["Tables"]["leads"]["Row"] & {

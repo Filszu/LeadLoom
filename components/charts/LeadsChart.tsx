@@ -5,19 +5,20 @@ import React, { useState } from 'react';
 import Chart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
 import dynamic from 'next/dynamic';
+import {  TLeadTimelineChartProps } from '@/types';
 
 const ReactApexChart = dynamic(() => import('react-apexcharts'), {
     ssr: false,
 });
 
-interface LeadTimelineChartProps {
-    data: {
-        name: string;
-        data: [number, number][];
-    }[];
-}
 
-const LeadTimelineChart: React.FC<LeadTimelineChartProps> = ({ data }) => {
+
+const LeadTimelineChart
+= ({data}:{data:TLeadTimelineChartProps }) => {
+ 
+
+
+
 
 
     // const [state, setState] = useState<LeadTimelineChartProps>(data);
