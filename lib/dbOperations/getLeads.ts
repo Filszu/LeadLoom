@@ -2,27 +2,15 @@
 
 import supabase from "@/config/supaBaseClient"
 import { Lead } from "@/database.types"
-import { UserLead, IUserLeadExtended } from "@/types"
+import { UserLead, IUserLeadExtended, IqueryProps } from "@/types"
 
 
 
 
 
-// query props
-
-interface props{
-    userID?: string,
-    limit?: number,
-    startFrom?: number,
-    orderBy?: string,
-    order?: string,
-    ascending?: boolean
 
 
-}
-
-
-export default async function getLeads(props: props) {
+export default async function getLeads(props: IqueryProps) {
 
     try{
         let { data: leads, error } = await supabase
@@ -41,7 +29,7 @@ export default async function getLeads(props: props) {
 }
 
 
-export async function getUserLeads(props: props) {
+export async function getUserLeads(props: IqueryProps) {
 
     try{
         let { data: leads, error } = await supabase

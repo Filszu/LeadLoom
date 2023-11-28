@@ -2,10 +2,16 @@
 import LeadTimelineChart from '@/components/charts/LeadsChart';
 import LeadsTable from '@/components/leadsTable/LeadsTable'
 import UserLeadsTable from '@/components/leadsTable/UserLeadsTable'
+import getLeadsSummary from '@/lib/dbOperations/getLeadsSummary';
 import { ApexOptions } from 'apexcharts';
 import React from 'react'
 
-const Reports = () => {
+const Reports = async() => {
+
+
+    const leadsSummary = await getLeadsSummary({});
+
+
     const leadData= [
         {
             name: 'Lead A',

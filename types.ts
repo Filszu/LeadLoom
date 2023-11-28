@@ -45,6 +45,20 @@ export type TableLead = {
 
 }
 
+// query props
+
+export interface IqueryProps{
+    userID?: string,
+    limit?: number,
+    startFrom?: number,
+    orderBy?: string,
+    order?: string,
+    ascending?: boolean
+
+
+}
+
+
 
 export type Lead = Database["public"]["Tables"]["leads"]["Row"] & {
     // Other params
@@ -53,6 +67,9 @@ export type Lead = Database["public"]["Tables"]["leads"]["Row"] & {
 
 
 export type UserLead = Database["public"]["Tables"]["userLeads"]["Row"]
+
+
+export type LeadsSummary = Database["public"]["Views"]["leads_summary"]["Row"];
 
 
 // export type UserLeadExtended = UserLead & {
