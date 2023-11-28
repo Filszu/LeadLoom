@@ -53,7 +53,7 @@ const LeadTimelineChart: React.FC<LeadTimelineChartProps> = ({ data }) => {
             
         </div>
 
-        <div id="chartOne" className="-ml-5 h-[355px] w-[105%]">
+        <div id="chartOne" className="h-[355px] w-[100%]">
           <ReactApexChart
             options={options}
             series={data}
