@@ -4,8 +4,11 @@ import { IUserLeadExtended, Lead, TableLead, UserLead } from '@/types'
 import React from 'react'
 
 import { DataTableUserLeads } from './DataTableUserLeads'
+import { fakeSetTimeOut } from '@/utils/fakeSetTimeOut'
 
 const LeadsTable = async() => {
+
+    await fakeSetTimeOut(1000)
 
     const leads:IUserLeadExtended[] = await getUserLeads({limit:50})??[]
 

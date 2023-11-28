@@ -1,18 +1,21 @@
-
-import LeadsTable from '@/components/leadsTable/LeadsTable'
-import UserLeadsTable from '@/components/leadsTable/UserLeadsTable'
-import React from 'react'
+import LeadsTable from '@/components/leadsTable/LeadsTable';
+import UserLeadsTable from '@/components/leadsTable/UserLeadsTable';
+import { TableSkeleton } from '@/components/skeletons/skeletons';
+import React, { Suspense } from 'react';
 
 const Dashboard = () => {
-  return (
-    <>
-        <h1>Dashboard</h1>
-        
-        <UserLeadsTable />
-        <hr /><hr />
-        <LeadsTable />
-    </>
-  )
-}
+    return (
+        <>
+            <h1>Dashboard</h1>
 
-export default Dashboard 
+            <Suspense fallback={<TableSkeleton/>}>
+                <UserLeadsTable />
+            </Suspense>
+            <hr />
+            <hr />
+            <LeadsTable />
+        </>
+    );
+};
+
+export default Dashboard;
