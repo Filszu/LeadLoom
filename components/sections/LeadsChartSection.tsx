@@ -8,7 +8,7 @@ type Props = {}
 
 const LeadsChartSection = async(props: Props) => {
 
-    await fakeSetTimeOut(10000)
+    await fakeSetTimeOut(1000)
     
     const leadsReport = await getLeadsSummary({});
 
