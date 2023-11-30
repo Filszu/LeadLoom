@@ -11,6 +11,7 @@ const LeadsChartSection = async(props: Props) => {
     await fakeSetTimeOut(1000)
     
     const leadsReport = await getLeadsSummary({});
+    
 
     // const leadsReport = [
     //     {

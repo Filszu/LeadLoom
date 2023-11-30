@@ -90,12 +90,8 @@ export type UserLead = Database["public"]["Tables"]["userLeads"]["Row"]
 
 export type LeadsSummary = Database["public"]["Views"]["leads_summary"]["Row"];
 
+export type Program = Database["public"]["Tables"]["programms"]["Row"]
 
-// export type UserLeadExtended = UserLead & {
-//     programms: {
-//         programName: string
-//     }[]
-// }
 
 export interface IUserLeadExtended extends UserLead {
     programms: {

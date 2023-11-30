@@ -10,8 +10,11 @@ export default function DashboardLayout({
       <section className="w-full">
         {/* Include shared UI here e.g. a header or sidebar */}
         <Nav />
+        <main className="p-10 w-full m-auto lg:w-11/12 xl:w-10/12">
+          {children}
+        </main>
    
-        {children}
+        
       </section>
     )
   }
