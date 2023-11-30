@@ -28,11 +28,11 @@ const ProgramCard = (props: Program) => {
         <div className="bg-gray-800 text-white rounded-lg overflow-hidden shadow-lg p-6">
             <div className="flex items-center ">
                 {/* Image on the right */}
-                {props.img && (
-                    // img container
+                
+                   
                     <div className="w-64 h-64 rounded-md overflow-clip">
                         <Image
-                            src={leadloomBanner}
+                            src={props.img || leadloomBanner}
                             alt={props.programName || 'Program Image'}
                             width={500}
                             height={500}
@@ -47,7 +47,7 @@ const ProgramCard = (props: Program) => {
                             
                         />
                     </div>
-                )}
+                
 
                 {/* Program details */}
                 <div className="ml-4">

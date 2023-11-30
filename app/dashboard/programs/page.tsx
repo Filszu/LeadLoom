@@ -17,7 +17,7 @@ const ProgramsPage = async () => {
         created_at: '2023-01-01',
         description: 'A sample program description.',
         id: 'program123',
-        img: 'https://example.com/sample-image.jpg',
+        img: "",
         programID: 'adprogram789',
         programName: 'Sample Program',
         pros: ['High commission', 'Quality products'],
