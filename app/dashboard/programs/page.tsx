@@ -1,6 +1,7 @@
 
 import ProgramCard from '@/components/program/ProgramCard';
 import  { Suspense } from 'react';
+import ProgrammsContainer from './ProgrammsContainer';
 
 export const revalidate = 10;
 
@@ -31,6 +32,8 @@ const ProgramsPage = async () => {
             <Suspense fallback={
             <>loading...</>}
             >
+
+                <ProgrammsContainer />
                 <ProgramCard {...ExampleProgramData} 
                 
                 />

@@ -19,6 +19,10 @@ import Image from 'next/image';
 import kerfus from '@/public/imgs/programsImgs/kerfus.webp';
 import wot from '@/public/imgs/programsImgs/WOT.jpg';
 
+
+import leadloomBanner from '@/public/imgs/banners/leadloom0.jpg';
+
+
 const ProgramCard = (props: Program) => {
     return (
         <div className="bg-gray-800 text-white rounded-lg overflow-hidden shadow-lg p-6">
@@ -28,7 +32,7 @@ const ProgramCard = (props: Program) => {
                     // img container
                     <div className="w-64 h-64 rounded-md overflow-clip">
                         <Image
-                            src={wot}
+                            src={leadloomBanner}
                             alt={props.programName || 'Program Image'}
                             width={500}
                             height={500}
