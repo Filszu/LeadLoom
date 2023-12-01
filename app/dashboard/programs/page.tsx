@@ -7,22 +7,7 @@ export const revalidate = 10;
 
 const ProgramsPage = async () => {
 
-    const ExampleProgramData = {
-        admitadID: '123456',
-        cons: ['Limited reach', 'High competition'],
-        cpa: 10,
-        cpaPL: 15,
-        cpaUser: 8,
-        cpaUserPL: 12,
-        created_at: '2023-01-01',
-        description: 'A sample program description.',
-        id: 'program123',
-        img: "",
-        programID: 'adprogram789',
-        programName: 'Sample Program',
-        pros: ['High commission', 'Quality products'],
-        url: 'https://example.com/sample-program',
-      };
+
 
     return (
         <>
@@ -34,9 +19,8 @@ const ProgramsPage = async () => {
             >
 
                 <ProgrammsContainer />
-                <ProgramCard {...ExampleProgramData} 
                 
-                />
+                
                
             </Suspense>
         </>

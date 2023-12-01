@@ -30,7 +30,7 @@ const ProgramCard = (props: Program) => {
     return (
         <div className="bg-gray-800 text-white rounded-lg overflow-hidden shadow-lg p-8 ">
             <section className="flex items-center justify-center md:justify-normal gap-8">
-                <div className="w-64 h-64 rounded-md overflow-clip flex-none">
+                <div className="w-64 h-64 rounded-md overflow-clip flex-none transition-transform group">
                     <Image
                         src={props.img || leadloomBanner}
                         alt={props.programName || 'Program Image'}
@@ -42,7 +42,7 @@ const ProgramCard = (props: Program) => {
                         //     objectFit: 'cover',
                         // }}
 
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out"
                     />
                 </div>
 
