@@ -14,7 +14,7 @@ const CardActionsSection = (props: Program) => {
         <div>
             <div>
                 <Button disabled={!acceptedTerms} className="p-6 mr-2">
-                    <Link href={props.url??"/dashboard"}>
+                    <Link href={`/program/${props.programID}`??"#"} target='_blank'>
                         <span className="text-white flex justify-center items-center gap-1 text-lg">
                             GO & PLAY
                             <FaLocationArrow size={22} />
