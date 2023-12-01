@@ -19,7 +19,7 @@ export default async function getPrograms(props: IqueryProps) {
         .from('programms')
         .select('*')
         
-        .order(props.orderBy || 'created_at', { ascending: props.ascending || true } )
+        .order(props.orderBy || 'created_at', { ascending: props.ascending || false } )
         .limit(props.limit || 20)
 
         console.log('programs', programs)

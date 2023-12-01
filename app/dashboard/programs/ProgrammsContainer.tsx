@@ -6,7 +6,7 @@ type Props = {}
 
 const ProgrammsContainer = async(props: Props) => {
 
-    const programms = await getPrograms({})
+    const programms = await getPrograms({orderBy:"cpaUser", ascending: true})
   return (
     <section className='mt-4 mb-4 flex flex-col gap-4 '>
         {programms?.map((programm) => (
