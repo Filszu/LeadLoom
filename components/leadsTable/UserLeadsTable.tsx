@@ -22,7 +22,7 @@ const LeadsTable = async() => {
     const tableLeads:IUserLeadExtended[] = modifiedLeads;
     
 
-  console.log(tableLeads)
+  // console.log(tableLeads)
 
 
 

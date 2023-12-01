@@ -18,7 +18,7 @@ const leads:Lead[] = await getLeads({limit:15})??[]
   // }));
   
 
-  console.log(tableLeads)
+  // console.log(tableLeads)
 
 
 
