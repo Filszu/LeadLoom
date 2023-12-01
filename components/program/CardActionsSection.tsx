@@ -44,9 +44,20 @@ const CardActionsSection = (props: Program) => {
                 //     "overflow-hidden animate-[wiggle]"
                 // )}
 
-                className='animate-[wiggle_1s_ease-in-out_infinite]'
+                // className='animate-[accordionUp_1s_ease-in-out]'
+
+                className={cn(
+                    // "overflow-hidden opacity-0",
+
+                    // showProgramInfo && "animate-[accordionDown_1s_ease-in-out]"
+
+                    "grid text-sm overflow-hidden transition-all duration-300 ease-in-out grid-rows-[0fr] opacity-0",
+
+                    showProgramInfo && "grid-rows-[1fr] opacity-100"
+                )}
             >
-                <div className="flex items-center fljustify-center md:justify-normal gap-8">
+                <div className="flex items-center justify-center md:justify-normal gap-8 
+                overflow-hidden">
                     {/* Program details */}
                     <div className="ml-4">
                         <h2 className="text-xl font-semibold">
