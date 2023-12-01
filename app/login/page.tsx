@@ -37,13 +37,16 @@ export default function Login({
     const cookieStore = cookies()
     const supabase = createClient(cookieStore)
 
-    const { error } = await supabase.auth.signUp({
+    const { data,error } = await supabase.auth.signUp({
       email,
       password,
       options: {
         emailRedirectTo: `${origin}/auth/callback`,
       },
     })
+
+    console.log("signIn=========",data)
+
 
     if (error) {
       return redirect('/login?message=Could not authenticate user')

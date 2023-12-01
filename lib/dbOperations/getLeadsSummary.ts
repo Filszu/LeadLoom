@@ -22,7 +22,7 @@ export default async function getLeadsSummary(props: IqueryProps) {
         .order(props.orderBy || 'date', { ascending: props.ascending || true } )
         .limit(props.limit || 500)
 
-        console.log('leadsReport', leadsReport)
+        // console.log('leadsReport', leadsReport)
         return leadsReport as LeadsSummary[]
 
     }catch(error){

@@ -21,7 +21,7 @@ export default async function getProgram(props: IqueryProps, id: string) {
         .eq('programID', id)
         .single()
 
-        console.log('program', program)
+        // console.log('program', program)
         return program as Program
 
     }catch(error){
