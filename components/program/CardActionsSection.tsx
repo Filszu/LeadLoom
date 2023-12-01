@@ -14,7 +14,7 @@ const CardActionsSection = (props: Program) => {
         <div>
             <div>
                 <Button disabled={!acceptedTerms} className="p-6 mr-2">
-                    <Link href="/login">
+                    <Link href={props.url??"/dashboard"}>
                         <span className="text-white flex justify-center items-center gap-1 text-lg">
                             GO & PLAY
                             <FaLocationArrow size={22} />
@@ -51,24 +51,24 @@ const CardActionsSection = (props: Program) => {
 
                     // showProgramInfo && "animate-[accordionDown_1s_ease-in-out]"
 
-                    "grid text-sm overflow-hidden transition-all duration-300 ease-in-out grid-rows-[0fr] opacity-0",
+                    'grid text-sm overflow-hidden transition-all duration-300 ease-in-out grid-rows-[0fr] opacity-0',
 
-                    showProgramInfo && "grid-rows-[1fr] opacity-100"
+                    showProgramInfo && 'grid-rows-[1fr] opacity-100',
                 )}
             >
-                <div className="flex items-center justify-center md:justify-normal gap-8 
-                overflow-hidden">
+                <div className="flex overflow-hidden mt-4 gap-8">
                     {/* Program details */}
-                    <div className="ml-4">
+                    <section className="flex-1">
                         <h2 className="text-xl font-semibold">
-                            {props.programName}
+                            About the program
                         </h2>
-                        <p className="text-gray-400 w-auto">
+                        <p className="w-auto text-gray-400">
                             {props.description}
                         </p>
 
                         {/* Other program details go here */}
-
+                    </section>
+                    <section className='flex-1'>
                         {/* Example: Pros and Cons */}
                         <div className="mt-4">
                             <h3 className="text-lg font-semibold">Pros</h3>
@@ -99,7 +99,7 @@ const CardActionsSection = (props: Program) => {
                                     ))}
                             </ul>
                         </div>
-                    </div>
+                    </section>
                 </div>
             </section>
         </div>

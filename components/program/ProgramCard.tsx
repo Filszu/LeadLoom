@@ -29,8 +29,8 @@ const ProgramCard = (props: Program) => {
     const usdToPln = 4.0;
     return (
         <div className="bg-gray-800 text-white rounded-lg overflow-hidden shadow-lg p-8 ">
-            <section className="flex items-center flex-wrap justify-center md:justify-normal gap-8">
-                <div className="w-64 h-64 rounded-md overflow-clip flex self-center self justify-center items-center ">
+            <section className="flex items-center justify-center md:justify-normal gap-8">
+                <div className="w-64 h-64 rounded-md overflow-clip flex-none">
                     <Image
                         src={props.img || leadloomBanner}
                         alt={props.programName || 'Program Image'}
@@ -46,16 +46,17 @@ const ProgramCard = (props: Program) => {
                     />
                 </div>
 
-                <div className='flex flex-col gap-2'>
+                <div className='flex-auto flex flex-col gap-2'>
                     <h2 className="font-semibold text-3xl">
                         {props.programName}
                     </h2>
 
                     <h3 className="uppercase text-xl">
+                        {props.cpaUser&&(<>
                         potential reward 🗽🇺🇸:
                         <span className="text-primary pl-2 pr-2">
-                            {props.cpaUser ?? ''}$
-                        </span>
+                            {props.cpaUser ?? ''}$ ({props.cpaUser*usdToPln} PLN)
+                        </span></>)}
                         🇵🇱:
                         <span className="text-primary pl-2 pr-2">
                             {props.cpaUserPL ?? ''} PLN
