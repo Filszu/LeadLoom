@@ -7,14 +7,16 @@ import { useState } from 'react';
 import { Program } from '@/types';
 import { cn } from '@/lib/utils';
 
-const CardActionsSection = (props: Program) => {
+const CardActionsSection = ({props, nickname}:{props:Program, nickname:string}) => {
     const [showProgramInfo, setshowProgramInfo] = useState(false);
     const [acceptedTerms, setAcceptedTerms] = useState(false);
+
+    const programUrl = `/program/${props.programID}?user=${nickname}`
     return (
         <div>
             <div>
                 <Button disabled={!acceptedTerms} className="p-6 mr-2">
-                    <Link href={`/program/${props.programID}`??"#"} target='_blank'>
+                    <Link href={programUrl} target='_blank'>
                         <span className="text-white flex justify-center items-center gap-1 text-lg">
                             GO & PLAY
                             <FaLocationArrow size={22} />

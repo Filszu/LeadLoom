@@ -25,7 +25,7 @@ import { Button } from '../ui/button';
 import Link from 'next/link';
 import CardActionsSection from './CardActionsSection';
 
-const ProgramCard = (props: Program) => {
+const ProgramCard = ({props, nickname}:{props:Program, nickname:string}) => {
     const usdToPln = 4.0;
     return (
         <div className="bg-gray-800 text-white rounded-lg overflow-hidden shadow-lg p-8 ">
@@ -63,7 +63,7 @@ const ProgramCard = (props: Program) => {
                         </span>
                         
                     </h3>
-                    <CardActionsSection {...props}/>
+                    <CardActionsSection props={props} nickname={nickname}/>
                 </div>
             </section>
             
