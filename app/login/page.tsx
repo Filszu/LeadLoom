@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { headers, cookies } from 'next/headers';
 import { createClient } from '@/utils/supabase/server';
 import { redirect } from 'next/navigation';
+import { TabSection } from '@/components/tabSection/TabSection';
 
 export default function Login({
     searchParams,
@@ -34,6 +35,10 @@ export default function Login({
         const origin = headers().get('origin');
         const email = formData.get('email') as string;
         const password = formData.get('password') as string;
+        const firstName = formData.get('firstName') as string;
+        const lastName = formData.get('lastName') as string;
+        const nickname = formData.get('nickname') as string;
+
         const cookieStore = cookies();
         const supabase = createClient(cookieStore);
 
@@ -45,11 +50,14 @@ export default function Login({
             },
         });
 
-        console.log('signIn=========', data);
+        console.log('newUser=========', data);
+
+
 
         const userId = data?.user?.id;
 
         if (!userId) {
+          console.log('error=========', error);
             return redirect(
                 '/login?message=Could not authenticate user WRONG USER ID',
             );
@@ -61,15 +69,17 @@ export default function Login({
                 .insert([
                     {
                         id: `${userId}`,
-                        first_name: 'aaa',
-                        last_name: 'bbb',
-                        nickname: 'ccc',
+                        first_name: `${firstName}`,
+                        last_name: `${lastName}`,
+                        nickname: `${nickname}`,
                     },
                 ])
                 .select();
 
         if (error) {
-            return redirect('/login?message=Could not authenticate user');
+            console.log('error=========', error);
+            return redirect('/login?message=Could not create new user');
+
         }
 
         return redirect(
@@ -100,44 +110,120 @@ export default function Login({
                 Back
             </Link>
 
-            <form
-                className="flex w-full flex-1 flex-col justify-center gap-2 text-foreground animate-in"
-                action={signIn}
-            >
-                <label className="text-md" htmlFor="email">
-                    Email
-                </label>
-                <input
-                    className="mb-6 rounded-md border bg-inherit px-4 py-2"
-                    name="email"
-                    placeholder="you@example.com"
-                    required
-                />
-                <label className="text-md" htmlFor="password">
-                    Password
-                </label>
-                <input
-                    className="mb-6 rounded-md border bg-inherit px-4 py-2"
-                    type="password"
-                    name="password"
-                    placeholder="••••••••"
-                    required
-                />
-                <button className="mb-2 rounded-md bg-green-700 px-4 py-2 text-foreground">
-                    Sign In
-                </button>
-                <button
-                    formAction={signUp}
-                    className="mb-2 rounded-md border border-foreground/20 px-4 py-2 text-foreground"
-                >
-                    Sign Up
-                </button>
-                {searchParams?.message && (
-                    <p className="mt-4 bg-foreground/10 p-4 text-center text-foreground">
-                        {searchParams.message}
-                    </p>
-                )}
-            </form>
+            <TabSection
+                tab1Children={
+                    <form
+                        className="flex w-full flex-1 flex-col justify-center gap-2 text-foreground animate-in"
+                        action={signIn}
+                    >
+                        <label className="text-md" htmlFor="email">
+                            Email
+                        </label>
+                        <input
+                            className="mb-6 rounded-md border bg-inherit px-4 py-2"
+                            name="email"
+                            placeholder="you@example.com"
+                            required
+                        />
+                        <label className="text-md" htmlFor="password">
+                            Password
+                        </label>
+                        <input
+                            className="mb-6 rounded-md border bg-inherit px-4 py-2"
+                            type="password"
+                            name="password"
+                            placeholder="••••••••"
+                            required
+                        />
+                        
+                        <button className="mb-2 rounded-md bg-green-700 px-4 py-2 text-foreground">
+                            Sign In
+                        </button>
+                        {/* <button
+                            formAction={signUp}
+                            className="mb-2 rounded-md border border-foreground/20 px-4 py-2 text-foreground"
+                        >
+                            Sign Up
+                        </button> */}
+                        
+                        {searchParams?.message && (
+                            <p className="mt-4 bg-foreground/10 p-4 text-center text-foreground">
+                                {searchParams.message}
+                            </p>
+                        )}
+                    </form>
+                }
+                tab2Children={
+                    <form
+                        className="flex w-full flex-1 flex-col justify-center gap-2 text-foreground animate-in"
+                        action={signUp}
+                    >
+                        <label className="text-md" htmlFor="email">
+                            Email
+                        </label>
+                        <input
+                            className="mb-6 rounded-md border bg-inherit px-4 py-2"
+                            name="email"
+                            placeholder="you@example.com"
+                            required
+                        />
+                        <label className="text-md" htmlFor="firstName">
+                            First Name
+                        </label>
+                        <input
+                            className="mb-6 rounded-md border bg-inherit px-4 py-2"
+                            name="firstName"
+                            placeholder="John"
+                            required
+                        />
+                        <label className="text-md" htmlFor="lastName">
+                            Last Name
+                        </label>
+                        <input
+                            className="mb-6 rounded-md border bg-inherit px-4 py-2"
+                            name="lastName"
+                            placeholder="Doe"
+                            required
+                        />
+                        <label className="text-md" htmlFor="nickname">
+                            Nickname
+                        </label>
+                        <input
+                            className="mb-6 rounded-md border bg-inherit px-4 py-2"
+                            name="nickname"
+                            placeholder="CyberSuperMan"
+                            required
+                        />
+
+                        <label className="text-md" htmlFor="password">
+                            Password
+                        </label>
+                        <input
+                            className="mb-6 rounded-md border bg-inherit px-4 py-2"
+                            type="password"
+                            name="password"
+                            placeholder="••••••••"
+                            required
+                        />
+                       
+                        <button
+                            // formAction={signUp}
+                            className="mb-2 rounded-md border border-foreground/20 px-4 py-2 text-foreground"
+                        >
+                            Sign Up
+                        </button>
+                        {searchParams?.message && (
+                            <p className="mt-4 bg-foreground/10 p-4 text-center text-foreground">
+                                {searchParams.message}
+                            </p>
+                        )}
+                    </form>
+                }
+                tab1Title="login"
+                tab2Title="register"
+                tab1Value="login"
+                tab2Value="register"
+            />
         </div>
     );
 }
