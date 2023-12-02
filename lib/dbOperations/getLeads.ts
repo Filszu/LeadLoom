@@ -31,11 +31,13 @@ export default async function getLeads(props: IqueryProps) {
 
 export async function getUserLeads(props: IqueryProps) {
 
+    if(!props.userID) return null
     try{
         let { data: leads, error } = await supabase
         .from('userLeads')
         .select('*, programms(programName)')
         .order(props.orderBy || 'created_at', { ascending: props.ascending || false } )
+        .eq('userId', props.userID)
         // .limit(props.limit || 5)
 
         return leads as IUserLeadExtended[]

@@ -5,19 +5,32 @@ import LeadsChartSection from '@/components/sections/LeadsChartSection';
 import { ChartSkeleton } from '@/components/skeletons/skeletons';
 import getLeadsSummary from '@/lib/dbOperations/getLeadsSummary';
 import { ILeadTimelineChartPropsItem, TLeadTimelineChartProps } from '@/types';
+import getPublicUser from '@/utils/supabase/getPublicUser';
 import { ApexOptions } from 'apexcharts';
+import { redirect } from 'next/navigation';
 import React, { Suspense } from 'react';
 
 export const revalidate = 10;
 
+
 const Reports = async () => {
+
+    const publicUser = await getPublicUser();
+    // console.log('publicuser',publicUser)
+
+    const userNickname = publicUser?.nickname;
+    const userId = publicUser?.id;
+
+    if(!userNickname) redirect('/dashboard/settings'); 
+    if(!userId) redirect('/login');
+    
     return (
         <>
             <h1>Reports</h1>
             <Suspense fallback={
             <ChartSkeleton/>}
             >
-                <LeadsChartSection />
+                <LeadsChartSection userId={userId}/>
             </Suspense>
         </>
     );

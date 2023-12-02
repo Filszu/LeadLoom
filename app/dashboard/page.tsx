@@ -4,6 +4,8 @@ import LeadsChartSection from '@/components/sections/LeadsChartSection';
 import { ChartSkeleton, TableSkeleton } from '@/components/skeletons/skeletons';
 import getPublicUser from '@/utils/supabase/getPublicUser';
 import getSession from '@/utils/supabase/getSession';
+
+import { redirect } from 'next/navigation';
 import React, { Suspense } from 'react';
 
 const Dashboard = async() => {
@@ -15,9 +17,13 @@ const Dashboard = async() => {
     // const userEmail = user?.email;
 
     const publicUser = await getPublicUser();
-    console.log('publicuser',publicUser)
+    // console.log('publicuser',publicUser)
 
     const userNickname = publicUser?.nickname;
+    const userId = publicUser?.id;
+
+    if(!userNickname) redirect('/dashboard/settings'); 
+    if(!userId) redirect('/login');
 
     
     return (
@@ -25,11 +31,11 @@ const Dashboard = async() => {
             <h1>Dashboard{userNickname&&<> - hello <b>{userNickname}</b></>}</h1>
 
             <Suspense fallback={<TableSkeleton />}>
-                <UserLeadsTable />
+                <UserLeadsTable userId={userId} />
             </Suspense>
             
             <Suspense fallback={<ChartSkeleton />}>
-                <LeadsChartSection />
+                <LeadsChartSection userId={userId} />
             </Suspense>
             <hr />
             <hr />

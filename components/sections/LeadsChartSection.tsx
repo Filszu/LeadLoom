@@ -4,13 +4,15 @@ import React from 'react'
 import LeadTimelineChart from '../charts/LeadsChart';
 import { fakeSetTimeOut } from '@/utils/fakeSetTimeOut';
 
-type Props = {}
+type Props = {
+    userId : string
+}
 
 const LeadsChartSection = async(props: Props) => {
 
     await fakeSetTimeOut(1000)
     
-    const leadsReport = await getLeadsSummary({});
+    const leadsReport = await getLeadsSummary({userID:props.userId});
     
 
     // const leadsReport = [

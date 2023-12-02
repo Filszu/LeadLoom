@@ -6,11 +6,11 @@ import React from 'react'
 import { DataTableUserLeads } from './DataTableUserLeads'
 import { fakeSetTimeOut } from '@/utils/fakeSetTimeOut'
 
-const LeadsTable = async() => {
+const LeadsTable = async({userId}:{userId:string}) => {
 
     await fakeSetTimeOut(1000)
 
-    const leads:IUserLeadExtended[] = await getUserLeads({limit:50})??[]
+    const leads:IUserLeadExtended[] = await getUserLeads({limit:50, userID:userId})??[]
 
     const modifiedLeads = leads.map((lead) => {
         return {
