@@ -7,11 +7,16 @@ import React, { Suspense } from 'react';
 
 const Dashboard = async() => {
 
-    const {data} = await getSession();
-    console.log(data)
+    const user = await getSession();
+    console.log('DASHBOARD page')
+    console.log(user)
+
+    const userEmail = user?.email;
+
+    
     return (
         <>
-            <h1>Dashboard</h1>
+            <h1>Dashboard{userEmail&&<>hello {userEmail}</>}</h1>
 
             <Suspense fallback={<TableSkeleton />}>
                 <UserLeadsTable />

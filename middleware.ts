@@ -19,7 +19,7 @@ export async function middleware(request: NextRequest) {
     // }
 
     
-    console.log('----------->session', session)
+    // console.log('----------->session', session)
     if (!session) {
       console.log("unauthorized")
       // return NextResponse.redirect('/login')

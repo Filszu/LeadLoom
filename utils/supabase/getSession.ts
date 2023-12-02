@@ -9,10 +9,13 @@ export default async function getSession(){
     const supabase = createClient(cookieStore)
 
     console.log('GET SESSION / USER')
-    console.log(supabase.auth.getSession())
-    console.log(supabase.auth.getUser())
+    // console.log(supabase.auth.getSession())
+    // console.log(supabase.auth.getUser())
 
+    const {data} = await supabase.auth.getUser()
 
-    return supabase.auth.getSession()
+    const user = data.user;
+
+    return user
 }
 
