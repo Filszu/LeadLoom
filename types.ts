@@ -92,6 +92,8 @@ export type LeadsSummary = Database["public"]["Views"]["leads_summary"]["Row"];
 
 export type Program = Database["public"]["Tables"]["programms"]["Row"]
 
+export type PublicUser = Database["public"]["Tables"]["profiles"]["Row"]
+
 
 export interface IUserLeadExtended extends UserLead {
     programms: {

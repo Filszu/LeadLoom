@@ -2,16 +2,15 @@
 import React, { useState } from 'react';
 import NavBtn from './NavBtn';
 import signOutUser from '@/lib/dbOperations/signOut';
+import Image from 'next/image';
+
+import logo from '@/public/imgs/banners/leadloom0.jpg';
 
 const Nav = () => {
     const [profileMenuOpen, setprofileMenuOpen] = useState(false);
 
     async function signOut() {
-     
-        
-        await signOutUser()
-
-    
+        await signOutUser();
     }
     return (
         <nav className="bg-gray-800">
@@ -133,10 +132,19 @@ const Nav = () => {
                                     <span className="sr-only">
                                         Open user menu
                                     </span>
-                                    <img
-                                        className="h-8 w-8 rounded-full"
-                                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                        alt=""
+
+                                    <Image
+                                        src={logo}
+                                        alt="profile Logo"
+                                        width={50}
+                                        height={50}
+                                        className="h-8 w-8 rounded-full "
+                                        style={
+                                            {
+                                                objectFit: 'cover',
+                                               
+                                            }
+                                        }
                                     />
                                 </button>
                             </div>
