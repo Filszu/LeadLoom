@@ -2,7 +2,7 @@ import React from 'react';
 
 interface ISummmaryCardProps {
     currency?: string;
-    value: number;
+    value: number | string;
     title: string;
     description: string;
     icon?: React.ReactNode;

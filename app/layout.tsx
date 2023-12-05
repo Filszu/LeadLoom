@@ -18,14 +18,14 @@ const defaultUrl = process.env.VERCEL_URL
 
 export const metadata: Metadata = {
   metadataBase: new URL(defaultUrl),
-  title: 'Radio Elektron',
-  description: 'Radio Elektron by Filszu',
-  keywords: 'radio, elektron, zielona góra, gora, elektronik, filszu, radio,zseis,ckziu, nr2, Filip Szumowski, filshu',
+  title: 'LeadLoom',
+  description: 'LeadLoom - play games and win valuable prizes',
+  keywords: 'filszu, filshu',
   openGraph: {
-    title: 'Radio Elektron',
-    description: 'Radio Elektron by Filszu',
+    title: 'LeadLoom',
+    description: 'LeadLoom - play games and win valuable prizes ',
     url: 'https://ciac.me',
-    siteName: 'Radio Elektron',
+    siteName: 'LeadLoom',
     images: [
       {
         url: '/imgs/logo.png',

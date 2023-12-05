@@ -39,7 +39,7 @@ const Dashboard = async() => {
 
             
             <SummaryCardContainer userId={userId} />
-            <Suspense fallback={<TableSkeleton />}>
+            {/* <Suspense fallback={<TableSkeleton />}>
                 <UserLeadsTable userId={userId} />
             </Suspense>
             
@@ -48,7 +48,7 @@ const Dashboard = async() => {
             </Suspense>
             <hr />
             <hr />
-            <LeadsTable />
+            <LeadsTable /> */}
         </>
     );
 };

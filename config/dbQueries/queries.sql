@@ -1,4 +1,30 @@
 select
+  "userId",
+  status,
+  count(*) as lead_count,
+  sum(value) as total_value
+from
+  "userLeads"
+group by
+  "userId",
+  status
+order by
+  status ASC,
+  lead_count desc
+
+
+-- select user leads basing on status
+select
+  "userId",
+  status,
+  count(*) as lead_count
+from
+  "userLeads"
+group by
+  "userId",
+  status
+-- -------------------------------
+select
   created_at,
   count(*) as lead_count
 from
@@ -65,3 +91,4 @@ group by
   "userId";
 
   
+
