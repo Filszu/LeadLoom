@@ -25,12 +25,18 @@ import { Button } from '../ui/button';
 import Link from 'next/link';
 import CardActionsSection from './CardActionsSection';
 
-const ProgramCard = ({props, nickname}:{props:Program, nickname:string}) => {
+const ProgramCard = ({
+    props,
+    nickname,
+}: {
+    props: Program;
+    nickname: string;
+}) => {
     const usdToPln = 4.0;
     return (
-        <div className="bg-gray-800 text-white rounded-lg overflow-hidden shadow-lg p-8 ">
-            <section className="flex items-center justify-center md:justify-normal gap-8">
-                <div className="w-64 h-64 rounded-md overflow-clip flex-none transition-transform group">
+        <div className="overflow-hidden rounded-lg bg-gray-800 p-8 text-white shadow-lg">
+            <section className="flex flex-col items-center justify-center gap-8 md:flex-row md:justify-normal">
+                <div className="group h-64 w-64 flex-1 overflow-clip rounded-md transition-transform md:flex-none">
                     <Image
                         src={props.img || leadloomBanner}
                         alt={props.programName || 'Program Image'}
@@ -42,31 +48,33 @@ const ProgramCard = ({props, nickname}:{props:Program, nickname:string}) => {
                         //     objectFit: 'cover',
                         // }}
 
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out"
+                        className="h-full w-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
                     />
                 </div>
 
-                <div className='flex-auto flex flex-col gap-2'>
-                    <h2 className="font-semibold text-3xl">
+                <div className="flex flex-auto flex-col gap-2">
+                    <h2 className="text-3xl font-semibold">
                         {props.programName}
                     </h2>
 
-                    <h3 className="uppercase text-xl">
-                        {props.cpaUser&&(<>
-                        potential reward 🗽🇺🇸:
-                        <span className="text-primary pl-2 pr-2">
-                            {props.cpaUser ?? ''}$ ({props.cpaUser*usdToPln} PLN)
-                        </span></>)}
+                    <h3 className="text-xl uppercase">
+                        {props.cpaUser && (
+                            <>
+                                potential reward 🗽🇺🇸:
+                                <span className="pl-2 pr-2 text-primary">
+                                    {props.cpaUser ?? ''}$ (
+                                    {props.cpaUser * usdToPln} PLN)
+                                </span>
+                            </>
+                        )}
                         🇵🇱:
-                        <span className="text-primary pl-2 pr-2">
+                        <span className="pl-2 pr-2 text-primary">
                             {props.cpaUserPL ?? ''} PLN
                         </span>
-                        
                     </h3>
-                    <CardActionsSection props={props} nickname={nickname}/>
+                    <CardActionsSection props={props} nickname={nickname} />
                 </div>
             </section>
-            
         </div>
     );
 };
