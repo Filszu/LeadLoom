@@ -10,11 +10,9 @@ import getSession from '@/utils/supabase/getSession';
 import { redirect } from 'next/navigation';
 import React, { Suspense } from 'react';
 
-
 export const revalidate = 60;
 
-const Dashboard = async() => {
-
+const Dashboard = async () => {
     // const user = await getSession();
     // console.log('DASHBOARD page')
     // console.log(user)
@@ -27,28 +25,34 @@ const Dashboard = async() => {
     const userNickname = publicUser?.nickname;
     const userId = publicUser?.id;
 
-    if(!userNickname) redirect('/dashboard/settings'); 
-    if(!userId) redirect('/login');
+    if (!userNickname) redirect('/dashboard/settings');
+    if (!userId) redirect('/login');
 
-
-
-    
     return (
         <>
-            <h1>Dashboard{userNickname&&<> - hello <b>{userNickname}</b></>}</h1>
+            <h1>
+                Dashboard
+                {userNickname && (
+                    <>
+                        {' '}
+                        - hello <b>{userNickname}</b>
+                    </>
+                )}
+            </h1>
 
-            
-            <SummaryCardContainer userId={userId} />
-            {/* <Suspense fallback={<TableSkeleton />}>
+            <Suspense fallback={<p>...</p>}>
+                <SummaryCardContainer userId={userId} />
+            </Suspense>
+            <Suspense fallback={<TableSkeleton />}>
                 <UserLeadsTable userId={userId} />
             </Suspense>
-            
+
             <Suspense fallback={<ChartSkeleton />}>
                 <LeadsChartSection userId={userId} />
             </Suspense>
             <hr />
             <hr />
-            <LeadsTable /> */}
+            <LeadsTable />
         </>
     );
 };
