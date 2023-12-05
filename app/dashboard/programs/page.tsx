@@ -3,6 +3,7 @@ import { Suspense } from 'react';
 import ProgrammsContainer from './ProgrammsContainer';
 import getPublicUser from '@/utils/supabase/getPublicUser';
 import { redirect } from 'next/navigation';
+import { ProgramCardSkeleton, ProgramCardSkeletonContainer } from '@/components/skeletons/skeletons';
 
 export const revalidate = 10;
 
@@ -21,7 +22,10 @@ const ProgramsPage = async () => {
             <h1>Programs</h1>
             <h2>Join to program and earn $$$*</h2>
             <p></p>
-            <Suspense fallback={<>loading...</>}>
+
+            
+            
+            <Suspense fallback={<ProgramCardSkeletonContainer/>}>
                 <ProgrammsContainer userNickname={userNickname}/>
             </Suspense>
         </>
