@@ -8,7 +8,7 @@ import { fakeSetTimeOut } from '@/utils/fakeSetTimeOut'
 
 const LeadsTable = async({userId}:{userId:string}) => {
 
-    await fakeSetTimeOut(1000)
+    // await fakeSetTimeOut(1000)
 
     const leads:IUserLeadExtended[] = await getUserLeads({limit:50, userID:userId})??[]
 
