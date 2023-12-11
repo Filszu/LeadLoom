@@ -50,7 +50,7 @@ export async function middleware(request: NextRequest) {
 
   // await supabase.auth.getSession()
 
-  return response
+  return {supabase,response}
 }
 
 export const config = {
