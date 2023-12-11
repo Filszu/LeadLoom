@@ -20,7 +20,7 @@ const Dashboard = async () => {
 
     // const userEmail = user?.email;
 
-    const publicUser = await publicUserSession;
+    const publicUser = await publicUserSession();
     // console.log('publicuser',publicUser)
 
     const userNickname = publicUser?.nickname;

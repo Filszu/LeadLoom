@@ -3,6 +3,7 @@ import LeadsChartSection from '@/components/sections/LeadsChartSection';
 import { ChartSkeleton } from '@/components/skeletons/skeletons';
 
 import getPublicUser from '@/utils/supabase/getPublicUser';
+import { publicUserSession } from '@/utils/supabase/publicUserSession';
 import { redirect } from 'next/navigation';
 import React, { Suspense } from 'react';
 
@@ -11,7 +12,7 @@ export const revalidate =60;
 
 const Reports = async () => {
 
-    const publicUser = await getPublicUser();
+    const publicUser = await publicUserSession();
     // console.log('publicuser',publicUser)
 
     const userNickname = publicUser?.nickname;

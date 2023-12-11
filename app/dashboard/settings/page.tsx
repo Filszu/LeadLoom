@@ -23,7 +23,8 @@ const ProgramsPage = async () => {
 
     // if(!userNickname) redirect('/dashboard/settings');
     // if(!userId) redirect('/login');
-    const publicUser = await publicUserSession;
+
+    const publicUser = await publicUserSession();
 
     const userNickname = publicUser?.nickname;
     const userId = publicUser?.id;
@@ -40,8 +41,8 @@ const ProgramsPage = async () => {
 
             <h1>Withdraw reward</h1>
             <h2 className="cursor-not-allowed">Withdrawal threshold: 20PLN</h2>
-            <Button disabled={true} className="mr-2 p-6 cursor-not-allowed">
-                <span className="flex  items-center justify-center gap-1 text-lg text-white cursor-not-allowed">
+            <Button disabled={true} className="mr-2 cursor-not-allowed p-6">
+                <span className="flex  cursor-not-allowed items-center justify-center gap-1 text-lg text-white">
                     Withdraw
                     <FaLocationArrow size={22} />
                 </span>
