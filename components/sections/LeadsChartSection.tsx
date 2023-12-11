@@ -3,7 +3,7 @@ import { ILeadTimelineChartPropsItem, TLeadTimelineChartProps } from '@/types';
 import React from 'react';
 import LeadTimelineChart from '../charts/LeadsChart';
 import { fakeSetTimeOut } from '@/utils/fakeSetTimeOut';
-import { fillMissingDays } from './fillMissingDaysChart';
+
 
 type Props = {
     userId: string;
@@ -88,7 +88,7 @@ const LeadsChartSection = async (props: Props) => {
             entry.total_value!,
         ])),
     };
-    
+
 
  
 
