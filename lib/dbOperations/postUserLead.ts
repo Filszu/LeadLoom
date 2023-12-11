@@ -7,7 +7,7 @@ export default async function postUserLead({
 }: {
     leadData: IAdmitadLead, leadId: number,
 }) {
-    const { offer_id, subid1, subid2 } = { ...leadData };
+    const { offer_id, subid1, subid2, subid } = { ...leadData };
 
     const userNickname = subid1;
 
@@ -16,7 +16,7 @@ export default async function postUserLead({
         
 
 
-    if (userNickname && offer_id) {
+    if (userNickname && offer_id && subid==="leadloom") {
 
         let { data: profiles, error } = await supabase
             .from('profiles')

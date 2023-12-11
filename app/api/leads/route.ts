@@ -160,6 +160,8 @@ export async function GET(request: Request) {
   //       })
   // }
 
+  await postLead(lead)
+
 
     
 

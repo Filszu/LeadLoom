@@ -1,19 +1,18 @@
 import getLeadsSummary from '@/lib/dbOperations/getLeadsSummary';
 import { ILeadTimelineChartPropsItem, TLeadTimelineChartProps } from '@/types';
-import React from 'react'
+import React from 'react';
 import LeadTimelineChart from '../charts/LeadsChart';
 import { fakeSetTimeOut } from '@/utils/fakeSetTimeOut';
+import { fillMissingDays } from './fillMissingDaysChart';
 
 type Props = {
-    userId : string
-}
+    userId: string;
+};
 
-const LeadsChartSection = async(props: Props) => {
-
+const LeadsChartSection = async (props: Props) => {
     // await fakeSetTimeOut(1000)
-    
-    const leadsReport = await getLeadsSummary({userID:props.userId});
-    
+
+    const leadsReport = await getLeadsSummary({ userID: props.userId });
 
     // const leadsReport = [
     //     {
@@ -35,34 +34,73 @@ const LeadsChartSection = async(props: Props) => {
     if (!leadsReport) {
         return <p>No leads</p>;
     }
+
     // Prepare data for the chart
-    const leadCountData:ILeadTimelineChartPropsItem = {
+    // const leadCountData:ILeadTimelineChartPropsItem = {
+    //     name: 'Leads Count',
+    //     data: leadsReport.map((entry) => [
+    //         new Date(entry.date!).getTime(),
+    //         entry.lead_count!,
+    //     ]),
+    // };
+
+    // const totalValueData:ILeadTimelineChartPropsItem = {
+    //     name: 'Total Leads Value (in $ / PLN)',
+    //     data: leadsReport.map((entry) => [
+    //         new Date(entry.date!).getTime(),
+    //         entry.total_value!,
+    //     ]),
+    // };
+
+    function fillMissingDaysWithZero(data: [number, number][]): [number, number][] {
+        const result: [number, number][] = [];
+        
+        // Assuming data is sorted by date
+        const startDate = data.length > 0 ? data[0][0] : 0;
+        const endDate = data.length > 0 ? data[data.length - 1][0] : 0;
+    
+        for (let date = startDate; date <= endDate; date += 24 * 60 * 60 * 1000) {
+            const existingEntry = data.find(entry => entry[0] === date);
+    
+            if (existingEntry) {
+                result.push(existingEntry);
+            } else {
+                result.push([date, 0]);
+            }
+        }
+    
+        return result;
+    }
+    
+    // Example usage
+    const leadCountData: ILeadTimelineChartPropsItem = {
         name: 'Leads Count',
-        data: leadsReport.map((entry) => [
+        data: fillMissingDaysWithZero(leadsReport.map((entry) => [
             new Date(entry.date!).getTime(),
             entry.lead_count!,
-        ]),
+        ])),
     };
-
-    const totalValueData:ILeadTimelineChartPropsItem = {
+    
+    const totalValueData: ILeadTimelineChartPropsItem = {
         name: 'Total Leads Value (in $ / PLN)',
-        data: leadsReport.map((entry) => [
+        data: fillMissingDaysWithZero(leadsReport.map((entry) => [
             new Date(entry.date!).getTime(),
             entry.total_value!,
-        ]),
+        ])),
     };
+    
+
+ 
+
+    
 
     leadsData = [leadCountData, totalValueData];
-    
-  return (
-    <section className='w-full'>
-            {1===1 ? (
-                <LeadTimelineChart data={leadsData} />
-            ) : (
-                <p>No leads</p>
-            )}
-    </section>
-  )
-}
 
-export default LeadsChartSection
+    return (
+        <section className="w-full">
+            {1 === 1 ? <LeadTimelineChart data={leadsData} /> : <p>No leads</p>}
+        </section>
+    );
+};
+
+export default LeadsChartSection;
