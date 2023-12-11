@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(defaultUrl),
   title: 'LeadLoom',
   description: 'LeadLoom - play games and win valuable prizes',
-  keywords: 'filszu, filshu',
+  keywords: 'filszu, filshu, leadloom,lead-loom,lead loom, free, games, earn,',
   openGraph: {
     title: 'LeadLoom',
     description: 'LeadLoom - play games and win valuable prizes ',

@@ -12,7 +12,7 @@ const dbAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 const supabase = createClient(
     dbUrl!,
     dbAnonKey!
-  )
+)
 
 
 export default supabase

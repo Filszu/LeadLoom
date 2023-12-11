@@ -6,14 +6,42 @@ import banner2 from '@/public/imgs/banners/leadLoomBanner.png';
 import mountains from '@/public/imgs/banners/mountains_yellow.jpg';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { Metadata, ResolvingMetadata } from 'next/types';
 
-export default async function ProgramPage({
-    params,
-    searchParams,
-}: {
-    params: { programId: string };
-    searchParams: { [key: string]: string | string[] | undefined };
-}) {
+
+type Props = {
+    params: { programId: string }
+    searchParams: { [key: string]: string | string[] | undefined }
+  }
+
+
+export async function generateMetadata(
+    { params, searchParams }: Props,
+    parent: ResolvingMetadata
+  ): Promise<Metadata> {
+    // read route params
+    const id = params.programId
+   
+    // fetch data
+    const program = await getProgram({}, params.programId);
+   
+    // optionally access and extend (rather than replace) parent metadata
+    const previousImages = (await parent).openGraph?.images || []
+   
+    const pageDescription = 'LeadLoom is the collection of free to play games that rewards you for playing. Let\'s play ' + (program?.programName || 'with LeadLoom') +" ➡️ "+ (program?.description || program?.description?.substring(0, 150) || '')
+    return {
+      title: "Let's play" + program?.programName || 'with LeadLoom',
+    description: pageDescription,
+      openGraph: {
+        images: [`${program?.img}`, ...previousImages],
+        description: pageDescription,
+        title: "Let's play" + program?.programName || 'with LeadLoom',
+      },
+      
+    }
+  }
+  
+export default async function ProgramPage( { params, searchParams }: Props) {
     const program = await getProgram({}, params.programId);
     if (!program) {
         return notFound();
