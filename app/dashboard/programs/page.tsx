@@ -4,11 +4,12 @@ import ProgrammsContainer from './ProgrammsContainer';
 import getPublicUser from '@/utils/supabase/getPublicUser';
 import { redirect } from 'next/navigation';
 import { ProgramCardSkeleton, ProgramCardSkeletonContainer } from '@/components/skeletons/skeletons';
+import { publicUserSession } from '@/utils/supabase/publicUserSession';
 
-export const revalidate = 60;
+export const revalidate = 3600;
 
 const ProgramsPage = async () => {
-    const publicUser = await getPublicUser();
+    const publicUser = await publicUserSession;
     // console.log('publicuser',publicUser)
 
     const userNickname = publicUser?.nickname;

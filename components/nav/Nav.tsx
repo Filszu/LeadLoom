@@ -6,6 +6,7 @@ import Image from 'next/image';
 
 import logo from '@/public/imgs/banners/leadloom0.jpg';
 import logo1 from '@/public/imgs/banners/profile1.png';
+import Link from 'next/link';
 const Nav = () => {
     const [profileMenuOpen, setprofileMenuOpen] = useState(false);
 
@@ -139,12 +140,9 @@ const Nav = () => {
                                         width={50}
                                         height={50}
                                         className="h-8 w-8 rounded-full "
-                                        style={
-                                            {
-                                                objectFit: 'cover',
-                                               
-                                            }
-                                        }
+                                        style={{
+                                            objectFit: 'cover',
+                                        }}
                                     />
                                 </button>
                             </div>
@@ -168,25 +166,17 @@ const Nav = () => {
                                     tabIndex={-1}
                                 >
                                     {/* <!-- Active: "bg-gray-100", Not Active: "" --> */}
-                                    <a
-                                        href="#"
-                                        className="block px-4 py-2 text-sm text-gray-700"
-                                        role="menuitem"
-                                        tabIndex={-1}
-                                        id="user-menu-item-0"
-                                    >
-                                        Your Profile
-                                    </a>
-                                    <a
-                                        href="#"
+
+                                    <Link
+                                        href="/dashboard/settings"
                                         className="block px-4 py-2 text-sm text-gray-700"
                                         role="menuitem"
                                         tabIndex={-1}
                                         id="user-menu-item-1"
                                     >
                                         Settings
-                                    </a>
-                                    <a
+                                    </Link>
+                                    <Link
                                         href="#"
                                         className="block px-4 py-2 text-sm text-gray-700"
                                         role="menuitem"
@@ -197,7 +187,7 @@ const Nav = () => {
                                         }}
                                     >
                                         Sign out
-                                    </a>
+                                    </Link>
                                 </div>
                             )}
                         </div>
@@ -209,31 +199,31 @@ const Nav = () => {
             <div className="sm:hidden" id="mobile-menu">
                 <div className="space-y-1 px-2 pb-3 pt-2">
                     {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
-                    <a
-                        href="#"
+                    <Link
+                        href="/dashboard"
                         className="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
                         aria-current="page"
                     >
                         Dashboard
-                    </a>
-                    <a
-                        href="#"
+                    </Link>
+                    <Link
+                        href="/dashboard/reports"
                         className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
                     >
-                        Team
-                    </a>
-                    <a
-                        href="#"
+                        Reports
+                    </Link>
+                    <Link
+                        href="/dashboard/programs"
                         className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
                     >
-                        Projects
-                    </a>
-                    <a
-                        href="#"
+                        Programs
+                    </Link>
+                    <Link
+                        href="/dashboard/settings"
                         className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
                     >
-                        Calendar
-                    </a>
+                        Settings
+                    </Link>
                 </div>
             </div>
         </nav>

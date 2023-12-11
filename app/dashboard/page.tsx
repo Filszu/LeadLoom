@@ -44,13 +44,13 @@ const Dashboard = async () => {
             <Suspense fallback={<p>...</p>}>
                 <SummaryCardContainer userId={userId} />
             </Suspense>
+            <Suspense fallback={<ChartSkeleton />}>
+                <LeadsChartSection userId={userId} />
+            </Suspense>
             <Suspense fallback={<TableSkeleton />}>
                 <UserLeadsTable userId={userId} />
             </Suspense>
 
-            <Suspense fallback={<ChartSkeleton />}>
-                <LeadsChartSection userId={userId} />
-            </Suspense>
             <hr />
             <hr />
             <LeadsTable />
