@@ -10,7 +10,7 @@ type Props = {
 const ProgrammsContainer = async (props: Props) => {
     const programms = await getPrograms({
         orderBy: 'cpaUser',
-        ascending: true,
+        ascending: false,
     });
 
     // await fakeSetTimeOut(1000)

@@ -5,7 +5,7 @@ import getPublicUser from '@/utils/supabase/getPublicUser';
 import { redirect } from 'next/navigation';
 import { ProgramCardSkeleton, ProgramCardSkeletonContainer } from '@/components/skeletons/skeletons';
 
-export const revalidate = 10;
+export const revalidate = 60;
 
 const ProgramsPage = async () => {
     const publicUser = await getPublicUser();
