@@ -24,3 +24,4 @@ export default async function getPublicUser() {
     return profiles as PublicUser
 
 }
+
