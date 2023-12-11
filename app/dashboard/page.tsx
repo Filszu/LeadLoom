@@ -25,7 +25,7 @@ const Dashboard = async () => {
     const userNickname = publicUser?.nickname;
     const userId = publicUser?.id;
 
-    if (!userNickname) redirect('/dashboard/settings');
+    if (!userNickname) redirect('/login');
     if (!userId) redirect('/login');
 
     return (

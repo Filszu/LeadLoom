@@ -1,16 +1,12 @@
-import LeadTimelineChart from '@/components/charts/LeadsChart';
-import LeadsTable from '@/components/leadsTable/LeadsTable';
-import UserLeadsTable from '@/components/leadsTable/UserLeadsTable';
+
 import LeadsChartSection from '@/components/sections/LeadsChartSection';
 import { ChartSkeleton } from '@/components/skeletons/skeletons';
-import getLeadsSummary from '@/lib/dbOperations/getLeadsSummary';
-import { ILeadTimelineChartPropsItem, TLeadTimelineChartProps } from '@/types';
+
 import getPublicUser from '@/utils/supabase/getPublicUser';
-import { ApexOptions } from 'apexcharts';
 import { redirect } from 'next/navigation';
 import React, { Suspense } from 'react';
 
-export const revalidate = 10;
+export const revalidate =60;
 
 
 const Reports = async () => {
