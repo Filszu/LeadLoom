@@ -43,7 +43,13 @@ const SummaryCardContainer = async ({ userId }: { userId: string }) => {
     const accepted = userLeadsSumamry.find((item: UserLeadsSummary) => item.status === 'accepted');
     const pending = userLeadsSumamry.find((item: UserLeadsSummary) => item.status === 'pending');
 
-    const totalEarnings = (paidout?.total_value ?? 0) + (accepted?.total_value ?? 0);
+   
+
+    const totalEarnings = (paidout?.total_value ?? 0) + (accepted?.total_value ?? 0) + (pending?.total_value ?? 0);
+
+    const totalEarnings_accepted_paidout = (paidout?.total_value ?? 0) + (accepted?.total_value ?? 0) ;
+
+    console.log('totalEarnings',totalEarnings)
 
     const completedChallenges = (paidout?.lead_count ?? 0) + (accepted?.lead_count ?? 0) + (pending?.lead_count ?? 0);
 

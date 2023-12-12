@@ -48,7 +48,7 @@ export async function middleware(request: NextRequest) {
     // const cookieStore = cookies()
     // const supabase = createClient_server(cookieStore)
 
-    // await supabase.auth.getSession()
+    await supabase.auth.getSession()
 
     return response;
 }
