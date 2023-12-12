@@ -12,7 +12,7 @@ export const revalidate =60;
 
 const Reports = async () => {
 
-    const publicUser = publicUserSession;
+    const publicUser = await publicUserSession;
     // console.log('publicuser',publicUser)
 
     const userNickname = publicUser?.nickname;
