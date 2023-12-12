@@ -6,20 +6,48 @@ import { FaLocationArrow } from 'react-icons/fa';
 import { useState } from 'react';
 import { Program } from '@/types';
 import { cn } from '@/lib/utils';
+import { PiUserCirclePlusDuotone } from "react-icons/pi";
+import { FaUserPlus } from "react-icons/fa";
+import { PiUserPlusBold } from "react-icons/pi";
+import { useToast } from '../ui/use-toast';
+
 
 const CardActionsSection = ({props, nickname}:{props:Program, nickname:string}) => {
+
+    const { toast } = useToast()
+    
     const [showProgramInfo, setshowProgramInfo] = useState(false);
     const [acceptedTerms, setAcceptedTerms] = useState(false);
 
     const programUrl = `/program/${props.programID}?user=${nickname}`
+    const refName ="BRO"
     return (
         <div>
-            <div>
-                <Button disabled={!acceptedTerms} className="p-6 mr-2">
+            <div className='flex gap-2 flex-wrap'>
+                <Button disabled={!acceptedTerms} className="p-6">
                     <Link href={programUrl} target='_blank'>
                         <span className="text-white flex justify-center items-center gap-1 text-lg">
                             GO & PLAY
                             <FaLocationArrow size={22} />
+                        </span>
+                    </Link>
+                </Button>
+                <Button disabled={!acceptedTerms} className="py-6"
+                onClick={()=>{
+                    toast({
+                        title: `Invite your friends to the game🔥💪`,
+                        description:`You can invite as many friends as you want to the game/challenge👋. Every friend who completes the challenge guarantees you a 100% reward🔥.
+                        🎯But remember that using the same Wi-Fi network or the same IP address will be marked as an invalid prize because it is against the rules. ⭐The default username is ${refName}, you can change this at the top of the address bar`,
+                        variant: "success",
+                      })
+                }}
+                >
+                    <Link href={`${programUrl}&friend=${refName}`} target='_blank'>
+                        <span className="text-white flex justify-center items-center gap-1 text-lg">
+                            
+                        {/* <PiUserCirclePlusDuotone size={28} /> */}
+                        <PiUserPlusBold size={28} />
+                        {/* <FaUserPlus size={28} /> */}
                         </span>
                     </Link>
                 </Button>
@@ -30,6 +58,11 @@ const CardActionsSection = ({props, nickname}:{props:Program, nickname:string}) 
                     onClick={() => {
                         setshowProgramInfo(!showProgramInfo);
                         setAcceptedTerms(true);
+                        toast({
+                            title: "Remember to follow the program rules.",
+                            description: "Have fun❣️You can complete each challenge once every 30 days. Don't cheat - any inaccuracies will be detected. And you will be banned🫡",
+                            variant: "success",
+                          })
                     }}
                 >
                     <span className="text-white flex justify-center items-center gap-1 text-lg">
