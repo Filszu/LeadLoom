@@ -7,7 +7,7 @@ import SummaryCardContainer from '@/components/summaryCard/SummaryCardContainer'
 import getPublicUser from '@/utils/supabase/getPublicUser';
 import getSession from '@/utils/supabase/getSession';
 import { publicUserSession } from '@/utils/supabase/publicUserSession';
-import { savedSession } from '@/utils/supabase/savedSession';
+
 
 import { redirect } from 'next/navigation';
 import React, { Suspense } from 'react';
@@ -24,9 +24,6 @@ const Dashboard = async () => {
     const publicUser = await publicUserSession();
     // console.log('publicuser',publicUser)
 
-    const ssSession = await savedSession;
-
-    console.log('ssSession', ssSession);
 
     const userNickname = publicUser?.nickname;
     const userId = publicUser?.id;

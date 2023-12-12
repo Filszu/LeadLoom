@@ -1,4 +1,4 @@
-import ProgramCard from '@/components/program/ProgramCard';
+
 import { Suspense } from 'react';
 
 import getPublicUser from '@/utils/supabase/getPublicUser';
@@ -9,7 +9,6 @@ import {
 } from '@/components/skeletons/skeletons';
 import { publicUserSession } from '@/utils/supabase/publicUserSession';
 import { Button } from '@/components/ui/button';
-import Link from 'next/link';
 import { FaLocationArrow } from 'react-icons/fa';
 
 export const revalidate = 60;
