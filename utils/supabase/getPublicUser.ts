@@ -1,4 +1,4 @@
-// "use server";
+"use server";
 import supabase from "@/config/supaBaseClient"
 import { PublicUser } from "@/types";
 import getSession from "./getSession";
