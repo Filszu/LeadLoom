@@ -2,7 +2,7 @@ import React from 'react';
 
 interface ISummmaryCardProps {
     currency?: string;
-    value: number | string;
+    value: number | string | React.ReactNode;
     title: string;
     description: string;
     icon?: React.ReactNode;
@@ -24,7 +24,7 @@ const SummaryCard = (props: ISummmaryCardProps) => {
                     {value} {currency}
                 </h3>
             </div>
-            <div className="bg-primary p-2 text-center">{title}</div>
+            <div className="bg-primary p-2 text-center text-neutral-900 font-bold">{title}</div>
         </div>
     );
 };
