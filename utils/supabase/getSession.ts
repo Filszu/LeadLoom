@@ -18,4 +18,4 @@ export default async function getSession() {
     return user;
 }
 
-export const savedSession = await getSession();
+// export const savedSession = await getSession();
