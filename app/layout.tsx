@@ -61,7 +61,7 @@ export default function RootLayout({
     <html lang="en" className='dark'>
       <body className={inter.className}>
         {/* {newSongModal} */}
-        <main className="flex min-h-screen w-full justify-center">
+        <main className="flex min-h-screen  w-full justify-center ">
       
      
         {children}
@@ -70,7 +70,7 @@ export default function RootLayout({
         <Toaster />
 
         <footer
-        className='text-center w-full my-10  '
+        className='text-center w-full mb-10  '
         >
           <h3>Created with ❣️ by <Link href={'https://lessons.ciac.me/'} className='link-underline text-primary'>Filszu</Link> 2023</h3>
           <h3 className=''>Give a ⭐ on <Link href={'https://github.com/Filszu'} className='link-underline text-primary'>
