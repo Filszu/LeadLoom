@@ -1,6 +1,5 @@
-import LandingPage from '@/components/landing/LandingPage';
-import supabase from '@/config/supaBaseClient';
-import { cookies } from 'next/headers';
+
+
 import Link from 'next/link';
 // export const dynamic = "force-dynamic"
 import Image from 'next/image';
