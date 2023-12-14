@@ -35,7 +35,8 @@ export async function GET(request: Request) {
 
             // return NextResponse.redirect(requestUrl.origin+"/dashboard")
             console.log('redirecting to', next, requestUrl.origin);
-            return NextResponse.redirect(requestUrl.origin+"/dashboard")
+            // return NextResponse.redirect(requestUrl.origin+"/dashboard")
+            return NextResponse.redirect(requestUrl.origin+"/dashboard/settings/username")
         }
     }
 

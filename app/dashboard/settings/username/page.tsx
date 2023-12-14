@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import postPublicProfile from '@/lib/dbOperations/postPublicProfile';
+import getPublicUser from '@/utils/supabase/getPublicUser';
 import getSession from '@/utils/supabase/getSession';
 
 import { redirect } from 'next/navigation';
@@ -23,6 +24,12 @@ const UserPage = async ({
     // const userNickname = publicUser?.nickname;
     // const userId = publicUser?.id;
 
+
+    // if exists -> that means user has already set his nickname
+    const publicUser = await getPublicUser();
+    if(publicUser) redirect('/dashboard');
+
+    
     const user = await getSession();
     // console.log(user);
 
