@@ -31,23 +31,10 @@ export default function Login({
         return redirect('/dashboard');
     };
 
-    const googleLogin = async () => {
-        'use server';
-        console.log('googleLogin');
-        const supabase = createClient_server();
+    // const googleLogin = async () => {
+    //     'use server';
 
-        const { data, error } = await supabase.auth.signInWithOAuth({
-            provider: 'google',
-            options: {
-                redirectTo: `/auth/callback`,
-            },
-        });
-
-        console.log('data=========', data);
-        if(error) {
-            console.log('error=========', error);
-        }
-    };
+    // };
 
     const signUp = async (formData: FormData) => {
         'use server';
@@ -107,7 +94,9 @@ export default function Login({
 
     return (
         <div className="flex w-full flex-1 flex-col justify-center gap-2 px-8 sm:max-w-md">
-            <OAuthForm signIn={googleLogin} />
+            <OAuthForm
+            // signIn={googleLogin}
+            />
             <Link
                 href="/"
                 className="bg-btn-background hover:bg-btn-background-hover group absolute left-8 top-8 flex items-center rounded-md px-4 py-2 text-sm text-foreground no-underline"

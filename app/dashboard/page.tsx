@@ -28,8 +28,10 @@ const Dashboard = async () => {
     const userNickname = publicUser?.nickname;
     const userId = publicUser?.id;
 
-    if (!userNickname) redirect('/login');
-    if (!userId) redirect('/login');
+    // if (!userNickname) redirect('/login');
+    // if (!userId) redirect('/login');
+
+    if(!userId || !userNickname) return <>xxx</>;
 
     return (
         <>
