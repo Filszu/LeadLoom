@@ -15,7 +15,8 @@ export default function Login({
         const email = formData.get('email') as string;
         const password = formData.get('password') as string;
         const cookieStore = cookies();
-        const supabase = createClient_server(cookieStore);
+        // const supabase = createClient_server(cookieStore);
+        const supabase = createClient_server();
 
         const { error } = await supabase.auth.signInWithPassword({
             email,
@@ -39,8 +40,9 @@ export default function Login({
         const lastName = formData.get('lastName') as string;
         const nickname = formData.get('nickname') as string;
 
-        const cookieStore = cookies();
-        const supabase = createClient_server(cookieStore);
+        // const cookieStore = cookies();
+        // const supabase = createClient_server(cookieStore);
+        const supabase = createClient_server();
 
         const { data, error } = await supabase.auth.signUp({
             email,

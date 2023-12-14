@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: 'LeadLoom',
         description: 'LeadLoom - play games and win valuable prizes ',
-        url: 'https://ciac.me',
+        url: 'https://lead-loom.vercel.app',
         siteName: 'LeadLoom',
         images: [
             {
