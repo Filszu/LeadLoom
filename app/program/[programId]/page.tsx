@@ -27,13 +27,16 @@ export async function generateMetadata(
    
     // optionally access and extend (rather than replace) parent metadata
     const previousImages = (await parent).openGraph?.images || []
+
+    const previousKeywords = (await parent).keywords || []
    
-    const pageDescription = 'LeadLoom is the collection of free to play games that rewards you for playing. Let\'s play ' + (program?.programName || 'with LeadLoom') +" ➡️ "+ (program?.description || program?.description?.substring(0, 150) || '')
+    const pageDescription = 'LeadLoom is the collection of free to play games that rewards you for playing. Let\'s play ' + (program?.programName || 'with LeadLoom') +" ➡️ "+ (program?.description && program?.description?.substring(0, 150)+"..." || '')
     return {
       title: "Let's play" + program?.programName || 'with LeadLoom',
     description: pageDescription,
+    keywords:`${program?.programName}, ${previousKeywords}`,
       openGraph: {
-        images: [`${program?.img}`, ...previousImages],
+        images: [`${program?.img??"imgs/banners/leadLoomBanner.png"}`, ...previousImages],
         description: pageDescription,
         title: "Let's play" + program?.programName || 'with LeadLoom',
       },

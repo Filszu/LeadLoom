@@ -56,7 +56,7 @@ const UserPage = async ({
                 '/dashboard/settings/username?message=This nickname is already taken',
             );
         } else {
-            redirect('/dashboard/settigns');
+            redirect('/dashboard/settings');
         }
     }
     return (
