@@ -13,7 +13,7 @@ import { FaLocationArrow } from 'react-icons/fa';
 
 export const revalidate = 60;
 
-const ProgramsPage = async () => {
+const SettingsPage = async () => {
     // const publicUser = await getPublicUser();
     // console.log('publicuser',publicUser)
 
@@ -27,6 +27,11 @@ const ProgramsPage = async () => {
 
     const userNickname = publicUser?.nickname;
     const userId = publicUser?.id;
+
+    if(!userId || !userNickname) redirect('/dashboard/settings/username');
+
+
+    
 
     return (
         <>
@@ -52,4 +57,4 @@ const ProgramsPage = async () => {
     );
 };
 
-export default ProgramsPage;
+export default SettingsPage;

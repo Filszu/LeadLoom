@@ -22,7 +22,7 @@ const OAuthForm = async () =>
                 provider: 'google',
                 options: {
                     // redirectTo: "/auth/callback",
-                    redirectTo: "/auth/callback",
+                    redirectTo: `${location.origin}/auth/callback`,
                 },
             });
 
@@ -36,7 +36,7 @@ const OAuthForm = async () =>
                 <Button
                     className="w-full p-6"
                     variant={'outline'}
-                    onClick={() => googleLogin()}
+                    onClick={googleLogin}
                 >
                     <span className="flex items-center justify-center gap-1 text-lg text-white">
                         <FaGoogle />
