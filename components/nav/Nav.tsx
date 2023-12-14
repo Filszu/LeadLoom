@@ -7,12 +7,11 @@ import Image from 'next/image';
 import logo from '@/public/imgs/banners/leadloom0.jpg';
 import logo1 from '@/public/imgs/banners/profile1.png';
 import Link from 'next/link';
+import { signOut } from '@/utils/supabase/signOut';
 const Nav = () => {
     const [profileMenuOpen, setprofileMenuOpen] = useState(false);
 
-    async function signOut() {
-        await signOutUser();
-    }
+   
     return (
         <nav className="bg-gray-800">
             <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -176,18 +175,12 @@ const Nav = () => {
                                     >
                                         Settings
                                     </Link>
-                                    <Link
-                                        href="#"
-                                        className="block px-4 py-2 text-sm text-gray-700"
-                                        role="menuitem"
-                                        tabIndex={-1}
-                                        id="user-menu-item-2"
-                                        onClick={() => {
-                                            signOut();
-                                        }}
-                                    >
-                                        Sign out
-                                    </Link>
+                                    <form action={signOut}>
+                                        <button className="block px-4 py-2 text-sm text-gray-700">
+                                            sign out
+                                        </button>
+                                    </form>
+                                    
                                 </div>
                             )}
                         </div>

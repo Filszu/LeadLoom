@@ -16,7 +16,7 @@ interface TabSectionProps {
 }
 export function TabSection({tab1Children,tab2Children, tab1Title, tab1Value, tab2Title, tab2Value}: TabSectionProps) {
   return (
-    <Tabs defaultValue={tab1Value} className="w-[400px]">
+    <Tabs defaultValue={tab1Value} className="">
       <TabsList className="grid w-full grid-cols-2">
         <TabsTrigger value={tab1Value}>{tab1Title}</TabsTrigger>
         <TabsTrigger value={tab2Value}>{tab2Title}</TabsTrigger>

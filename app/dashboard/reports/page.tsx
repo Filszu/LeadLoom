@@ -18,8 +18,8 @@ const Reports = async () => {
     const userNickname = publicUser?.nickname;
     const userId = publicUser?.id;
 
-    if(!userNickname) redirect('/dashboard/settings'); 
-    if(!userId) redirect('/login');
+    // if(!userNickname) redirect('/login'); 
+    if(!userId || !userNickname) redirect('/login');
     
     return (
         <>
