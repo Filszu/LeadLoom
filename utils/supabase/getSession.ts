@@ -5,7 +5,8 @@ import { cookies } from 'next/headers';
 
 export default async function getSession() {
     const cookieStore = cookies();
-    const supabase = createClient_server(cookieStore);
+    // const supabase = createClient_server(cookieStore);
+    const supabase = createClient_server();
 
     console.log('GET SESSION / USER');
     // console.log(supabase.auth.getSession())
