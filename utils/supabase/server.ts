@@ -47,12 +47,22 @@ export const createClient_server = () => {
         {
             cookies: {
                 get(name: string) {
+
+                    console.log('🍪GET', 
+                    // cookieStore.get(name)?.value
+                    )
+
+
                     return cookieStore.get(name)?.value;
                 },
                 set(name: string, value: string, options: CookieOptions) {
-                    cookieStore.set({ name, value, ...options })
+                    // cookieStore.set({ name, value, ...options })
+
+                    console.log('🍪SET', cookieStore.set({ name, value, ...options }))
                   },
                   remove(name: string, options: CookieOptions) {
+
+                    
                     cookieStore.set({ name, value: '', ...options })
                   },
             },

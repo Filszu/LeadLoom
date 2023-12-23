@@ -1,5 +1,14 @@
-// import getSession from "./getSession";
+import { PublicUser } from '@/types';
 
+interface Cache {
+    publicUserCache: PublicUser | null;
+}
+export const cache: Cache = {
+    publicUserCache: null,
+};
+
+// import getSession from "./getSession";
+// export let publicUserCache: PublicUser | null = null;
 // export const savedSession = await getSession();
 console.log('===');
 
@@ -18,10 +27,9 @@ console.log('===');
 // Error: Failed to collect page data for /dashboard
 //     at /vercel/path0/node_modules/next/dist/build/utils.js:1178:15
 
-
 // export async function getServerSideProps(context) {
 //     const savedSession = await getSession(context.req);
-  
+
 //     // Pass the session data to your page as a prop
 //     return { props: { savedSession } };
 //   }

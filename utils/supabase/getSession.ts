@@ -1,7 +1,6 @@
 "use server"
 
 import { createClient_server } from './server';
-import { cookies } from 'next/headers';
 
 export default async function getSession() {
     // const cookieStore = cookies();
@@ -10,8 +9,13 @@ export default async function getSession() {
     // console.log(supabase)
 
     console.log('GET SESSION / USER');
+
+    
     // console.log(supabase.auth.getSession())
     // console.log(supabase.auth.getUser())
+
+    // const session = await supabase.auth.getSession();
+    // console.log("⚡session",session)
 
     const { data } = await supabase.auth.getUser();
 
