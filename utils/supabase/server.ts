@@ -49,7 +49,7 @@ export const createClient_server = () => {
                 get(name: string) {
 
                     console.log('🍪GET', 
-                    // cookieStore.get(name)?.value
+                    cookieStore.get(name)?.value
                     )
 
 

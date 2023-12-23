@@ -3,13 +3,26 @@ import supabase from '@/config/supaBaseClient';
 import { PublicUser } from '@/types';
 import getSession from './getSession';
 
-import { cache } from './savedSession';
+// import { cache } from './savedSession';
+
+interface Cache {
+    publicUserCache: PublicUser | null;
+}
+
+// const cache: Cache = {
+//   publicUserCache: null,
+// };
 
 export default async function getPublicUser() {
 
-  if (cache.publicUserCache) {
-    return cache.publicUserCache;
-  }
+    const cache: Cache = {
+        publicUserCache: null,
+    };
+
+    if (cache.publicUserCache) {
+        console.log('cache.publicUserCache', cache.publicUserCache);
+        return cache.publicUserCache;
+    }
 
     const sessionUser = await getSession();
 
