@@ -12,7 +12,7 @@ import { publicUserSession } from '@/utils/supabase/publicUserSession';
 export const revalidate = 3600;
 
 const ProgramsPage = async () => {
-    const publicUser =await publicUserSession;
+    const publicUser =await publicUserSession();
     // console.log('publicuser',publicUser)
 
     const userNickname = publicUser?.nickname;

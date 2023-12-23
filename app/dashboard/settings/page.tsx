@@ -23,7 +23,7 @@ const SettingsPage = async () => {
     // if(!userNickname) redirect('/dashboard/settings');
     // if(!userId) redirect('/login');
 
-    const publicUser = await publicUserSession;
+    const publicUser = await publicUserSession();
 
     const userNickname = publicUser?.nickname;
     const userId = publicUser?.id;

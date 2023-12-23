@@ -14,7 +14,7 @@ const SummaryCardContainer = async ({ userId }: { userId: string }) => {
     // wyplacopno
 
     const userLeadsSumamry = await getUserLeadsSummary({userID:userId});
-    console.log('userLeadsSumamry',userLeadsSumamry)
+    // console.log('userLeadsSumamry',userLeadsSumamry)
 
     // const userLeadsSumamry [
     //     {

@@ -1,10 +1,10 @@
-// "use server"; //<-added new
+"use server"; //<-added new
 import getPublicUser from "./getPublicUser";
 
-// export const publicUserSession = getPublicUser()
-// export const publicUserSession =async ()=>await getPublicUser()
 
-export const publicUserSession = getPublicUser()
+
+// export const publicUserSession = getPublicUser()
+export const publicUserSession =async ()=>await getPublicUser()
 
 
 // export const publicUserSession= async () => {
