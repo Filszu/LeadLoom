@@ -17,3 +17,11 @@ console.log('===');
 // > Build error occurred
 // Error: Failed to collect page data for /dashboard
 //     at /vercel/path0/node_modules/next/dist/build/utils.js:1178:15
+
+
+// export async function getServerSideProps(context) {
+//     const savedSession = await getSession(context.req);
+  
+//     // Pass the session data to your page as a prop
+//     return { props: { savedSession } };
+//   }

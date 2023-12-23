@@ -2,6 +2,8 @@
 
 ### for free
 
+![dashboard leadloom](https://i.imgur.com/MlKQpZz.gif)
+
 ## Environment Variables
 
 To run this project, you will need to add the following environment variables to your .env file
@@ -14,9 +16,6 @@ To run this project, you will need to add the following environment variables to
 
 `GOOGLE_ANALYTICS_ID`
 
-
 ## Authors
 
-- [@filszu](https://www.github.com/Filszu)
-
-
+-   [@filszu](https://www.github.com/Filszu)
