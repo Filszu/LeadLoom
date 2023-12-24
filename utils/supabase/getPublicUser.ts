@@ -15,14 +15,14 @@ interface Cache {
 
 export default async function getPublicUser() {
 
-    const cache: Cache = {
-        publicUserCache: null,
-    };
+    // const cache: Cache = {
+    //     publicUserCache: null,
+    // };
 
-    if (cache.publicUserCache) {
-        console.log('cache.publicUserCache', cache.publicUserCache);
-        return cache.publicUserCache;
-    }
+    // if (cache.publicUserCache) {
+    //     console.log('cache.publicUserCache', cache.publicUserCache);
+    //     return cache.publicUserCache;
+    // }
 
     const sessionUser = await getSession();
 
@@ -38,8 +38,8 @@ export default async function getPublicUser() {
     // Filters
     //   .eq('column', 'Equal to')
 
-    cache.publicUserCache = profiles as PublicUser;
+    // cache.publicUserCache = profiles as PublicUser;
 
-    // return profiles as PublicUser;
-    return cache.publicUserCache;
+    return profiles as PublicUser;
+    // return cache.publicUserCache;
 }
