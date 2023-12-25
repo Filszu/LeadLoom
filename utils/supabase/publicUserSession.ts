@@ -7,6 +7,7 @@ import getPublicUser from "./getPublicUser";
 export const publicUserSession =async ()=>await getPublicUser()
 
 
+
 // export const publicUserSession= async () => {
 //     // Try to get the cached data from localStorage
 //     const cachedData = localStorage.getItem('publicUser');
