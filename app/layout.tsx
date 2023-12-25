@@ -28,7 +28,7 @@ export const metadata: Metadata = {
         siteName: 'LeadLoom',
         images: [
             {
-                url: process.env.VERCEL_URL+'/imgs/avatars/leadloom_girl.png',
+                url: 'https://lead-loom.vercel.app/imgs/avatars/leadloom_girl.png',
                 width: 500,
                 height: 500,
             },
