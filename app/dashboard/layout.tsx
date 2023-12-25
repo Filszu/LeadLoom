@@ -6,6 +6,7 @@ export default function DashboardLayout({
   }: {
     children: React.ReactNode
   }) {
+    console.log("layout")
     return (
       <section className="w-full">
         {/* Include shared UI here e.g. a header or sidebar */}

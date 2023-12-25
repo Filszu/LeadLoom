@@ -13,6 +13,9 @@ interface Cache {
 //   publicUserCache: null,
 // };
 
+
+
+
 export default async function getPublicUser() {
   
     const sessionUser = await getSession()
@@ -24,6 +27,7 @@ export default async function getPublicUser() {
     .select("*")
     .eq('id', sessionUserId)
     .single()
+
   // Filters
 //   .eq('column', 'Equal to')
 

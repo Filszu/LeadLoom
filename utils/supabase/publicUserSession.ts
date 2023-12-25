@@ -1,11 +1,17 @@
 "use server"; //<-added new
 import getPublicUser from "./getPublicUser";
+import { cache } from 'react'
 
-
-
+// export const getItem = cache(async (id: string) => {
+//     // ...
+//   })
 // export const publicUserSession = getPublicUser()
-export const publicUserSession =async ()=>await getPublicUser()
+export const publicUserSession =cache(async ()=>await getPublicUser())
 
+
+// TO READ:
+// https://nextjs.org/docs/app/building-your-application/caching
+// https://nextjs.org/docs/app/building-your-application/data-fetching/patterns#using-react-cache-server-only-and-the-preload-pattern
 
 
 // export const publicUserSession= async () => {
@@ -26,3 +32,4 @@ export const publicUserSession =async ()=>await getPublicUser()
 //         return data;
 //     }
 // }
+

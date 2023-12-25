@@ -25,3 +25,16 @@ export default async function getSession() {
 }
 
 // export const savedSession = await getSession()!;
+
+// export default async function getSession() {
+//     const supabase = createClient_server();
+//     const session = await supabase.auth.getSession();
+
+//     if (session) {
+//         return session.data.session?.user;
+//     } else {
+//         const { data } = await supabase.auth.getUser();
+//         const user = data.user;
+//         return user;
+//     }
+// }
