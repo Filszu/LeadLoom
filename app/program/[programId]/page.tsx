@@ -36,7 +36,7 @@ export async function generateMetadata(
     description: pageDescription,
     keywords:`${program?.programName}, ${previousKeywords}`,
       openGraph: {
-        images: [`${program?.img??"imgs/banners/leadLoomBanner.png"}`, ...previousImages],
+        images: [`${program?.img??process.env.VERCEL_URL+"imgs/banners/leadLoomBanner.png"}`, ...previousImages],
         description: pageDescription,
         title: "Let's play" + program?.programName || 'with LeadLoom',
       },

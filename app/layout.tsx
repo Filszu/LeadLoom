@@ -12,7 +12,7 @@ import Script from 'next/script';
 const inter = Inter({ subsets: ['latin'] });
 
 const defaultUrl = process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
+    ? `${process.env.VERCEL_URL}`
     : 'http://localhost:3000';
 
 export const metadata: Metadata = {
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
         siteName: 'LeadLoom',
         images: [
             {
-                url: '/imgs/avatars/leadloom_girl.png',
+                url: process.env.VERCEL_URL+'/imgs/avatars/leadloom_girl.png',
                 width: 500,
                 height: 500,
             },
