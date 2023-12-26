@@ -107,7 +107,7 @@ export const columns: ColumnDef<IUserLeadExtended>[] = [
     {
         accessorKey: "id",
         header: "Id",
-        cell: ({ row }) => <div className="">{row.getValue("id")}</div>,
+        cell: ({ row }) => <div className="">{(row.getValue("id") as string).substring(0, 4) + '...'}</div>,
     },
     {
         accessorKey: "created_at",
@@ -189,6 +189,11 @@ export const columns: ColumnDef<IUserLeadExtended>[] = [
     },
     cell: ({ row }) => <div className="lowercase">{row.getValue("userRef2")}</div>,
   },
+  {
+    accessorKey: "description",
+    header: "Description",
+    cell: ({ row }) => <div className="">{row.getValue("description")}</div>,
+},
   {
     accessorKey: "value",
     header: ({ column }) => {

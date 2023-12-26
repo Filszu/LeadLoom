@@ -39,6 +39,9 @@ const LeadTimelineChart
         xaxis: {
             type: 'datetime',
         },
+        tooltip:{
+            theme: "dark",
+        }
     };
 
     // NextJS Requirement

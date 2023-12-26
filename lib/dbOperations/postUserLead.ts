@@ -55,6 +55,7 @@ export default async function postUserLead({
 
         let shouldValidTheLead = true;
         let joinedDaysAgo = 0;
+        let leadDescription = null;
 
 
         if (userLeads && userLeads.length > 0) {
@@ -68,6 +69,7 @@ export default async function postUserLead({
         
         if (joinedDaysAgo < 30 && joinedDaysAgo !==0) {
             shouldValidTheLead = false;
+            leadDescription = `duplicate / confirmation`;
         }
         console.log('joinedDaysAgo', joinedDaysAgo);
         console.log('shouldValidTheLead', shouldValidTheLead);
@@ -85,7 +87,8 @@ export default async function postUserLead({
                     // currency: leadData.currency??null,
                     currency: 'PLN',
                     value: !shouldValidTheLead? 0 : programms[0].cpaUserPL,
-                    offer_name: programIDName??""
+                    offer_name: programIDName??"",
+                    leadDescription: leadDescription,
                 },
             ])
             .select();

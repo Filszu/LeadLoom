@@ -7,7 +7,7 @@ import { publicUserSession } from '@/utils/supabase/publicUserSession';
 import { redirect } from 'next/navigation';
 import React, { Suspense } from 'react';
 
-export const revalidate =60;
+export const revalidate =180;
 
 
 const Reports = async () => {
