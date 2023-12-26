@@ -16,11 +16,12 @@ const defaultUrl = process.env.VERCEL_URL
     : 'http://localhost:3000';
 
 export const metadata: Metadata = {
-    metadataBase: new URL(defaultUrl),
+    // metadataBase: new URL(defaultUrl),
     title: 'LeadLoom',
     description: 'LeadLoom - play games and win valuable prizes',
     keywords:
         'filszu, filshu, leadloom,lead-loom,lead loom, free, games, earn,',
+        
     openGraph: {
         title: 'LeadLoom',
         description: 'LeadLoom - play games and win valuable prizes ',
@@ -37,6 +38,8 @@ export const metadata: Metadata = {
         type: 'website',
     },
 
+    // <meta name="msapplication-TileColor" content="#cbf7ee">
+    // <meta name="theme-color" content="#ffffff">
     // Open Graph
     // 'og:type': 'website',
     // 'og:site_name': 'Radio Elektron',

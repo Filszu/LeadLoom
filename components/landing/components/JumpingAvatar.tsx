@@ -9,7 +9,7 @@ import Image from 'next/image';
 const JumpingAvatar = () => {
     return (
         <section className="center flex w-full flex-col  justify-center">
-            <div className="h-80"></div>
+            
             <div className="flex flex-col items-center justify-center">
                 <Image
                     src={LeadLoomGril2}

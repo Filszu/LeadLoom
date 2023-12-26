@@ -97,10 +97,14 @@ export async function GET(request: Request) {
 
         
         
-        const domain = url.hostname;
-        console.log('Domain ->', domain);
         
-        const isValidDomain = validDomains.includes(url.hostname)
+
+        // x-forwarded-for'] || req.connection.remoteAddress;
+        const requestFromUrl = request.headers.get('x-forwarded-for') || request.headers.get('referer') || request.headers.get('origin') || request.headers.get('host')
+
+        console.log('requestFromUrl ->', requestFromUrl);
+        
+        const isValidDomain = validDomains.includes(requestFromUrl||"")
 
         if(!isValidDomain){
           resMsg = " -> Forbidden😿"

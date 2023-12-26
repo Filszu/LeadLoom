@@ -40,6 +40,7 @@ import { cookies } from 'next/headers';
 
 // maybe async?
 export const createClient_server = () => {
+  'use server';
     const cookieStore = cookies();
     
     return createServerClient(
