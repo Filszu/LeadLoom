@@ -49,7 +49,7 @@ const SummaryCardContainer = async ({ userId }: { userId: string }) => {
 
     const totalEarnings_accepted_paidout = (paidout?.total_value ?? 0) + (accepted?.total_value ?? 0) ;
 
-    console.log('totalEarnings',totalEarnings)
+    // console.log('totalEarnings',totalEarnings)
 
     const completedChallenges = (paidout?.lead_count ?? 0) + (accepted?.lead_count ?? 0) + (pending?.lead_count ?? 0);
 

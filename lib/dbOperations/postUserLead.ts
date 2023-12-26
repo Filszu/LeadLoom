@@ -53,7 +53,9 @@ export default async function postUserLead({
 
         // check if user has already lead for this programm in last 30 days then income -> 0
 
+        let shouldValidTheLead = true;
         let joinedDaysAgo = 0;
+
 
         if (userLeads && userLeads.length > 0) {
             const lastLeadDate = new Date(userLeads[0].created_at);
@@ -63,7 +65,12 @@ export default async function postUserLead({
             joinedDaysAgo = diffDays;
         }
 
+        
+        if (joinedDaysAgo < 30 && joinedDaysAgo !==0) {
+            shouldValidTheLead = false;
+        }
         console.log('joinedDaysAgo', joinedDaysAgo);
+        console.log('shouldValidTheLead', shouldValidTheLead);
 
         const { data, error: insertError } = await supabase
             .from('userLeads')
@@ -77,7 +84,7 @@ export default async function postUserLead({
                     leadId: leadId,
                     // currency: leadData.currency??null,
                     currency: 'PLN',
-                    value: joinedDaysAgo < 30 ? 0 : programms[0].cpaUserPL,
+                    value: !shouldValidTheLead? 0 : programms[0].cpaUserPL,
                     offer_name: programIDName??""
                 },
             ])
