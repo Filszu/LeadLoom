@@ -47,8 +47,8 @@ const UserPage = async ({
             first_name: userFullName,
             last_name: formData.get('last_name') as string,
             nickname: formData.get('nickname') as string,
-            userId: userId,
-            id: '',
+            id: userId,
+            
         });
 
         if (!res) {

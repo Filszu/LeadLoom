@@ -4,13 +4,13 @@ import { error } from "console";
 
 export default async function postPublicProfile(props:PublicUser) {
     
-    const { userId, first_name, last_name, nickname } = props;
+    const { id, first_name, last_name, nickname } = props;
     
     const { data: publicProfiles, error: publicProfilesError } = await supabase
         .from('profiles')
         .insert([
             {
-                id: `${userId}`,
+                id: `${id}`,
                 first_name: `${first_name}`,
                 last_name: `${last_name}`,
                 nickname: `${nickname}`,
