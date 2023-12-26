@@ -88,11 +88,15 @@ export default async function postUserLead({
                     currency: 'PLN',
                     value: !shouldValidTheLead? 0 : programms[0].cpaUserPL,
                     offer_name: programIDName??"",
-                    leadDescription: leadDescription,
+                    description: leadDescription,
                 },
             ])
-            .select();
+            // .select();
 
         // insert user lead
+        // console.log('userLead', data);
+        // console.log('insertError', insertError);
     }
+
+    
 }
