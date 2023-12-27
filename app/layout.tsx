@@ -16,7 +16,7 @@ const defaultUrl = process.env.VERCEL_URL
     : 'http://localhost:3000';
 
 export const metadata: Metadata = {
-    metadataBase: new URL(defaultUrl),
+    // metadataBase: new URL(defaultUrl),
     title: 'LeadLoom',
     description: 'LeadLoom - play games and win valuable prizes',
     keywords:
