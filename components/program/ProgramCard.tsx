@@ -35,7 +35,7 @@ const ProgramCard = ({
 }) => {
     const usdToPln = 4.0;
 
-    
+
     const tootltip = {
         content: '',
         text: '',
@@ -55,6 +55,11 @@ const ProgramCard = ({
         tootltip.content = 'Verified program - you can trust it. That means that the reward is GUARANTEED after completing the task properly.';
         tootltip.text = 'Verified';
         // tootltip.variant = "secondary"
+    }
+    if(props.status === 'unverified'){
+        tootltip.content = 'Unverified program - new program that has not been verified yet. That means that it has not been tested yet by LeadLoom team and our COMMUNITY. Become tester and get the BONUS reward! (if available)';
+        tootltip.text = 'Unverified';
+        tootltip.variant = "destructive"
     }
     return (
         <div className="overflow-hidden rounded-lg bg-gray-800 p-8 text-white shadow-lg">

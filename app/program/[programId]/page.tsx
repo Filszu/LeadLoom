@@ -29,19 +29,25 @@ export async function generateMetadata(
     const previousImages = (await parent).openGraph?.images || []
 
     const previousKeywords = (await parent).keywords || []
-   
+    
     const pageDescription = 'LeadLoom is the collection of free to play games that rewards you for playing. Let\'s play ' + (program?.programName || 'with LeadLoom') +" ➡️ "+ (program?.description && program?.description?.substring(0, 150)+"..." || '')
     return {
       title: "Let's play" + program?.programName || 'with LeadLoom',
     description: pageDescription,
     keywords:`${program?.programName}, ${previousKeywords}`,
       openGraph: {
-        images: [`${program?.img??program?.img}`, ...previousImages],
+        // images: [`${program?.img??program?.img}`, ...previousImages],
+        images:[{
+            url: `${program?.img??program?.img}`,
+     
+
+        }],
         description: pageDescription,
         title: "Let's play" + program?.programName || 'with LeadLoom',
       },
       
     }
+   
   }
   
 export default async function ProgramPage( { params, searchParams }: Props) {
@@ -56,6 +62,7 @@ export default async function ProgramPage( { params, searchParams }: Props) {
     // const msg = `Hey ${friendName}, I just joined ${program.programName} and I think you should too!`;
 
     let msg = '';
+    console.log('program?.img', program?.img)   
 
     if (userName && friendName) {
         msg = `Hey ${friendName}, ${userName} invited you to play🎉. Have fun😉!!`;
