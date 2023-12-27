@@ -39,10 +39,12 @@ export async function generateMetadata(
       openGraph: {
         // images: [`${program?.img??program?.img}`, ...previousImages],
         images:[{
-            url: `https://lead-loom.vercel.app/${program?.img??program?.img}`,
+            url: `https://lead-loom.vercel.app/${program?.img || "/imgs/avatars/leadloom_girl.png"}`,
      
 
-        }, ...previousImages],
+        }, 
+        // ...previousImages
+    ],
         description: pageDescription,
         title: "Let's play" + program?.programName || 'with LeadLoom',
       },
