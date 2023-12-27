@@ -43,14 +43,14 @@ export async function generateMetadata(
         keywords: `${program?.programName}, ${previousKeywords}`,
         openGraph: {
             // images: [`${program?.img??program?.img}`, ...previousImages],
-            // images: [
-            //     {
-            //         url: `https://lead-loom.vercel.app/${
-            //             program?.img || '/imgs/avatars/leadloom_girl.png'
-            //         }`,
-            //     },
-            //     // ...previousImages
-            // ],
+            images: [
+                {
+                    url: `https://lead-loom.vercel.app/${
+                        program?.img || '/imgs/avatars/leadloom_girl.png'
+                    }`,
+                },
+                // ...previousImages
+            ],
             description: pageDescription,
             title: "Let's play" + program?.programName || 'with LeadLoom',
         },
