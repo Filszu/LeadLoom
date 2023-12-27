@@ -24,6 +24,7 @@ import leadloomBanner from '@/public/imgs/banners/leadloom0.jpg';
 import { Button } from '../ui/button';
 import Link from 'next/link';
 import CardActionsSection from './CardActionsSection';
+import TooltipBadge from '../ui/custom/tooltipBadge';
 
 const ProgramCard = ({
     props,
@@ -33,6 +34,28 @@ const ProgramCard = ({
     nickname: string;
 }) => {
     const usdToPln = 4.0;
+
+    
+    const tootltip = {
+        content: '',
+        text: '',
+        variant: 'default' as
+            | 'default'
+            | 'secondary'
+            | 'destructive'
+            | 'outline',
+    };
+
+    if (props.status === 'new') {
+        tootltip.content = 'New program';
+        tootltip.text = 'New';
+        // tootltip.variant = "outline"
+    }
+    if(props.status === 'verified'){
+        tootltip.content = 'Verified program - you can trust it. That means that the reward is GUARANTEED after completing the task properly.';
+        tootltip.text = 'Verified';
+        // tootltip.variant = "secondary"
+    }
     return (
         <div className="overflow-hidden rounded-lg bg-gray-800 p-8 text-white shadow-lg">
             <section className="flex flex-col items-center justify-center gap-8 md:flex-row md:justify-normal">
@@ -53,9 +76,18 @@ const ProgramCard = ({
                 </div>
 
                 <div className="flex flex-auto flex-col gap-2">
-                    <h2 className="text-3xl font-semibold">
-                        {props.programName}
-                    </h2>
+                    <div className="flex items-center gap-2 ">
+                        <h2 className="block text-3xl font-semibold">
+                            {props.programName}
+                        </h2>
+                        <div className="flex  ">
+                            <TooltipBadge
+                                tooltipContent={tootltip.content}
+                                tooltipText={tootltip.text}
+                                variant={tootltip.variant}
+                            />
+                        </div>
+                    </div>
 
                     <h3 className="text-xl uppercase">
                         {props.cpaUser && (
