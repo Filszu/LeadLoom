@@ -8,52 +8,56 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Metadata, ResolvingMetadata } from 'next/types';
 
-
 type Props = {
-    params: { programId: string }
-    searchParams: { [key: string]: string | string[] | undefined }
-  }
+    params: { programId: string };
+    searchParams: { [key: string]: string | string[] | undefined };
+};
 
-export const revalidate = 60 * 60 * 24 * 3 // 3days
+export const revalidate = 60 * 60 * 24 * 3; // 3days
 
 export async function generateMetadata(
     { params, searchParams }: Props,
-    parent: ResolvingMetadata
-  ): Promise<Metadata> {
+    parent: ResolvingMetadata,
+): Promise<Metadata> {
     // read route params
-    const id = params.programId
-   
+    const id = params.programId;
+
     // fetch data
     const program = await getProgram({}, params.programId);
-   
+
     // optionally access and extend (rather than replace) parent metadata
-    const previousImages = (await parent).openGraph?.images || []
+    const previousImages = (await parent).openGraph?.images || [];
 
-    const previousKeywords = (await parent).keywords || []
-    
-    const pageDescription = 'LeadLoom is the collection of free to play games that rewards you for playing. Let\'s play ' + (program?.programName || 'with LeadLoom') +" ➡️ "+ (program?.description && program?.description?.substring(0, 150)+"..." || '')
+    const previousKeywords = (await parent).keywords || [];
+
+    const pageDescription =
+        "LeadLoom is the collection of free to play games that rewards you for playing. Let's play " +
+        (program?.programName || 'with LeadLoom') +
+        ' ➡️ ' +
+        ((program?.description &&
+            program?.description?.substring(0, 150) + '...') ||
+            '');
     return {
-      title: "Let's play" + program?.programName || 'with LeadLoom',
-    description: pageDescription,
-    keywords:`${program?.programName}, ${previousKeywords}`,
-      openGraph: {
-        // images: [`${program?.img??program?.img}`, ...previousImages],
-        images:[{
-            url: `https://lead-loom.vercel.app/${program?.img || "/imgs/avatars/leadloom_girl.png"}`,
-     
-
-        }, 
-        // ...previousImages
-    ],
-        description: pageDescription,
         title: "Let's play" + program?.programName || 'with LeadLoom',
-      },
-      
-    }
-   
-  }
-  
-export default async function ProgramPage( { params, searchParams }: Props) {
+        description: pageDescription,
+        keywords: `${program?.programName}, ${previousKeywords}`,
+        openGraph: {
+            // images: [`${program?.img??program?.img}`, ...previousImages],
+            // images: [
+            //     {
+            //         url: `https://lead-loom.vercel.app/${
+            //             program?.img || '/imgs/avatars/leadloom_girl.png'
+            //         }`,
+            //     },
+            //     // ...previousImages
+            // ],
+            description: pageDescription,
+            title: "Let's play" + program?.programName || 'with LeadLoom',
+        },
+    };
+}
+
+export default async function ProgramPage({ params, searchParams }: Props) {
     const program = await getProgram({}, params.programId);
     if (!program) {
         return notFound();
@@ -65,7 +69,7 @@ export default async function ProgramPage( { params, searchParams }: Props) {
     // const msg = `Hey ${friendName}, I just joined ${program.programName} and I think you should too!`;
 
     let msg = '';
-    console.log('program?.img', program?.img)   
+    console.log('program?.img', program?.img);
 
     if (userName && friendName) {
         msg = `Hey ${friendName}, ${userName} invited you to play🎉. Have fun😉!!`;
@@ -75,7 +79,9 @@ export default async function ProgramPage( { params, searchParams }: Props) {
         msg = `Hey ${friendName}, your Friend invited you to play🎉. Have fun😉!!`;
     }
 
-    const url = `${program.url}${userName ? `&subid1=${userName}` : ''}${friendName ? `&subid2=${friendName}` : ''}`;
+    const url = `${program.url}${userName ? `&subid1=${userName}` : ''}${
+        friendName ? `&subid2=${friendName}` : ''
+    }`;
 
     return (
         <section
@@ -118,10 +124,9 @@ export default async function ProgramPage( { params, searchParams }: Props) {
 
                         className="h-full w-full object-cover  transition-transform duration-300 ease-in-out group-hover:scale-105"
                     />
-                    
                 </div>
 
-                    {/* <h3>{url}</h3> */}
+                {/* <h3>{url}</h3> */}
 
                 <Link href={`${url}`}>
                     <Button className="mr-2 p-6 text-2xl text-white">
