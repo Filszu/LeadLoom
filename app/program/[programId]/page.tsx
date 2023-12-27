@@ -14,6 +14,7 @@ type Props = {
     searchParams: { [key: string]: string | string[] | undefined }
   }
 
+export const revalidate = 60 * 60 * 24 * 3 // 3days
 
 export async function generateMetadata(
     { params, searchParams }: Props,
@@ -38,10 +39,10 @@ export async function generateMetadata(
       openGraph: {
         // images: [`${program?.img??program?.img}`, ...previousImages],
         images:[{
-            url: `${program?.img??program?.img}`,
+            url: `https://lead-loom.vercel.app/${program?.img??program?.img}`,
      
 
-        }],
+        }, ...previousImages],
         description: pageDescription,
         title: "Let's play" + program?.programName || 'with LeadLoom',
       },
