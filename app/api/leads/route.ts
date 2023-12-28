@@ -17,7 +17,6 @@ export async function POST(request: Request) {
 
         // console.log('------searchParamsValues----->', searchParams.values())
 
-
         const lead: IAdmitadLead = {
             action: searchParams.get('action') || '',
             action_id: searchParams.get('action_id') || '',
@@ -76,7 +75,7 @@ export async function POST(request: Request) {
 
 export async function GET(request: Request) {
     //use form data
-    let resMsg ="";
+    let resMsg = '';
     try {
         // const requestBody = await request.json()
 
@@ -88,26 +87,25 @@ export async function GET(request: Request) {
 
         // console.log('------searchParamsValues----->', searchParams.values())
 
-       
-        
         const url = new URL(request.url);
         console.log('request.url ->', url);
 
-        const validDomains = ["https://store.admitad.com"]
-
-        
-        
-        
+        const validDomains = ['https://store.admitad.com', '91.228.155.91'];
 
         // x-forwarded-for'] || req.connection.remoteAddress;
-        const requestFromUrl = request.headers.get('x-forwarded-for') || request.headers.get('referer') || request.headers.get('origin') || request.headers.get('host')
+        const requestFromUrl =
+            request.headers.get('x-forwarded-for') ||
+            request.headers.get('referer') ||
+            request.headers.get('origin') ||
+            request.headers.get('host');
 
         console.log('requestFromUrl ->', requestFromUrl);
-        
-        const isValidDomain = validDomains.includes(requestFromUrl||"")
 
-        if(!isValidDomain){
-          resMsg = " -> Forbidden😿"
+        const isValidDomain = validDomains.includes(requestFromUrl || '');
+
+        console.log('isValidDomain ->', isValidDomain);
+        if (!isValidDomain) {
+            resMsg = ' -> Forbidden😿';
             // resMsg = "Forbidden"
             // return new Response(`Forbidden`, {
             //     status: 403,
@@ -118,6 +116,9 @@ export async function GET(request: Request) {
             //     },
             // });
         }
+
+        const requestFromHOST = request.headers.get('host');
+        console.log('requestFromHOST ->', requestFromUrl);
 
         const lead: IAdmitadLead = {
             action: searchParams.get('action') || '',
@@ -178,7 +179,7 @@ export async function GET(request: Request) {
             },
         });
     }
-    return new Response('🐈LeadLoom - MEOW 😽'+resMsg, {
+    return new Response('🐈LeadLoom - MEOW 😽' + resMsg, {
         status: 200,
         headers: {
             'Access-Control-Allow-Origin': '*',
