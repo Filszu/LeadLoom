@@ -77,7 +77,13 @@ export type TLeadTimelineChartProps  = ILeadTimelineChartPropsItem[]
 //     }[];
 //   }
 
+export type TQA = {
+    question: string | React.ReactNode  ,
+    answer: string | React.ReactNode ,
 
+}
+
+export type TQAbox = TQA[]
 
 export type Lead = Database["public"]["Tables"]["leads"]["Row"] & {
     // Other params

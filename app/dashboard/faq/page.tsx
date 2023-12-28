@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/button';
 import { FaLocationArrow } from 'react-icons/fa';
 import { Input } from '@/components/ui/input';
 import { Progress } from '@/components/ui/progress';
+import FaqSection from './faqSection';
 
 export const revalidate = 3600;
 
@@ -35,6 +36,7 @@ const SettingsPage = async () => {
         <>
             <h1>FAQ</h1>
             <h2>Hey, {userNickname ?? ''}</h2>
+            <FaqSection />
         </>
     );
 };

@@ -118,7 +118,7 @@ export async function GET(request: Request) {
         }
 
         const requestFromHOST = request.headers.get('host');
-        console.log('requestFromHOST ->', requestFromUrl);
+        console.log('requestFromHOST ->', requestFromHOST);
 
         const lead: IAdmitadLead = {
             action: searchParams.get('action') || '',
