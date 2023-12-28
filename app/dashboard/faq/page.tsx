@@ -34,9 +34,11 @@ const SettingsPage = async () => {
 
     return (
         <>
-            <h1>FAQ</h1>
-            <h2>Hey, {userNickname ?? ''}</h2>
-            <FaqSection />
+            <section className="m-auto md:w-6/12">
+                <h1>FAQ</h1>
+                <h2>Hey, {userNickname ?? ''}</h2>
+                <FaqSection />
+            </section>
         </>
     );
 };

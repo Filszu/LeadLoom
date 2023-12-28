@@ -90,7 +90,11 @@ export async function GET(request: Request) {
         const url = new URL(request.url);
         console.log('request.url ->', url);
 
-        const validDomains = ['https://store.admitad.com', '91.228.155.91'];
+        const validDomains = [
+            'https://store.admitad.com',
+            '91.228.155.91',
+            '91.228.155.13',
+        ];
 
         // x-forwarded-for'] || req.connection.remoteAddress;
         const requestFromUrl =
@@ -117,8 +121,14 @@ export async function GET(request: Request) {
             // });
         }
 
-        const requestFromHOST = request.headers.get('host');
-        console.log('requestFromHOST ->', requestFromHOST);
+        // not valid
+        // const requestFromHOST = request.headers.get('host');
+        // console.log('requestFromHOST ->', requestFromHOST);
+
+        const requestFromRef =
+            request.headers.get('referer') || request.headers.get('origin');
+
+        console.log('requestFromUrl ->', requestFromRef);
 
         const lead: IAdmitadLead = {
             action: searchParams.get('action') || '',

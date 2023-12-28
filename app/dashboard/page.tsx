@@ -57,7 +57,7 @@ const Dashboard = async () => {
 
             <hr />
             <hr />
-            <LeadsTable />
+            {/* <LeadsTable /> */}
         </>
     );
 };

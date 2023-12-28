@@ -79,6 +79,19 @@ import { IUserLeadExtended, Lead, TableLead } from "@/types"
 //   email: string
 // }
 
+function formatDate(date: string) {
+  // 2023-12-28T17:31:22.510006+00:00
+  // to 2023-12-28 17:31:22
+  // ...
+  const dateObj = new Date(date);
+  const year = dateObj.getFullYear();
+  const month = String(dateObj.getMonth() + 1).padStart(2, '0');
+  const day = String(dateObj.getDate()).padStart(2, '0');
+  const hours = String(dateObj.getHours()).padStart(2, '0');
+  const minutes = String(dateObj.getMinutes()).padStart(2, '0');
+  const seconds = String(dateObj.getSeconds()).padStart(2, '0');
+  return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+}
     
 
 export const columns: ColumnDef<IUserLeadExtended>[] = [
@@ -106,13 +119,13 @@ export const columns: ColumnDef<IUserLeadExtended>[] = [
   },
     {
         accessorKey: "id",
-        header: "Id",
+        header: "ID",
         cell: ({ row }) => <div className="">{(row.getValue("id") as string).substring(0, 4) + '...'}</div>,
     },
     {
         accessorKey: "created_at",
-        header: "created_at",
-        cell: ({ row }) => <div className="">{row.getValue("created_at")}</div>,
+        header: "created at",
+        cell: ({ row }) => <div className="">{formatDate(row.getValue("created_at"))}</div>,
     },
     // {
     //     accessorKey:"offer_name",
@@ -129,7 +142,7 @@ export const columns: ColumnDef<IUserLeadExtended>[] = [
               variant="ghost"
               onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
             >
-              programName
+              program name
               <ArrowUpDown className="ml-2 h-4 w-4" />
             </Button>
           )
@@ -167,7 +180,7 @@ export const columns: ColumnDef<IUserLeadExtended>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          userRef1
+          user name
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       )
@@ -182,7 +195,7 @@ export const columns: ColumnDef<IUserLeadExtended>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          userRef2
+          ref friend
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       )
@@ -191,7 +204,7 @@ export const columns: ColumnDef<IUserLeadExtended>[] = [
   },
   {
     accessorKey: "description",
-    header: "Description",
+    header: "description",
     cell: ({ row }) => <div className="">{row.getValue("description")}</div>,
 },
   {
@@ -208,6 +221,21 @@ export const columns: ColumnDef<IUserLeadExtended>[] = [
       )
     },
     cell: ({ row }) => <div className="lowercase">{row.getValue("value")}</div>,
+  },
+  {
+    accessorKey: "currency",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          currency
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+    cell: ({ row }) => <div className="lowercase">{row.getValue("currency")}</div>,
   },
 
 ]

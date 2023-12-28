@@ -14,6 +14,7 @@ const QueryAnswearBox = ({qas}: {qas:TQAbox}) => {
         {qas.map((qa) => (
             <QA {...qa} key={`key-${qa.question}`} />
         ))}
+       
       
     
     </Accordion>;

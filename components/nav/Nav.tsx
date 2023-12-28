@@ -89,6 +89,9 @@ const Nav = () => {
                                 <NavBtn url="/dashboard/settings">
                                     Settings
                                 </NavBtn>
+                                <NavBtn url="/dashboard/faq">
+                                    FAQ
+                                </NavBtn>
                             </div>
                         </div>
                     </div>
@@ -216,6 +219,12 @@ const Nav = () => {
                         className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
                     >
                         Settings
+                    </Link>
+                    <Link
+                        href="/dashboard/faq"
+                        className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                    >
+                        FAQ
                     </Link>
                 </div>
             </div>

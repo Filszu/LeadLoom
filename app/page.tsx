@@ -34,10 +34,15 @@ export default async function Home() {
                     </div>
                     <Link href="/dashboard" className="animate-bounce">
                         <Button className="p-6">
-                            <span className="flex items-center justify-center gap-1 text-lg text-white uppercase">
+                            <span className="flex items-center justify-center gap-1 text-lg uppercase text-white">
                                 begin the journey
                             </span>
                         </Button>
+                    </Link>
+                    <Link href="/dashboard/faq" className="mt-4 underline">
+                        
+                                Learn more
+                         
                     </Link>
                 </div>
             </section>

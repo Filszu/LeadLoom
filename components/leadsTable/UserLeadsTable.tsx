@@ -32,7 +32,7 @@ const LeadsTable = async({userId}:{userId:string}) => {
 
 
   return (
-    <div>LeadsTable
+    <div>Your Challanges
 
     {/* {leads&&leads.map((lead) => (
         <div key={lead.id}>
