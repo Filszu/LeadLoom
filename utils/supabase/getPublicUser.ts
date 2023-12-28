@@ -2,6 +2,8 @@
 import supabase from '@/config/supaBaseClient';
 import { PublicUser } from '@/types';
 import getSession from './getSession';
+// import 'server-only'
+ 
 
 // import { cache } from './savedSession';
 

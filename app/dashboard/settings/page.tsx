@@ -12,7 +12,7 @@ import { FaLocationArrow } from 'react-icons/fa';
 import { Input } from '@/components/ui/input';
 import { Progress } from '@/components/ui/progress';
 
-export const revalidate = 60;
+export const revalidate = 3600;
 
 const SettingsPage = async () => {
     // const publicUser = await getPublicUser();
@@ -70,7 +70,12 @@ const SettingsPage = async () => {
 
             <h1>Withdraw reward</h1>
             <h2 className="cursor-not-allowed">
-                Withdrawal threshold: 5$/20PLN
+                Withdrawal threshold:
+                <ul className=' list-disc list-inside'>
+                    <li>🇺🇸🇬🇧🇳🇴🇱🇺 - 15$ </li>
+                    <li>🇫🇷🇩🇪🇦🇹 - 10$ </li>
+                    <li>🇵🇱 - 20PLN</li>
+                </ul>
             </h2>
 
             <div className="py-4">

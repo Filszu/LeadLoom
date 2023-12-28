@@ -1,6 +1,8 @@
 "use server"; //<-added new
 import getPublicUser from "./getPublicUser";
 import { cache } from 'react'
+// import 'server-only'
+ 
 
 // export const getItem = cache(async (id: string) => {
 //     // ...

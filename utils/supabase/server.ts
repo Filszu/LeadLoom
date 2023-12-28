@@ -2,7 +2,58 @@
 // added use server to the top of the file
 import { createServerClient, type CookieOptions } from '@supabase/ssr';
 import { cookies } from 'next/headers';
+import 'server-only'
 
+
+// maybe async?
+// export const createClient_server = () => {
+export async function createClient_server() {
+    const cookieStore = cookies();
+
+    return createServerClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL!,
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+        {
+            cookies: {
+                get(name: string) {
+                    return cookieStore.get(name)?.value;
+                },
+                set(name: string, value: string, options: CookieOptions) {
+                    cookieStore.set({ name, value, ...options });
+                },
+                remove(name: string, options: CookieOptions) {
+                    cookieStore.set({ name, value: '', ...options });
+                },
+            },
+        },
+    );
+
+    // return createServerClient(
+    //     process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    //     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    //     {
+    //         cookies: {
+    //             get(name: string) {
+
+    //                 console.log('🍪GET',
+    //                 cookieStore.get(name)?.value
+    //                 )
+
+    //                 return cookieStore.get(name)?.value;
+    //             },
+    //             set(name: string, value: string, options: CookieOptions) {
+    //                 // cookieStore.set({ name, value, ...options })
+
+    //                 console.log('🍪SET', cookieStore.set({ name, value, ...options }))
+    //               },
+    //               remove(name: string, options: CookieOptions) {
+
+    //                 cookieStore.set({ name, value: '', ...options })
+    //               },
+    //         },
+    //     },
+    // );
+}
 // export const createClient_server = (
 //     cookieStore: ReturnType<typeof cookies>,
 // ) => {
@@ -36,59 +87,3 @@ import { cookies } from 'next/headers';
 //         },
 //     );
 // };
-
-
-// maybe async?
-export const createClient_server = () => {
-  'use server';
-    const cookieStore = cookies();
-    
-    return createServerClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-        {
-          cookies: {
-            get(name: string) {
-              return cookieStore.get(name)?.value
-            },
-            set(name: string, value: string, options: CookieOptions) {
-              cookieStore.set({ name, value, ...options })
-            },
-            remove(name: string, options: CookieOptions) {
-              cookieStore.set({ name, value: '', ...options })
-            },
-          },
-        }
-      )
-    
-    
-    
-    
-    // return createServerClient(
-    //     process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    //     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    //     {
-    //         cookies: {
-    //             get(name: string) {
-
-    //                 console.log('🍪GET', 
-    //                 cookieStore.get(name)?.value
-    //                 )
-
-
-    //                 return cookieStore.get(name)?.value;
-    //             },
-    //             set(name: string, value: string, options: CookieOptions) {
-    //                 // cookieStore.set({ name, value, ...options })
-
-    //                 console.log('🍪SET', cookieStore.set({ name, value, ...options }))
-    //               },
-    //               remove(name: string, options: CookieOptions) {
-
-                    
-    //                 cookieStore.set({ name, value: '', ...options })
-    //               },
-    //         },
-    //     },
-    // );
-};

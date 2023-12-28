@@ -2,7 +2,13 @@
 
 ### for free
 
-![dashboard leadloom](https://i.imgur.com/MlKQpZz.gif)
+
+
+![dashboard](https://i.imgur.com/IWXQrZn.png)
+
+![programs leadloom](https://i.imgur.com/Et1EAKO.png)
+
+![dashboard_leadloom](https://i.imgur.com/MlKQpZz.gif)
 
 ## Environment Variables
 
