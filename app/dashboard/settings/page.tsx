@@ -63,6 +63,14 @@ const SettingsPage = async () => {
                     value={publicUser.nickname ?? ''}
                     disabled
                 />
+                 <Input
+                    className=" my-4"
+                    name="reffered by"
+                    required
+                    placeholder="reffered by"
+                    value={"reffered by: "+publicUser.referred_by ?? ''}
+                    disabled
+                />
             </section>
             <p></p>
 

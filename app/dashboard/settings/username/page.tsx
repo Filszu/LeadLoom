@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import postPublicProfile from '@/lib/dbOperations/postPublicProfile';
+import { getCookie } from '@/utils/appCookies';
 import getPublicUser from '@/utils/supabase/getPublicUser';
 import getSession from '@/utils/supabase/getSession';
 import { publicUserSession } from '@/utils/supabase/publicUserSession';
@@ -39,6 +40,10 @@ const UserPage = async ({
     const userFullName = user.user_metadata?.full_name;
     const userId = user.id;
 
+    const cookiePromoCode = await getCookie('promocode');
+
+
+
     async function submitForm(formData: FormData) {
         'use server';
 
@@ -48,6 +53,8 @@ const UserPage = async ({
             last_name: formData.get('last_name') as string,
             nickname: formData.get('nickname') as string,
             id: userId,
+            referred_by: cookiePromoCode,
+            withdrawn: 0,
             
         });
 

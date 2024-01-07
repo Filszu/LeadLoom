@@ -90,6 +90,20 @@ export type Lead = Database["public"]["Tables"]["leads"]["Row"] & {
     [key: string]: any;
 }
 
+export interface Cookie {
+    name: string,
+    value?: string,
+    option?: {
+        maxAge: number,
+        path: string,
+        domain: string,
+        expires: Date,
+        httpOnly: boolean,
+        secure: boolean,
+        sameSite: string
+    }
+}
+
 
 export type UserLead = Database["public"]["Tables"]["userLeads"]["Row"]
 

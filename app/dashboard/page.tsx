@@ -46,7 +46,7 @@ const Dashboard = async () => {
             </h1>
 
             <Suspense fallback={<p>...</p>}>
-                <SummaryCardContainer userId={userId} />
+                <SummaryCardContainer userId={userId} userNickname={userNickname} />
             </Suspense>
             <Suspense fallback={<ChartSkeleton />}>
                 <LeadsChartSection userId={userId} />

@@ -6,14 +6,17 @@ import { GiThreeFriends } from "react-icons/gi";
 import { IoGameControllerOutline } from "react-icons/io5";
 import getUserLeadsSummary from "@/lib/dbOperations/getUserLeadsSummary";
 import { UserLeadsSummary } from "@/types";
+import getInvitedFriends from "@/lib/dbOperations/getInvitedFriends";
 
-const SummaryCardContainer = async ({ userId }: { userId: string }) => {
+const SummaryCardContainer = async ({ userId, userNickname }: { userId: string, userNickname:string }) => {
     // ty zagrales (liczba gier)
     // twoich przyjaciol zagralo z twojego polecenia
     // calkowity przychod
     // wyplacopno
 
     const userLeadsSumamry = await getUserLeadsSummary({userID:userId});
+    const invitedFriends = await getInvitedFriends(userNickname);
+    const invitedFriendsCount = invitedFriends?.length;
     // console.log('userLeadsSumamry',userLeadsSumamry)
 
     // const userLeadsSumamry [
@@ -56,6 +59,7 @@ const SummaryCardContainer = async ({ userId }: { userId: string }) => {
 
 
 
+
     
     return (
         <section className="flex my-5 gap-2 flex-wrap justify-between">
@@ -68,7 +72,7 @@ const SummaryCardContainer = async ({ userId }: { userId: string }) => {
             />
             <SummaryCard
                 
-                value={0}
+                value={invitedFriendsCount}
                 title={'invited friends'}
                 description={'your friends that played on your recommendation'}
                 icon={<GiThreeFriends/>}

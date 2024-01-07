@@ -1,3 +1,5 @@
+
+
 import Link from 'next/link';
 // export const dynamic = "force-dynamic"
 import Image from 'next/image';
@@ -8,14 +10,28 @@ import JumpingAvatar from '@/components/landing/components/JumpingAvatar';
 import OAuthForm from '../login/OAuthForm';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import createCookie, { getCookie } from '@/utils/appCookies';
+import { Cookie } from '@/types';
+import { cookies } from 'next/headers';
+import Ref from './ref';
+
 
 type Props = {
-    // params: { programId: string };
     searchParams: { [key: string]: string | string[] | undefined };
 };
 
-export default async function Home({ searchParams }: Props) {
-    const promocode = searchParams?.promocode??"";
+export default async function signUpPage({ searchParams }: Props) {
+    const promocode = searchParams?.promocode ?? '';
+
+    
+    if (promocode && promocode !== '') {
+        
+        // await createCookie({ name: 'promocode', value: promocode } as Cookie);
+    }
+
+    const cookiePromoCode = await getCookie('promocode');
+
+    console.log('cookiePromoCode', cookiePromoCode);
 
     return (
         <section className="w-full">
@@ -54,7 +70,7 @@ export default async function Home({ searchParams }: Props) {
                             btnVariant="default"
                         />
                         <Label className="text-center " htmlFor="promocode">
-                            <p className="text-center mt-3">promo code:</p>
+                            <p className="mt-3 text-center">promo code:</p>
                         </Label>
                         <Input
                             className="my-2 rounded-md border bg-inherit px-4 py-6 text-center uppercase"
@@ -62,9 +78,10 @@ export default async function Home({ searchParams }: Props) {
                             placeholder="promo code"
                             // value={promocode ?? ''}
                             // defaultValue={promocode ?? ''}
-                            defaultValue={promocode ?? ""}
+                            defaultValue={promocode ?? ''}
                             disabled={!!promocode}
                         />
+                        <Ref code={promocode.toString()} />
                     </section>
                     {/* <Link href="/dashboard/faq" className="mt-4 underline">
                         Learn more
