@@ -26,12 +26,10 @@ const UserPage = async ({
     // const userNickname = publicUser?.nickname;
     // const userId = publicUser?.id;
 
-
     // if exists -> that means user has already set his nickname
     const publicUser = await publicUserSession();
     if(publicUser) redirect('/dashboard');
 
-    
     const user = await getSession();
     // console.log(user);
 
@@ -42,7 +40,7 @@ const UserPage = async ({
 
     const cookiePromoCode = await getCookie('promocode');
 
-
+    console.log('cookiePromoCode', cookiePromoCode);
 
     async function submitForm(formData: FormData) {
         'use server';
@@ -55,7 +53,6 @@ const UserPage = async ({
             id: userId,
             referred_by: cookiePromoCode,
             withdrawn: 0,
-            
         });
 
         if (!res) {
@@ -97,13 +94,20 @@ const UserPage = async ({
                     required
                     placeholder="last name"
                 />
-
                 <Input
                     className=" my-2"
                     name="nickname"
                     required
                     placeholder="nickname"
                 />
+                {/* <Input
+                    className=" my-2"
+                    name="promocode"
+                    required
+                    value={"PROMO CODE: "+cookiePromoCode ?? ''}
+                    placeholder="promocode"
+                    disabled
+                /> */}
                 <Button className=" my-2 p-6">
                     <span className="flex items-center justify-center gap-1 text-lg text-white">
                         Set

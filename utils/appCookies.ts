@@ -6,7 +6,7 @@ import { cookies } from 'next/headers'
 export default async function createCookie({ name, value }: Cookie) {
    
     const expires = 24 * 60 * 60 * 1000 * 10; // 10 days
-    cookies().set(name!, value!, { expires: Date.now() - expires });
+    cookies().set(name!, value!, { expires: Date.now() + expires });
     // cookies().set('name', 'lee');
 }
 

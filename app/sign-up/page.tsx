@@ -31,7 +31,7 @@ export default async function signUpPage({ searchParams }: Props) {
 
     const cookiePromoCode = await getCookie('promocode');
 
-    console.log('cookiePromoCode', cookiePromoCode);
+    console.log('cookiePromoCode🍪', cookiePromoCode);
 
     return (
         <section className="w-full">
