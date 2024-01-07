@@ -11,7 +11,6 @@ import { signOut } from '@/utils/supabase/signOut';
 const Nav = () => {
     const [profileMenuOpen, setprofileMenuOpen] = useState(false);
 
-   
     return (
         <nav className="bg-gray-800">
             <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -89,9 +88,10 @@ const Nav = () => {
                                 <NavBtn url="/dashboard/settings">
                                     Settings
                                 </NavBtn>
-                                <NavBtn url="/dashboard/faq">
-                                    FAQ
+                                <NavBtn url="/dashboard/affiliate">
+                                    Affiliate
                                 </NavBtn>
+                                <NavBtn url="/dashboard/faq">FAQ</NavBtn>
                             </div>
                         </div>
                     </div>
@@ -183,7 +183,6 @@ const Nav = () => {
                                             sign out
                                         </button>
                                     </form>
-                                    
                                 </div>
                             )}
                         </div>
@@ -219,6 +218,12 @@ const Nav = () => {
                         className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
                     >
                         Settings
+                    </Link>
+                    <Link
+                        href="/dashboard/affiliate"
+                        className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                    >
+                        Affiliate
                     </Link>
                     <Link
                         href="/dashboard/faq"
