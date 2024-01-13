@@ -83,6 +83,8 @@ export default async function ProgramPage({ params, searchParams }: Props) {
         friendName ? `&subid2=${friendName}` : ''
     }`;
 
+    const trackingUrl = `https://pro.ciac.me/?utm_source=leadloom&title=${program.programName}&goto=${url}`
+
     return (
         <section
             className="
@@ -128,7 +130,7 @@ export default async function ProgramPage({ params, searchParams }: Props) {
 
                 {/* <h3>{url}</h3> */}
 
-                <Link href={`${url}`}>
+                <Link href={`${trackingUrl}`}>
                     <Button className="mr-2 p-6 text-2xl text-white">
                         PLAY FOR FREE
                     </Button>
