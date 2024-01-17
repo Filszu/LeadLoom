@@ -4,7 +4,7 @@ import { error } from "console";
 
 export default async function postPublicProfile(props:PublicUser) {
     
-    const { id, first_name, last_name, nickname } = props;
+    const { id, first_name, last_name, nickname, referred_by } = props;
     
     const { data: publicProfiles, error: publicProfilesError } = await supabase
         .from('profiles')
@@ -14,6 +14,8 @@ export default async function postPublicProfile(props:PublicUser) {
                 first_name: `${first_name}`,
                 last_name: `${last_name}`,
                 nickname: `${nickname}`,
+                referred_by: `${referred_by}`,
+                
             },
         ])
         // .select();

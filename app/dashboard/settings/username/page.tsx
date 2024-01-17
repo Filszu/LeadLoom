@@ -28,7 +28,7 @@ const UserPage = async ({
 
     // if exists -> that means user has already set his nickname
     const publicUser = await publicUserSession();
-    if(publicUser) redirect('/dashboard');
+    // if(publicUser) redirect('/dashboard');
 
     const user = await getSession();
     // console.log(user);
@@ -100,14 +100,14 @@ const UserPage = async ({
                     required
                     placeholder="nickname"
                 />
-                {/* <Input
+                <Input
                     className=" my-2"
                     name="promocode"
                     required
                     value={"PROMO CODE: "+cookiePromoCode ?? ''}
                     placeholder="promocode"
                     disabled
-                /> */}
+                />
                 <Button className=" my-2 p-6">
                     <span className="flex items-center justify-center gap-1 text-lg text-white">
                         Set

@@ -44,6 +44,12 @@ module.exports = {
             },
             {
                 protocol: 'https',
+                hostname: 'leadloom.games',
+                port: '',
+                pathname: '/',
+            },
+            {
+                protocol: 'https',
                 hostname: 'cdn.admitad-connect.com',
                 port: '',
                 pathname: '/public/campaign/images/',
