@@ -18,7 +18,7 @@ export default async function getPrograms(props: IqueryProps) {
         let { data: programs, error } = await supabase
         .from('programms')
         .select('*')
-        
+        .order("position", { ascending: false })
         .order(props.orderBy || 'created_at', { ascending: props.ascending || false } )
         .limit(props.limit || 20)
 

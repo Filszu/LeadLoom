@@ -25,6 +25,7 @@ import { Button } from '../ui/button';
 import Link from 'next/link';
 import CardActionsSection from './CardActionsSection';
 import TooltipBadge from '../ui/custom/tooltipBadge';
+import { MdAccessTime } from 'react-icons/md';
 
 const ProgramCard = ({
     props,
@@ -34,7 +35,6 @@ const ProgramCard = ({
     nickname: string;
 }) => {
     const usdToPln = 4.0;
-
 
     const tootltip = {
         content: '',
@@ -51,15 +51,17 @@ const ProgramCard = ({
         tootltip.text = 'New';
         // tootltip.variant = "outline"
     }
-    if(props.status === 'verified'){
-        tootltip.content = 'Verified program - you can trust it. That means that the reward is GUARANTEED after completing the task properly.';
+    if (props.status === 'verified') {
+        tootltip.content =
+            'Verified program - you can trust it. That means that the reward is GUARANTEED after completing the task properly.';
         tootltip.text = 'Verified';
         // tootltip.variant = "secondary"
     }
-    if(props.status === 'unverified'){
-        tootltip.content = 'Unverified program - new program that has not been verified yet. That means that it has not been tested yet by LeadLoom team and our COMMUNITY. Become tester and get the BONUS reward! (if available)';
+    if (props.status === 'unverified') {
+        tootltip.content =
+            'Unverified program - new program that has not been verified yet. That means that it has not been tested yet by LeadLoom team and our COMMUNITY. Become tester and get the BONUS reward! (if available)';
         tootltip.text = 'Unverified';
-        tootltip.variant = "destructive"
+        tootltip.variant = 'destructive';
     }
     return (
         <div className="overflow-hidden rounded-lg bg-gray-800 p-8 text-white shadow-lg">
@@ -95,9 +97,10 @@ const ProgramCard = ({
                     </div>
 
                     <h3 className="text-xl uppercase">
+                        potential reward
                         {props.cpaUser && (
                             <>
-                                potential reward 🗽🇺🇸:
+                                🗽🇺🇸:
                                 <span className="pl-2 pr-2 text-primary">
                                     {props.cpaUser ?? ''}$ (
                                     {props.cpaUser * usdToPln} PLN)
@@ -108,6 +111,14 @@ const ProgramCard = ({
                         <span className="pl-2 pr-2 text-primary">
                             {props.cpaUserPL ?? ''} PLN
                         </span>
+                        {props.time && (
+                            <span className="flex items-center">
+                                <MdAccessTime className="text-2xl"/>{' '}
+                                <span className="pl-1 text-primary lowercase">
+                                    {props.time}min
+                                </span>
+                            </span>
+                        )}
                     </h3>
                     <CardActionsSection props={props} nickname={nickname} />
                 </div>

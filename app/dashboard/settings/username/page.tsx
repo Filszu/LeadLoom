@@ -28,7 +28,7 @@ const UserPage = async ({
 
     // if exists -> that means user has already set his nickname
     const publicUser = await publicUserSession();
-    // if(publicUser) redirect('/dashboard');
+    if(publicUser) redirect('/dashboard');
 
     const user = await getSession();
     // console.log(user);
