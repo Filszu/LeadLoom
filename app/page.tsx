@@ -40,9 +40,7 @@ export default async function Home() {
                         </Button>
                     </Link>
                     <Link href="/dashboard/faq" className="mt-4 underline">
-                        
-                                Learn more
-                         
+                        Learn more
                     </Link>
                 </div>
             </section>
