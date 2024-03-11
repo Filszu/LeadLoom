@@ -67,7 +67,7 @@ export default async function postUserLead({
         }
 
         
-        if (joinedDaysAgo < 30 && joinedDaysAgo !==0) {
+        if (joinedDaysAgo < 94 && joinedDaysAgo !==0) {
             shouldValidTheLead = false;
             leadDescription = `duplicate / confirmation`;
         }

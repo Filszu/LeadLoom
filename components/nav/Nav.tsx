@@ -5,7 +5,7 @@ import signOutUser from '@/lib/dbOperations/signOut';
 import Image from 'next/image';
 
 import logo from '@/public/imgs/banners/leadloom0.jpg';
-import logo1 from '@/public/imgs/banners/profile1.png';
+import logo1 from '@/public/imgs/avatars/leadloom_girl.png';
 import Link from 'next/link';
 import { signOut } from '@/utils/supabase/signOut';
 const Nav = () => {
@@ -71,6 +71,7 @@ const Nav = () => {
                                 className="h-8 w-auto"
                                 src={logo1}
                                 alt="leadloom logo"
+                                quality={50}
                             />
                         </div>
                         <div className="hidden sm:ml-6 sm:block">

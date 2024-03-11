@@ -93,7 +93,7 @@ const CardActionsSection = ({
                         toast({
                             title: 'Remember to follow the program rules.',
                             description:
-                                "Have fun❣️You can complete each challenge once every 30 days. Don't cheat - any inaccuracies will be detected. And you will be banned🫡",
+                                "Have fun❣️You can complete each challenge once every 90 days. Don't cheat - any inaccuracies will be detected. And you will be banned🫡",
                             variant: 'success',
                         });
                     }}
