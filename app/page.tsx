@@ -5,6 +5,7 @@ import LeadLoomGirl from '@/public/imgs/avatars/leadloom_girl.png';
 
 import { Button } from '@/components/ui/button';
 import JumpingAvatar from '@/components/landing/components/JumpingAvatar';
+import { LeadloomGlobe } from '@/components/ui/aceternity/globe/LeadloomGlobe';
 export default async function Home() {
     return (
         <section className="w-full">
@@ -43,6 +44,9 @@ export default async function Home() {
                         Learn more
                     </Link>
                 </div>
+            </section>
+            <section>
+                <LeadloomGlobe />
             </section>
             <div className="h-80"></div>
             <JumpingAvatar />
