@@ -6,10 +6,12 @@ import LeadLoomGirl from '@/public/imgs/avatars/leadloom_girl.png';
 import { Button } from '@/components/ui/button';
 import JumpingAvatar from '@/components/landing/components/JumpingAvatar';
 import { LeadloomGlobe } from '@/components/ui/aceternity/globe/LeadloomGlobe';
+import { IntroText } from '@/components/ui/aceternity/text-generate/IntroText';
+import HomePageProgramsContainer from '@/components/program/HomePageProgramsContainer';
 export default async function Home() {
     return (
         <section className="w-full">
-            <section className="center flex h-screen w-full  flex-col items-center justify-center">
+            <section className="center flex  w-full  flex-col items-center justify-center">
                 <div
                     className="flex w-full flex-col items-center justify-center 
                 "
@@ -45,6 +47,15 @@ export default async function Home() {
                     </Link>
                 </div>
             </section>
+
+            <div className="h-36"></div>
+
+            <article className="flex w-full flex-col items-center justify-center text-center ">
+                <IntroText />
+                <section className="mt-8 ">
+                    <HomePageProgramsContainer />
+                </section>
+            </article>
             <section>
                 <LeadloomGlobe />
             </section>

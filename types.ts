@@ -1,3 +1,4 @@
+import { StaticImageData } from "next/image";
 import { Database } from "./database.types";
 
 
@@ -104,6 +105,15 @@ export interface Cookie {
     }
 }
 
+export interface IProgramHomePage {
+    programName: string;
+    description: string;
+    img: string | StaticImageData;
+    cpa: number;
+    currency: string;
+    id:number;
+
+}
 
 export type UserLead = Database["public"]["Tables"]["userLeads"]["Row"]
 

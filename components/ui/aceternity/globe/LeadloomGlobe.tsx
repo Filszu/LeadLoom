@@ -398,7 +398,7 @@ export function LeadloomGlobe() {
 
     return (
         <div className="relative flex h-screen w-full flex-row items-center justify-center py-20 md:h-auto">
-            <div className="relative mx-auto h-full w-full max-w-7xl overflow-hidden px-4 md:h-[40rem]">
+            <div className="relative mx-auto h-full w-full max-w-7xl overflow-hidden  md:h-[40rem]">
                 <motion.div
                     initial={{
                         opacity: 0,
@@ -413,25 +413,27 @@ export function LeadloomGlobe() {
                     }}
                     className="div"
                 >
-                    <h2 className="text-center text-xl font-bold text-white md:text-4xl">
-                        Play from anywhere in the World
-                    </h2>
-                    <section className="mx-auto mt-2 max-w-md text-center text-base font-normal text-neutral-200 md:text-lg">
-                        <p className="">
-                            In countries such as the USA, Canada, Germany,
-                            France and luxebourg you can win the highest
-                            rewards*.
-                        </p>
-                        <p className="mt-2 text-sm">
-                            *But beware of unwise use of GeForce now or VPNs, it
-                            can lead to account blocking
-                        </p>
-                        <p></p>
-                    </section>
+                    <div className="px-4">
+                        <h2 className="text-center text-xl font-bold text-white md:text-4xl">
+                            Play from anywhere in the World
+                        </h2>
+                        <section className="mx-auto mt-2 max-w-md text-center text-base font-normal text-neutral-200 md:text-lg">
+                            <p className="">
+                                In countries such as the USA, Canada, Germany,
+                                France and luxebourg you can win the highest
+                                rewards*.
+                            </p>
+                            <p className="mt-2 text-sm">
+                                *But beware of unwise use of GeForce now or
+                                VPNs, it can lead to account blocking
+                            </p>
+                            <p></p>
+                        </section>
+                    </div>
                 </motion.div>
-                
+
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 z-40 h-40 w-full select-none bg-gradient-to-b from-transparent to-background" />
-                <div className="absolute -bottom-20 z-10  w-full md:h-full">
+                <div className="absolute -bottom-20 z-10  h-5/6 w-full  md:h-full">
                     <World data={sampleArcs} globeConfig={globeConfig} />;
                 </div>
             </div>

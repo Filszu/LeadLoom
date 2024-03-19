@@ -75,7 +75,7 @@ export default function RootLayout({
                         >
                             Filszu
                         </Link>{' '}
-                        2023
+                        2023-2024
                     </h3>
                     <h3 className="">
                         Give a ⭐ on{' '}
