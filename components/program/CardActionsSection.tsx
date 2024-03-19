@@ -47,16 +47,15 @@ const CardActionsSection = ({
                             </Button>
                         </TooltipTrigger>
                         <TooltipContent>
-                            {!acceptedTerms?(<p>
-                                Before joining the program, please read the
-                                program description and accept the terms and
-                                conditions
-                            </p>):
-                            <p>
-                                🕹️GLHF🫡
-                            </p>
-                            }
-                            
+                            {!acceptedTerms ? (
+                                <p>
+                                    Before joining the program, please read the
+                                    program description and accept the terms and
+                                    conditions
+                                </p>
+                            ) : (
+                                <p>🕹️GLHF🫡</p>
+                            )}
                         </TooltipContent>
                     </Tooltip>
                 </TooltipProvider>
@@ -124,7 +123,7 @@ const CardActionsSection = ({
                     showProgramInfo && 'grid-rows-[1fr] opacity-100',
                 )}
             >
-                <div className="mt-4 flex gap-8 overflow-hidden">
+                <div className="mt-4 flex flex-col-reverse gap-8 overflow-hidden lg:flex-row">
                     {/* Program details */}
                     <section className="flex-1">
                         <h2 className="text-xl font-semibold">

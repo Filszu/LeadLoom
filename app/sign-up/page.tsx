@@ -1,5 +1,3 @@
-
-
 import Link from 'next/link';
 // export const dynamic = "force-dynamic"
 import Image from 'next/image';
@@ -14,7 +12,8 @@ import createCookie, { getCookie } from '@/utils/appCookies';
 import { Cookie } from '@/types';
 import { cookies } from 'next/headers';
 import Ref from './ref';
-
+import { IntroText } from '@/components/ui/aceternity/text-generate/IntroText';
+import HomePageProgramsContainer from '@/components/program/HomePageProgramsContainer';
 
 type Props = {
     searchParams: { [key: string]: string | string[] | undefined };
@@ -23,9 +22,7 @@ type Props = {
 export default async function signUpPage({ searchParams }: Props) {
     const promocode = searchParams?.promocode ?? '';
 
-    
     if (promocode && promocode !== '') {
-        
         // await createCookie({ name: 'promocode', value: promocode } as Cookie);
     }
 
@@ -35,7 +32,7 @@ export default async function signUpPage({ searchParams }: Props) {
 
     return (
         <section className="w-full">
-            <section className="center flex h-screen w-full  flex-col items-center justify-center">
+            <section className="center flex  w-full  flex-col items-center justify-center">
                 <div
                     className="flex w-full flex-col items-center justify-center 
                 "
@@ -88,6 +85,13 @@ export default async function signUpPage({ searchParams }: Props) {
                     </Link> */}
                 </div>
             </section>
+            <div className="h-36"></div>
+            <article className="flex w-full flex-col items-center justify-center text-center ">
+                <IntroText />
+                <section className="mt-8 ">
+                    <HomePageProgramsContainer />
+                </section>
+            </article>
             <div className="h-80"></div>
             <JumpingAvatar />
         </section>
