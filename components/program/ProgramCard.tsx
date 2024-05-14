@@ -26,6 +26,9 @@ import Link from 'next/link';
 import CardActionsSection from './CardActionsSection';
 import TooltipBadge from '../ui/custom/tooltipBadge';
 import { MdAccessTime } from 'react-icons/md';
+import { SiWindows } from 'react-icons/si';
+import { FcAndroidOs } from 'react-icons/fc';
+import { FaApple } from 'react-icons/fa';
 
 const ProgramCard = ({
     props,
@@ -111,14 +114,23 @@ const ProgramCard = ({
                         <span className="pl-2 pr-2 text-primary">
                             {props.cpaUserPL ?? ''} PLN
                         </span>
-                        {props.time && (
-                            <span className="flex items-center">
-                                <MdAccessTime className="text-2xl"/>{' '}
-                                <span className="pl-1 text-primary lowercase">
-                                    {props.time}min
+                        <span className="flex gap-5">
+                            {props.time && (
+                                <span className="flex items-center">
+                                    <MdAccessTime className="text-2xl" />{' '}
+                                    <span className="pl-1 lowercase text-primary">
+                                        {props.time}min
+                                    </span>
                                 </span>
-                            </span>
-                        )}
+                            )}
+                            {props.platform && (
+                                <span className="flex items-center gap-1">
+                                    {(props.platform.includes(1))&&<SiWindows className="text-xl" />}
+                                    {(props.platform.includes(2))&&<FcAndroidOs className="text-xl" />}
+                                    {(props.platform.includes(3))&&<FaApple className="text-xl" />}
+                                </span>
+                            )}
+                        </span>
                     </h3>
                     <CardActionsSection props={props} nickname={nickname} />
                 </div>

@@ -17,7 +17,7 @@ const FilterSettings = (props:Props) => {
     const router = useRouter()
 
     return (
-        <form action="" className='flex'>
+        <form action="" className='flex gap-5'>
             <Select
                 defaultValue={props.orderBy}
                 onValueChange={(value) => {
@@ -45,18 +45,19 @@ const FilterSettings = (props:Props) => {
                 </SelectContent>
             </Select>
             <Select
-                defaultValue="desc"
+                defaultValue={props.ascending ? 'true' : 'false'}
+                
                 onValueChange={(value) => {
                     // redirect(`&ascending=${value}`);
                     router.push(`?orderBy=${props.orderBy}&ascending=${value}`)
                 }}
             >
-                <SelectTrigger className="w-[50px]">
+                <SelectTrigger className="w-[80px]">
                     <SelectValue placeholder="ascending" />
                 </SelectTrigger>
                 <SelectContent>
-                    <SelectItem value="ascending"><TbArrowsUp /></SelectItem>
-                    <SelectItem value="descending"><TbArrowsDown /></SelectItem>
+                    <SelectItem value="true"><TbArrowsUp /></SelectItem>
+                    <SelectItem value="false"><TbArrowsDown /></SelectItem>
                     
                 </SelectContent>
             </Select>

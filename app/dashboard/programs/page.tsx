@@ -31,7 +31,8 @@ const ProgramsPage = async ({
     if (!userId) redirect('/login');
 
     let orderBy = (searchParams?.orderBy as string) ?? 'cpaUser';
-    const ascending = (Boolean(searchParams?.ascending) as boolean) ?? false;
+    let ascending = (Boolean(searchParams?.ascending) as boolean) ?? false;
+    console.log(orderBy, ascending)
 
     if (
         orderBy !== 'cpaUser' &&
@@ -39,7 +40,9 @@ const ProgramsPage = async ({
         orderBy !== 'created_at' &&
         orderBy !== 'position' &&
         orderBy !== 'programName' &&
-        orderBy !== 'time'
+        orderBy !== 'time'&&
+        orderBy !== 'platform'&&
+        orderBy !== 'rewardValue'
     ) {
         orderBy = '';
     }
