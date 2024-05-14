@@ -5,12 +5,14 @@ import React from 'react';
 
 type Props = {
     userNickname: string;
+    orderBy?: string;
+    ascending?: boolean;
 };
 
 const ProgrammsContainer = async (props: Props) => {
     const programms = await getPrograms({
-        orderBy: 'cpaUser',
-        ascending: false,
+        orderBy: props.orderBy??'cpaUser',
+        ascending: props.ascending??false,
     });
 
     // await fakeSetTimeOut(1000)
