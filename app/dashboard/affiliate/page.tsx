@@ -75,13 +75,13 @@ const RefPage = async () => {
                     <li>
                         then you will receive
                         <span className="font-bold text-primary"> 5% </span>
-                        of any REWARDED (WITHDRAWN) rewards of your referred lifetime
+                        of any REWARDED (WITHDRAWN*) rewards of your referred lifetime
                         <ol className="ml-9 list-inside list-decimal">
                             <li>
                                 Share your referral link with your friends and
                                 followers
                             </li>
-                            <li>Earn 5% of their earnings</li>
+                            <li>Earn 5% of their earnings**</li>
                             <li>Withdraw your earnings</li>
                             <li>Repeat</li>
                             <li>Profit</li>
@@ -89,6 +89,12 @@ const RefPage = async () => {
                     </li>
                 </ul>
                 <h3>the choice is yours</h3>
+                <br /><br />
+                <h4>*Max payout, per referred user, is the minimum payout threshold of the country times 100% * referral commission percentage (default 5%)
+
+                    <br />
+                    **Earnings are calculated from the net profit of the referred user, including any bonuses or rewards. E.g. User is from United States and paid out 15$ (the minimum payout threshold for the US), you will receive 0.75$ (5% of 15$)
+                </h4>
             </section>
         </>
     );

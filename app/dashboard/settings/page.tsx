@@ -116,7 +116,7 @@ const SettingsPage = async () => {
 
             <div className="py-4">
                 <EarningsChart earnings={summary.accepted ?? 1} treshold={20} currency={"PLN"}/>
-                <p>pedning / accepted / paidout</p>
+                <p>pending / accepted / paidout</p>
                 <span className="text-orange-400">{summary.pending}</span> /
                 <span className="text-primary"> {summary.accepted} </span> /
                 <span className="text-green-700"> {summary.paidout}</span> PLN
