@@ -14,12 +14,12 @@ import { Progress } from '@/components/ui/progress';
 import EarningsChart from '@/components/earningsChart/EarningsChart';
 import getUserLeadsSummary from '@/lib/dbOperations/getUserLeadsSummary';
 import { UserLeadsSummary } from '@/types';
+import updateUserPass from '@/lib/dbOperations/putUserPassword';
+import { PiPasswordFill } from 'react-icons/pi';
 
 export const revalidate = 3600;
 
 const SettingsPage = async () => {
-
-
     const publicUser = await publicUserSession();
 
     const userNickname = publicUser?.nickname;
@@ -29,7 +29,6 @@ const SettingsPage = async () => {
 
     const userLeadsSummary = await getUserLeadsSummary({ userID: userId });
 
-   
     const summary = {
         accepted: 0,
         pending: 0,
@@ -49,15 +48,26 @@ const SettingsPage = async () => {
             userLeadsSummary.find(
                 (item: UserLeadsSummary) => item.status === 'pending',
             )?.total_value ?? 0;
-
-        
     }
 
     async function submitWithdrawalForm() {
         'use server';
         console.log('submitWithdrawalForm');
-        redirect(`mailto:info@leadloom.games?subject=leadloom withdrawal request&body=Hi, I would like to withdraw my earnings. My user id is ${userId} my nickname is ${userNickname} my earnings are ${summary.accepted} PLN and i already have ${summary.paidout} PLN paid out.`)
+        redirect(
+            `mailto:info@leadloom.games?subject=leadloom withdrawal request&body=Hi, I would like to withdraw my earnings. My user id is ${userId} my nickname is ${userNickname} my earnings are ${summary.accepted} PLN and i already have ${summary.paidout} PLN paid out.`,
+        );
+    }
+
+    async function updatePass(formData: FormData) {
+        'use server';
         
+        const newPass = formData.get('newPass')?.toString();
+        console.log(newPass)
+        if (newPass && newPass.length >= 6) {
+            await updateUserPass({
+                pass: newPass,
+            });
+        }
     }
     return (
         <>
@@ -115,7 +125,11 @@ const SettingsPage = async () => {
             </h2>
 
             <div className="py-4">
-                <EarningsChart earnings={summary.accepted ?? 1} treshold={20} currency={"PLN"}/>
+                <EarningsChart
+                    earnings={summary.accepted ?? 1}
+                    treshold={20}
+                    currency={'PLN'}
+                />
                 <p>pending / accepted / paidout</p>
                 <span className="text-orange-400">{summary.pending}</span> /
                 <span className="text-primary"> {summary.accepted} </span> /
@@ -140,6 +154,26 @@ const SettingsPage = async () => {
             </p>
 
             <Suspense fallback={<ProgramCardSkeletonContainer />}></Suspense>
+            <div className="h-10"></div>
+
+            <section className="">
+                <h1>Update Password</h1>
+                <form action={updatePass}>
+                    <Input
+                        type="password"
+                        minLength={6}
+                        required
+                        name="newPass"
+                        className=" my-4"
+                    ></Input>
+                    <Button className="  p-6">
+                        <span className="flex items-center justify-center gap-1 text-lg text-white">
+                            <PiPasswordFill size={22} />
+                            Update Password
+                        </span>
+                    </Button>
+                </form>
+            </section>
         </>
     );
 };
