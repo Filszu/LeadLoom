@@ -132,3 +132,9 @@ export interface IUserLeadExtended extends UserLead {
     }
     programName?: string
 }
+
+
+
+export interface IUserLeadWithLeads extends IUserLeadExtended {
+    relatedLeads: Lead[];
+  }
