@@ -18,7 +18,8 @@ const LeadsTable = async({userId}:{userId:string}) => {
         return {
             ...lead,
             programName: lead.programms.programName,
-            leads: JSON.stringify(lead.leads)
+            // leads: JSON.stringify(lead.leads)
+            leads: lead.leads
         };
     });
 

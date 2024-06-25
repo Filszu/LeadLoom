@@ -44,7 +44,7 @@ export async function getUserLeads(props: IqueryProps) {
                 ascending: props.ascending || false,
             })
             .eq('userId', props.userID)
-            .limit(1)
+            // .limit(1)
 
         if (error) {
             console.error(error);
