@@ -25,3 +25,9 @@ To run this project, you will need to add the following environment variables to
 ## Authors
 
 -   [@filszu](https://www.github.com/Filszu)
+
+## To do
+[] admin dashboard
+[] automation validate on country code
+[] auto-increment paidout after withdraw on user profile
+[] add uuActionId to subid4 

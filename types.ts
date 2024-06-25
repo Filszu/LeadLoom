@@ -136,5 +136,6 @@ export interface IUserLeadExtended extends UserLead {
 
 
 export interface IUserLeadWithLeads extends IUserLeadExtended {
-    relatedLeads: Lead[];
+    // relatedLeads: Lead[];
+    leads: Lead;
   }
