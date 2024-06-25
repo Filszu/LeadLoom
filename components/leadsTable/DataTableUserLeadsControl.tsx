@@ -195,22 +195,73 @@ export const columns: ColumnDef<IUserLeadWithLeads>[] = [
         </Button>
       )
     },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("currency")}</div>,
+    cell: ({ row }) => <div className="lowercase">{row.getValue("currency")}
+    
+    </div>,
   },
+  // {
+  //   accessorKey: "providerStatus",
+  //   // accessorKey: "leads",
+  //   header: ({ column }) => {
+  //     return (
+  //       <Button
+  //         variant="ghost"
+  //         onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+  //       >
+  //         provider status
+  //         <ArrowUpDown className="ml-2 h-4 w-4" />
+  //       </Button>
+  //     )
+  //   },
+  //   cell: ({ row }) => <div className="lowercase">{
+  //     row.getValue("leads")
+    
+      
+  //     }</div>,
+  // },
   {
-    accessorKey: "providerStatus",
+    accessorKey: "actions",
+    // accessorKey: "leads",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          provider status
+          actions
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       )
     },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("leads")}</div>,
+    cell: ({ row }) => <div className="lowercase">{
+      <section className="flex gap-1">
+       
+        <Button variant="outline" className="bg-green-500 text-white">Approve</Button>
+        <Button variant="outline" className="bg-red-500 text-white">Decline</Button>
+        <Button variant="outline" className="bg-blue-500 text-white">Edit</Button>
+        
+        
+      </section>
+    
+      
+      }</div>,
+  },
+  {
+    accessorKey: "leads",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          leads
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+    cell: ({ row }) => <div className="lowercase">{row.getValue("leads")}
+    
+    </div>,
   },
 
 ]
