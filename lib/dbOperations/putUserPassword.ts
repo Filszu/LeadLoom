@@ -9,7 +9,7 @@ interface IUpdateUserPassword{
 
 export default async function updateUserPass(props:IUpdateUserPassword) {
 
-    console.log("Updatig pass...", props.pass)
+    console.log("Updating pass...", props.pass)
 
     try{
     // const res = await supabase.auth.updateUser({ password: props.pass })

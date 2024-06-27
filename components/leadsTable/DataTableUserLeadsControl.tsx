@@ -36,6 +36,7 @@ import {
     TableRow,
 } from '@/components/ui/table';
 import { IUserLeadWithLeads, Lead, TableLead } from '@/types';
+import LeadActions from "./actionSections/LeadActions";
 
 function formatDate(date: string) {
     // 2023-12-28T17:31:22.510006+00:00
@@ -264,6 +265,7 @@ export const columns: ColumnDef<IUserLeadWithLeads>[] = [
     {
         accessorKey: 'actions',
         // accessorKey: "leads",
+        accessorFn: (row) => row.id,
         header: ({ column }) => {
             return (
                 <Button
@@ -280,34 +282,7 @@ export const columns: ColumnDef<IUserLeadWithLeads>[] = [
         cell: ({ row }) => (
             <div className="lowercase">
                 {
-                    <section className="flex gap-1">
-                        <Button
-                            variant="outline"
-                            className="bg-green-500 text-white"
-                        >
-                            Approve
-                        </Button>
-                        <Button
-                            variant="outline"
-                            className="bg-red-500 text-white"
-                        >
-                            Decline
-                        </Button>
-
-                        <Button
-                            variant="outline"
-                            className="bg-yellow-500 text-white"
-                        >
-                            Pending
-                        </Button>
-                        <Button
-                            variant="outline"
-                            className="bg-blue-500 text-white"
-                           
-                        >
-                            Edit
-                        </Button>
-                    </section>
+                    <LeadActions leadId={row.getValue("actions")}/>
                 }
             </div>
         ),

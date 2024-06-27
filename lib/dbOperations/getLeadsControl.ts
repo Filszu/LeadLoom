@@ -52,7 +52,7 @@ export async function getUserLeads(props: IqueryProps) {
         }
 
         console.log("-----------------")
-        console.log(data)
+        // console.log(data)
         return data as IUserLeadWithLeads[];
     } catch (error) {
         console.error(error);
