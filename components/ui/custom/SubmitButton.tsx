@@ -1,19 +1,22 @@
 'use client'
 import { Button } from '../button';
 import LoadingIcon from './loadingIcon';
-import { experimental_useFormStatus as useFormStatus } from "react-dom";
+import {useFormStatus } from "react-dom";
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-    btnText: string | React.ReactNode;
-    submittingText?: string;
+    // btnText: string | React.ReactNode;
+    submittingText?: string | React.ReactNode;
+    children: React.ReactNode;
     
 };
 const SubmitButton = (props: Props) => {
     const { pending } = useFormStatus();
-    const { btnText, submittingText, ...buttonProps } = props;
+    const { children, submittingText, ...buttonProps } = props;
+    console.log(submittingText)
+    
     return (
         <Button
             type="submit"
-            variant="outline"
+            // variant="outline"
             aria-disabled={pending}
             disabled={pending}
             // className="flex items-center"
@@ -21,7 +24,9 @@ const SubmitButton = (props: Props) => {
             
         >
             {pending&&<LoadingIcon  />}
-            {pending ? props.submittingText : props.btnText}
+            {/* {pending ? props.submittingText : props.children} */}
+            {pending&&submittingText!=undefined ? submittingText : children}
+            
         </Button>
     );
 };

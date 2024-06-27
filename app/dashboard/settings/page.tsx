@@ -16,6 +16,7 @@ import getUserLeadsSummary from '@/lib/dbOperations/getUserLeadsSummary';
 import { UserLeadsSummary } from '@/types';
 import updateUserPass from '@/lib/dbOperations/putUserPassword';
 import { PiPasswordFill } from 'react-icons/pi';
+import SubmitButton from '@/components/ui/custom/SubmitButton';
 
 export const revalidate = 3600;
 
@@ -172,12 +173,12 @@ const SettingsPage = async () => {
                         name="newPass"
                         className=" my-4"
                     ></Input>
-                    <Button className="  p-6">
+                    <SubmitButton className="  p-6" >
                         <span className="flex items-center justify-center gap-1 text-lg text-white">
                             <PiPasswordFill size={22} />
                             Update Password
                         </span>
-                    </Button>
+                    </SubmitButton >
                 </form>
             </section>
         </>

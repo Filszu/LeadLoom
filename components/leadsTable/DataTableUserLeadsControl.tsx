@@ -358,6 +358,7 @@ export async function DataTableUserLeadsControl(
         getFilteredRowModel: getFilteredRowModel(),
         onColumnVisibilityChange: setColumnVisibility,
         onRowSelectionChange: setRowSelection,
+        
         state: {
             sorting,
             columnFilters,

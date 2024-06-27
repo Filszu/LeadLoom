@@ -12,7 +12,7 @@ const LeadsTable = async({userId}:{userId:string}) => {
 
     // await fakeSetTimeOut(1000)
 
-    const leads:IUserLeadWithLeads[] = await getUserLeads({limit:150, userID:userId})??[]
+    const leads:IUserLeadWithLeads[] = await getUserLeads({limit:500, userID:userId})??[]
 
     const modifiedLeads = leads.map((lead) => {
         return {
