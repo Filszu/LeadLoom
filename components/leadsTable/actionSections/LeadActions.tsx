@@ -7,6 +7,8 @@ type Props = {
     leadId: string;
 };
 
+import { experimental_useOptimistic as  useOptimistic} from 'react'
+
 const LeadActions = (props: Props) => {
     async function handleSubmit(status: string) {
         // console.log(status);
@@ -64,8 +66,8 @@ const LeadActions = (props: Props) => {
                 >
                     Edit
                 </Button>
-
-                {props.leadId}
+                {/* new status here */}
+                
             </form>
         </section>
     );

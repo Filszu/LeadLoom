@@ -30,7 +30,7 @@ export default async function updateUserLeads(props: IUpdateUserLeads) {
       
 
         console.log(data, error);
-        revalidatePath("/dashboard/admin/user-leads-control")
+        // revalidatePath("/dashboard/admin/user-leads-control")
     } catch (e) {
         console.log(e);
     }
