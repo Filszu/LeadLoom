@@ -1,8 +1,8 @@
 import { Button } from '@/components/ui/button';
 import SubmitButton from '@/components/ui/custom/SubmitButton';
+import LoadingIcon from '@/components/ui/custom/loadingIcon';
 import updateUserLeads from '@/lib/dbOperations/putUserLeads';
 import React from 'react';
-
 type Props = {
     leadId: string;
 };
@@ -19,10 +19,11 @@ const LeadActions = (props: Props) => {
     return (
         <section className="flex gap-1">
             <form
-                action={() => (handleSubmit)}
+                action={() => handleSubmit}
                 //   onSubmit={(e) => {e.preventDefault();}}
                 className="flex gap-1"
             >
+               
                 <Button
                     variant="outline"
                     className="bg-green-500 text-white"
@@ -49,21 +50,21 @@ const LeadActions = (props: Props) => {
                 </Button>
                 <Button
                     variant="outline"
-                    className="bg-blue-500 text-white"
-                    type="button"
-                    onClick={() => console.log('Edit button clicked')}
-                >
-                    Edit
-                </Button>
-                <Button
-                    variant="outline"
                     className="bg-purple-500 text-white"
                     type="button"
                     onClick={() => handleSubmit('paidout')}
                 >
                     Paid Out
                 </Button>
-                
+                <Button
+                    variant="outline"
+                    className="bg-blue-500 text-white"
+                    type="button"
+                    onClick={() => console.log('Edit button clicked')}
+                >
+                    Edit
+                </Button>
+
                 {props.leadId}
             </form>
         </section>

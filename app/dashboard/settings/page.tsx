@@ -33,6 +33,7 @@ const SettingsPage = async () => {
         accepted: 0,
         pending: 0,
         paidout: 0,
+        declined: 0,
     };
     if (userLeadsSummary) {
         summary.paidout =
@@ -47,6 +48,10 @@ const SettingsPage = async () => {
         summary.pending =
             userLeadsSummary.find(
                 (item: UserLeadsSummary) => item.status === 'pending',
+            )?.total_value ?? 0;
+        summary.declined =
+            userLeadsSummary.find(
+                (item: UserLeadsSummary) => item.status === 'declined',
             )?.total_value ?? 0;
     }
 
@@ -130,10 +135,11 @@ const SettingsPage = async () => {
                     treshold={20}
                     currency={'PLN'}
                 />
-                <p>pending / accepted / paidout</p>
+                <p>pending / accepted / paidout / declined</p>
                 <span className="text-orange-400">{summary.pending}</span> /
                 <span className="text-primary"> {summary.accepted} </span> /
-                <span className="text-green-700"> {summary.paidout}</span> PLN
+                <span className="text-green-700"> {summary.paidout}</span> /
+                <span className="text-red-500"> {summary.declined}</span> PLN
             </div>
 
             <form action={submitWithdrawalForm}>

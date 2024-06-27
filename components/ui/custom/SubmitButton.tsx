@@ -1,7 +1,7 @@
 'use client'
 import { Button } from '../button';
 import LoadingIcon from './loadingIcon';
-import { useFormStatus } from "react-dom";
+import { experimental_useFormStatus as useFormStatus } from "react-dom";
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     btnText: string | React.ReactNode;
     submittingText?: string;
