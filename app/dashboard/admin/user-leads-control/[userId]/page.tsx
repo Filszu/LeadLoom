@@ -1,10 +1,12 @@
 import ControlLeadsTable from '@/components/leadsTable/ControlLeadsTable';
 import { TableSkeleton } from '@/components/skeletons/skeletons';
+import getUserProfiles from '@/lib/dbOperations/getUserProfiles';
 import { publicUserSession } from '@/utils/supabase/publicUserSession';
+import UserProfileForm from './userProfileForm';
 import { redirect } from 'next/navigation';
 import React, { Suspense } from 'react';
 
-const UserLeadsPage = async () => {
+const UserLeadsPage = async ({ params }: { params: { userId: string } }) => {
     const publicUser = await publicUserSession();
 
     const userNickname = publicUser?.nickname;
@@ -24,11 +26,18 @@ const UserLeadsPage = async () => {
 
     // couse its obvious that last status is the current one
 
+    const selectedtUserId = params.userId;
+  
+
     return (
         <section>
             <div>UserLeadsPage</div>
             <Suspense fallback={<TableSkeleton />}>
-                <ControlLeadsTable userId={userId} />
+               <UserProfileForm userId={selectedtUserId}/>
+            </Suspense>
+
+            <Suspense fallback={<TableSkeleton />}>
+                <ControlLeadsTable userId={selectedtUserId} />
             </Suspense>
         </section>
     );

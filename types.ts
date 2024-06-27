@@ -126,6 +126,8 @@ export type PublicUser = Database["public"]["Tables"]["profiles"]["Row"]
 
 export type UserLeadsSummary = Database["public"]["Views"]["leadssumstatus_summary"]["Row"]
 
+export type profiles = Database["public"]["Tables"]["profiles"]["Row"]
+
 export interface IUserLeadExtended extends UserLead {
     programms: {
         programName: string
