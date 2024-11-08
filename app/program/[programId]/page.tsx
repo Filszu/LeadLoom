@@ -79,11 +79,23 @@ export default async function ProgramPage({ params, searchParams }: Props) {
         msg = `Hey ${friendName}, your Friend invited you to play🎉. Have fun😉!!`;
     }
 
-    const url = `${program.url}${userName ? `&subid1=${userName}` : ''}${
-        friendName ? `&subid2=${friendName}` : ''
-    }`;
+    const date = new Date();
+    // Get day, month, and year
+    const day = String(date.getDate()).padStart(2, '0'); // Ensures two digits
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
+    const year = String(date.getFullYear()).slice(-2); // Get last two digits of the year
 
-    const trackingUrl = `https://pro.ciac.me/?utm_source=leadloom&title=${program.programName}&goto=${url}`
+    // Format as dd_mm_yy
+    const formattedDate = `${day}_${month}_${year}`;
+
+
+    const subid3 = `${userName ??userName}_${formattedDate}`;
+ 
+
+    const url = `${program.url}${userName ? `&subid1=${userName}` : ''}${
+        friendName ? `&subid2=${friendName}` : ''}&subid3=${subid3}`;
+
+    const trackingUrl = `https://pro.ciac.me/?utm_source=leadloom&title=${program.programName}&goto=${url}`;
 
     return (
         <section
@@ -112,6 +124,7 @@ export default async function ProgramPage({ params, searchParams }: Props) {
                 <h1 className="text-3xl">{msg}</h1>
                 <h2 className="text-2xl">{program.programName}</h2>
 
+                <h3>{url}</h3>
                 <div className="group h-64 w-64 flex-none overflow-clip rounded-md transition-transform">
                     <Image
                         src={program.img || banner}
