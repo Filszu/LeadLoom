@@ -66,6 +66,9 @@ export default async function ProgramPage({ params, searchParams }: Props) {
     const userName = searchParams.user;
     const friendName = searchParams.friend;
 
+    const mobilePlatform = searchParams.platform;
+    let mobileApp = 'web';
+
     // const msg = `Hey ${friendName}, I just joined ${program.programName} and I think you should too!`;
 
     let msg = '';
@@ -79,6 +82,18 @@ export default async function ProgramPage({ params, searchParams }: Props) {
         msg = `Hey ${friendName}, your Friend invited you to play🎉. Have fun😉!!`;
     }
 
+    if (mobilePlatform) {
+        if (mobilePlatform === 'ios') {
+            mobileApp = `ios`;
+        } else if (mobilePlatform === 'android') {
+            mobileApp = `android`;
+        }else
+        {
+            mobileApp = `web`;
+           
+        }
+    }
+
     const date = new Date();
     // Get day, month, and year
     const day = String(date.getDate()).padStart(2, '0'); // Ensures two digits
@@ -88,14 +103,24 @@ export default async function ProgramPage({ params, searchParams }: Props) {
     // Format as dd_mm_yy
     const formattedDate = `${day}_${month}_${year}`;
 
+    // first 6 letters
+    const shortProgramName = program.programID?.slice(0, 6);
 
-    const subid3 = `${userName ??userName}_${formattedDate}`;
- 
+    const subid3 = `${
+        userName ?? userName
+    }_${formattedDate}_${shortProgramName}_${mobileApp}`;
 
     const url = `${program.url}${userName ? `&subid1=${userName}` : ''}${
-        friendName ? `&subid2=${friendName}` : ''}&subid3=${subid3}`;
+        friendName ? `&subid2=${friendName}` : ''
+    }&subid3=${subid3}`;
 
     const trackingUrl = `https://pro.ciac.me/?utm_source=leadloom&title=${program.programName}&goto=${url}`;
+
+    let mobileTrackingUrl = url;
+
+    if(mobileApp !== 'web'){
+        mobileTrackingUrl = "./mobile?redirect="+url;
+    } 
 
     return (
         <section
@@ -124,7 +149,7 @@ export default async function ProgramPage({ params, searchParams }: Props) {
                 <h1 className="text-3xl">{msg}</h1>
                 <h2 className="text-2xl">{program.programName}</h2>
 
-                <h3>{url}</h3>
+                {/* <h3>{url}</h3> */}
                 <div className="group h-64 w-64 flex-none overflow-clip rounded-md transition-transform">
                     <Image
                         src={program.img || banner}
@@ -143,11 +168,22 @@ export default async function ProgramPage({ params, searchParams }: Props) {
 
                 {/* <h3>{url}</h3> */}
 
+                {(mobileApp !== 'android'||!mobileApp)&&
                 <Link href={`${trackingUrl}`}>
                     <Button className="mr-2 p-6 text-2xl text-white">
                         PLAY FOR FREE
                     </Button>
                 </Link>
+                }
+                {mobileApp === 'android'&&
+                <Link href={`${mobileTrackingUrl}`}>
+                    <Button className="mr-2 p-6 text-2xl text-white">
+                        PLAY FOR FREE on android
+                    </Button>
+                    {/* <h2>{mobileTrackingUrl}</h2> */}
+                </Link>
+                }
+
             </div>
         </section>
     );
