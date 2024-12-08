@@ -25,7 +25,7 @@ export default async function ModbileRedirect({ params, searchParams }: Props) {
         "
         >
             {/* <Link href={`${redirectUrl}`}>{redirectUrl}</Link> */}
-            <Link href={`${redirectUrl}`}>{redirectUrl}</Link>
+            <Link href={`${redirectUrl}`} target='_blank'>{redirectUrl}</Link>
         </section>
     );
 }

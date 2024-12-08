@@ -176,7 +176,7 @@ export default async function ProgramPage({ params, searchParams }: Props) {
                 </Link>
                 }
                 {mobileApp === 'android'&&
-                <Link href={`${mobileTrackingUrl}`}>
+                <Link href={`${mobileTrackingUrl}`} target="_blank">
                     <Button className="mr-2 p-6 text-2xl text-white">
                         PLAY FOR FREE on android
                     </Button>
