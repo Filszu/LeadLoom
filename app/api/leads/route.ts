@@ -151,14 +151,15 @@ export async function GET(request: Request) {
             user_agent: searchParams.get('user_agent') || '',
             user_referer: searchParams.get('user_referer') || '',
             website_name: searchParams.get('website_name') || '',
-            // time: searchParams.get('time') || '',
-            // click_time: searchParams.get('click_time') || '',
-            // conversion_time: searchParams.get('conversion_time') || '',
-            // order_id: searchParams.get('order_id') || '',
-            // order_sum: searchParams.get('order_sum') || '',
-            // payment_sum: searchParams.get('payment_sum') || '',
-            // reward_ready: searchParams.get('reward_ready') || '',
-            // website_id: searchParams.get('website_id') || '',
+            // ----
+            time: searchParams.get('time') || '',
+            click_time: searchParams.get('click_time') || '',
+            conversion_time: searchParams.get('conversion_time') || '',
+            order_id: searchParams.get('order_id') || '',
+            order_sum: searchParams.get('order_sum') || '',
+            payment_sum: searchParams.get('payment_sum') || '',
+            reward_ready: searchParams.get('reward_ready') || '',
+            website_id: searchParams.get('website_id') || '',
         };
 
         // implement on production

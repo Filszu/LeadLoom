@@ -9,9 +9,18 @@ export default async function postUserLead({
     leadData: IAdmitadLead;
     leadId: number;
 }) {
-    const { offer_id, subid1, subid2, subid } = { ...leadData };
+    const { offer_id, subid1, subid2, subid, country_code } = { ...leadData };
 
     const userNickname = subid1;
+    let country = "PL";
+    if(country_code==="US"){
+        country = "US";
+    }
+    else if(country_code==="DE"){
+        country = "DE";
+
+    }
+    
 
     if (userNickname && offer_id && subid === 'leadloom') {
         let { data: profiles, error } = await supabase
@@ -29,7 +38,7 @@ export default async function postUserLead({
         console.log(offer_id);
         let { data: programms, error: error2 } = await supabase
             .from('programms')
-            .select('cpaUser,cpaUserPL,id, programID')
+            .select('cpaUser,cpaUserPL,cpaUserWEU,id, programID')
             .eq('admitadID', offer_id)
             .limit(1);
 
@@ -74,6 +83,23 @@ export default async function postUserLead({
         console.log('joinedDaysAgo', joinedDaysAgo);
         console.log('shouldValidTheLead', shouldValidTheLead);
 
+        // valide the sum to pay and currency
+        let value=0, currency="USD";
+        if(shouldValidTheLead){
+            if(country === "PL"){
+                value = programms[0].cpaUserPL??0;
+                currency = "PLN";
+            }
+            else if(country === "US"){
+                value = programms[0].cpaUser??0;
+                currency = "USD";
+            }
+            else if(country === "DE"){
+                value = programms[0].cpaUserWEU??0;
+                currency = "USD";
+            }
+        }
+
         const { data, error: insertError } = await supabase
             .from('userLeads')
             .insert([
@@ -85,8 +111,8 @@ export default async function postUserLead({
                     status: 'pending',
                     leadId: leadId,
                     // currency: leadData.currency??null,
-                    currency: 'PLN',
-                    value: !shouldValidTheLead? 0 : programms[0].cpaUserPL,
+                    currency: currency,
+                    value: !shouldValidTheLead? 0 : value,
                     offer_name: programIDName??"",
                     description: leadDescription,
                 },
