@@ -9,6 +9,7 @@ import { UserLeadsSummary } from '@/types';
 import getInvitedFriends from '@/lib/dbOperations/getInvitedFriends';
 import { AlertBox } from '../ui/custom/alertBox';
 import Link from 'next/link';
+import DiscordInvitationCard from '../ui/custom/DiscordIvitation';
 
 const SummaryCardContainer = async ({
     userId,
@@ -79,6 +80,7 @@ const SummaryCardContainer = async ({
         <>
             {totalEarnings === 0 && (
                 <AlertBox
+                
                     title="Let's get started"
                     message={
                         <p>
@@ -88,6 +90,9 @@ const SummaryCardContainer = async ({
                         </p>
                     }
                 />
+            )}
+            {(completedChallenges === 0 || completedChallenges %3=== 0) && (
+            <DiscordInvitationCard />
             )}
             <section className="my-5 flex flex-wrap justify-between gap-2">
                 <SummaryCard

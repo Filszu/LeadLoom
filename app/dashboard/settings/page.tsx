@@ -17,6 +17,9 @@ import { UserLeadsSummary } from '@/types';
 import updateUserPass from '@/lib/dbOperations/putUserPassword';
 import { PiPasswordFill } from 'react-icons/pi';
 import SubmitButton from '@/components/ui/custom/SubmitButton';
+import Link from 'next/link';
+import { SiDiscord } from 'react-icons/si';
+
 
 export const revalidate = 3600;
 
@@ -112,7 +115,7 @@ const SettingsPage = async () => {
                     name="reffered by"
                     required
                     placeholder="reffered by"
-                    value={'reffered by: ' + publicUser.referred_by ?? ''}
+                    value={'reffered by: ' + publicUser.referred_by}
                     disabled
                 />
             </section>
@@ -153,11 +156,26 @@ const SettingsPage = async () => {
                         <FaLocationArrow size={22} />
                     </span>
                 </Button>
+                <br />
+                <div className="h-3"></div>
+                <Link href="https://discord.gg/D9GDbDKDpY" target="_blank">
+                <Button
+                    type='button'
+                    className="mr-2 p-6"
+                    disabled={!(summary.accepted > 20)}
+                >
+                    <span className="flex cursor-not-allowed items-center justify-center gap-1 text-lg text-white">
+                        <SiDiscord size={22}/>Create Withdraw ticket (recommended)
+                        <FaLocationArrow size={22} />
+                    </span>
+                </Button>
+                </Link>
             </form>
 
             <p>
-                Depending on the payment method, the service fee is 5-15%. But
-                at least $1. It does not depend on us but on the payment service
+                Depending on the payment method, the service fee is 5-15%. 
+                {/* Butat least $1.  */}
+                It does not depend on us but on the payment service
             </p>
 
             <Suspense fallback={<ProgramCardSkeletonContainer />}></Suspense>
