@@ -91,7 +91,7 @@ const SummaryCardContainer = async ({
                     }
                 />
             )}
-            {(completedChallenges === 0 || completedChallenges %3=== 0) && (
+            {(completedChallenges !== 0 || completedChallenges %3=== 0) && (
             <DiscordInvitationCard />
             )}
             <section className="my-5 flex flex-wrap justify-between gap-2">

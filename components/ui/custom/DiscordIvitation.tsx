@@ -1,15 +1,25 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import Link from 'next/link';
+import { SiDiscord, SiStarship } from 'react-icons/si';
 
 export default function DiscordInvitationCard() {
     return (
-        <Card className="w-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white shadow-xl my-5">
+        <Card className="my-5 w-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white shadow-xl">
             <CardContent className="p-6 sm:p-10">
-                <h2 className="mb-6 text-center text-3xl font-bold sm:text-4xl">
-                    JOIN our Discord server
+                <h2 className="mb-6  content-center justify-center gap-2 text-center text-3xl font-bold sm:text-4xl flex-col md:flex">
+                    <div className='flex justify-center items-center'>
+                        <span className="flex items-center">J</span>
+                        <SiStarship size={30} />
+                        <span className="flex items-center">
+                            IN 
+                        </span>
+                    </div>
+                    our Discord server
+
+                    <SiDiscord size={40} />
                 </h2>
-                <div className="mb-8 space-y-4 text-lg sm:text-xl text-center ">
+                <div className="mb-8 space-y-4 text-center text-lg sm:text-xl ">
                     <p className="font-semibold">
                         🎁 Bonus 1: Get a nice surprise
                     </p>
@@ -28,7 +38,6 @@ export default function DiscordInvitationCard() {
         </Card>
     );
 }
-
 
 // import { Button } from "@/components/ui/button"
 // import { Card, CardContent } from "@/components/ui/card"
@@ -54,7 +63,7 @@ export default function DiscordInvitationCard() {
 //           <p className="font-semibold">🚀 Bonus 2: Early access to new features</p>
 //         </div>
 //         <div className="flex justify-center">
-//           <Button 
+//           <Button
 //             className="bg-white text-[#7289da] hover:bg-[#7289da] hover:text-white text-lg px-8 py-3 rounded-full font-bold transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
 //           >
 //             Join Now
@@ -64,4 +73,3 @@ export default function DiscordInvitationCard() {
 //     </Card>
 //   )
 // }
-
