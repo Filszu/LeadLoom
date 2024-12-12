@@ -7,18 +7,18 @@ export default function DiscordInvitationCard() {
     return (
         <Card className="my-5 w-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white shadow-xl">
             <CardContent className="p-6 sm:p-10">
-                <h2 className="mb-6  content-center justify-center gap-2 text-center text-3xl font-bold sm:text-4xl flex-col md:flex">
-                    <div className='flex justify-center items-center'>
+                <h2 className="mb-6  flex-col content-center justify-center gap-2 text-center text-3xl font-bold sm:text-4xl md:flex">
+                    <div className="flex items-center justify-center">
                         <span className="flex items-center">J</span>
                         <SiStarship size={30} />
-                        <span className="flex items-center">
-                            IN 
-                        </span>
+                        <span className="flex items-center">IN</span>
                     </div>
-                    our Discord server
-
-                    <SiDiscord size={40} />
+                    <div>our Discord server</div>
+                    <div className="flex content-center justify-center">
+                        <SiDiscord size={40} />
+                    </div>
                 </h2>
+
                 <div className="mb-8 space-y-4 text-center text-lg sm:text-xl ">
                     <p className="font-semibold">
                         🎁 Bonus 1: Get a nice surprise
