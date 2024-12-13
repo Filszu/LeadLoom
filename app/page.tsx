@@ -2,6 +2,7 @@ import Link from 'next/link';
 // export const dynamic = "force-dynamic"
 import Image from 'next/image';
 import LeadLoomGirl from '@/public/imgs/avatars/leadloom_girl.png';
+import LeadLoomShrek from '@/public/imgs/avatars/leadloom_shrek.png';
 
 import { Button } from '@/components/ui/button';
 import JumpingAvatar from '@/components/landing/components/JumpingAvatar';
@@ -17,8 +18,20 @@ export default async function Home() {
                 "
                     // md:w-8/12 lg:w-2/12
                 >
-                    <Image
+                    {/* <Image
                         src={LeadLoomGirl}
+                        alt="LeadLoom Girl Avatar"
+                        width={500}
+                        // height={500}
+
+                        // className="w-full"
+                        // style={{
+                        //     objectFit: 'cover', // cover, contain, none
+                        //   }}
+                    /> */}
+
+                    <Image
+                        src={LeadLoomShrek}
                         alt="LeadLoom Girl Avatar"
                         width={500}
                         // height={500}
