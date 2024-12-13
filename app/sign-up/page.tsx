@@ -78,6 +78,7 @@ export default async function signUpPage({ searchParams }: Props) {
                             defaultValue={promocode ?? ''}
                             disabled={!!promocode}
                         />
+                        
                         <Ref code={promocode.toString()} />
                     </section>
                     {/* <Link href="/dashboard/faq" className="mt-4 underline">
@@ -94,6 +95,8 @@ export default async function signUpPage({ searchParams }: Props) {
             </article>
             <div className="h-80"></div>
             <JumpingAvatar />
+
+
         </section>
     );
 }

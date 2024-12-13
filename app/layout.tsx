@@ -8,7 +8,7 @@ import Logo from '../public/imgs/logo-elektron.jpg';
 import Link from 'next/link';
 import Script from 'next/script';
 // import { FiGithub } from 'react-icons/fi'
-
+import { CSPostHogProvider } from './providers';
 const inter = Inter({ subsets: ['latin'] });
 
 const defaultUrl = process.env.VERCEL_URL
@@ -58,6 +58,7 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en" className="dark">
+            <CSPostHogProvider>
             <body className={inter.className}>
                 {/* {newSongModal} */}
                 <main className="flex min-h-screen  w-full justify-center ">
@@ -104,6 +105,7 @@ export default function RootLayout({
           `}
                 </Script>
             </body>
+            </CSPostHogProvider>
         </html>
     );
 }
