@@ -114,11 +114,11 @@ const SummaryCardContainer = async ({
                     value={totalEarnings}
                     title={'total rewards'}
                     description={''}
-                    currency="PLN"
+                    currency="$"
                     icon={<TbMoneybag />}
                 />
                 <SummaryCard
-                    currency="PLN"
+                    currency="$"
                     value={paidout?.total_value ?? 0}
                     title={'Paid out rewards'}
                     description={''}

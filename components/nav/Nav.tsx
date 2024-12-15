@@ -6,6 +6,7 @@ import Image from 'next/image';
 
 import logo from '@/public/imgs/banners/leadloom0.jpg';
 import logo1 from '@/public/imgs/avatars/leadloom_girl.png';
+import logo2 from '@/public/imgs/avatars/leadloom_shrek.png';
 import Link from 'next/link';
 import { signOut } from '@/utils/supabase/signOut';
 const Nav = () => {
@@ -71,7 +72,7 @@ const Nav = () => {
                         <div className="flex flex-shrink-0 items-center">
                             <Image
                                 className="h-8 w-auto"
-                                src={logo1}
+                                src={logo2}
                                 alt="leadloom logo"
                                 quality={50}
                             />
@@ -82,12 +83,13 @@ const Nav = () => {
                                 <NavBtn active url="/dashboard">
                                     Dashboard
                                 </NavBtn>
+                                <NavBtn url="/dashboard/programs">
+                                    <b>Programs</b>
+                                </NavBtn>
                                 <NavBtn url="/dashboard/reports">
                                     Reports
                                 </NavBtn>
-                                <NavBtn url="/dashboard/programs">
-                                    Programs
-                                </NavBtn>
+
                                 <NavBtn url="/dashboard/settings">
                                     Settings
                                 </NavBtn>

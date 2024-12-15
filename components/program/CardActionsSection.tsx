@@ -37,7 +37,9 @@ const CardActionsSection = ({
                 <TooltipProvider>
                     <Tooltip>
                         <TooltipTrigger>
-                            <Button disabled={!acceptedTerms} className="p-6">
+                            <Button 
+                            // disabled={!acceptedTerms}
+                             className="p-6">
                                 <Link href={programUrl} target="_blank">
                                     <span className="flex items-center justify-center gap-1 text-lg text-white">
                                         GO & PLAY
