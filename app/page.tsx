@@ -62,12 +62,11 @@ export default async function Home() {
                             </span>
                         </Button>
                     </Link>
-                    <Link href="/dashboard/faq" className="mt-4 underline">
+                    <Link href="/dashboard/faq" className="mt-4 underline hidden md:block">
                         Learn more
                     </Link>
-
-                    <div className="lg:h-60 h-40"></div>
-                    <h2 className="mb-6  content-center justify-center gap-2 text-center text-3xl font-bold sm:text-4xl md:flex flex-wrap">
+                    <div className="h-14 md:h-40 lg:h-45"></div>
+                    <h2 className="mb-6  flex-wrap content-center justify-center gap-2 text-center text-3xl font-bold sm:text-4xl md:flex">
                         <div className="flex items-center justify-center">
                             <span className="flex items-center">J</span>
                             <SiStarship size={30} />
@@ -78,13 +77,24 @@ export default async function Home() {
                             <SiDiscord size={40} />
                         </div>
                     </h2>
-                    <Link href="https://discord.gg/D9GDbDKDpY" target='_blank' className="">
-                        <Button className="p-6 bg-blue-600">
+                    <Link
+                        href="https://discord.gg/D9GDbDKDpY"
+                        target="_blank"
+                        className=""
+                    >
+                        <Button className="bg-blue-600 p-6">
                             <span className="flex items-center justify-center gap-1 text-lg uppercase text-white">
-                               JOIN NOW
+                                JOIN NOW
                             </span>
                         </Button>
                     </Link>
+
+                    <div className="h-20 md:hidden"></div>
+
+                    <Link href="/dashboard/faq" className="mt-4 underline md:hidden">
+                        Learn more
+                    </Link>
+
                 </div>
             </section>
 

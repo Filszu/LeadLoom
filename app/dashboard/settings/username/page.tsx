@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button';
+import SubmitButton from '@/components/ui/custom/SubmitButton';
 import { Input } from '@/components/ui/input';
 import postPublicProfile from '@/lib/dbOperations/postPublicProfile';
 import { getCookie } from '@/utils/appCookies';
@@ -104,15 +105,15 @@ const UserPage = async ({
                     className=" my-2"
                     name="promocode"
                     required
-                    value={"PROMO CODE: "+cookiePromoCode ?? ''}
+                    value={"PROMO CODE: " + cookiePromoCode}
                     placeholder="promocode"
                     disabled
                 />
-                <Button className=" my-2 p-6">
+                <SubmitButton className=" my-2 p-6">
                     <span className="flex items-center justify-center gap-1 text-lg text-white">
                         Set
                     </span>
-                </Button>
+                </SubmitButton>
                 {searchParams.message && (
                     <p className="text-red-500">{searchParams.message}</p>
                 )}
