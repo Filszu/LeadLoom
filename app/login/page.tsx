@@ -66,9 +66,10 @@ export default function Login({
         if (!userId) {
             console.log('error=========', error);
             return redirect(
-                '/login?message=Could not authenticate user WRONG USER ID',
+                `/login?message=${error?.message}`,
             );
         }
+
 
         const { data: publicProfiles, error: publicProfilesError } =
             await supabase
@@ -143,6 +144,7 @@ export default function Login({
                             name="password"
                             placeholder="••••••••"
                             required
+                            minLength={6}
                         />
 
                         <SubmitButton className="mb-2 rounded-md bg-green-700 px-4 py-2 text-foreground">
@@ -184,6 +186,7 @@ export default function Login({
                             name="firstName"
                             placeholder="John"
                             required
+                            minLength={1}
                         />
                         <label className="text-md" htmlFor="lastName">
                             Last Name
@@ -193,6 +196,7 @@ export default function Login({
                             name="lastName"
                             placeholder="Doe"
                             required
+                            minLength={1}
                         />
                         <label className="text-md" htmlFor="nickname">
                             Nickname
@@ -202,6 +206,8 @@ export default function Login({
                             name="nickname"
                             placeholder="CyberSuperMan"
                             required
+                            
+                            minLength={3}
                         />
 
                         <label className="text-md" htmlFor="password">
@@ -213,6 +219,7 @@ export default function Login({
                             name="password"
                             placeholder="••••••••"
                             required
+                            minLength={6}
                         />
 
                         <SubmitButton
