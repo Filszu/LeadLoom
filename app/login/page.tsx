@@ -120,7 +120,7 @@ export default function Login({
             </Link>
 
             <TabSection
-                tab1Children={
+                tab2Children={
                     <form
                         className="flex w-full flex-1 flex-col justify-center gap-2 text-foreground animate-in"
                         action={signIn}
@@ -162,7 +162,7 @@ export default function Login({
                         )}
                     </form>
                 }
-                tab2Children={
+                tab1Children={
                     <form
                         className="flex w-full flex-1 flex-col justify-center gap-2 text-foreground animate-in"
                         action={signUp}
@@ -228,10 +228,10 @@ export default function Login({
                         )}
                     </form>
                 }
-                tab1Title="login"
-                tab2Title="register"
-                tab1Value="login"
-                tab2Value="register"
+                tab2Title="login"
+                tab1Title="register"
+                tab2Value="login"
+                tab1Value="register"
             />
         </div>
     );
