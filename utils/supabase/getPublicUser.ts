@@ -30,6 +30,10 @@ export default async function getPublicUser() {
     .eq('id', sessionUserId)
     .single()
 
+    if (error) {
+        console.log('profiles error', error, "session user Id",sessionUserId);
+    }
+
   // Filters
 //   .eq('column', 'Equal to')
 

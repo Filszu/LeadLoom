@@ -26,7 +26,10 @@ export default function Login({
         });
 
         if (error) {
-            return redirect('/login?message=Could not authenticate user');
+            return redirect(
+                `/login?message=Could not authenticate user ${error.message}`,
+            );
+            console.log('error=========', error);
         }
 
         return redirect('/dashboard');
@@ -65,11 +68,12 @@ export default function Login({
 
         if (!userId) {
             console.log('error=========', error);
-            return redirect(
-                `/login?message=${error?.message}`,
-            );
+            return redirect(`/login?message=${error?.message}`);
         }
-
+        if (error) {
+            console.log('error=========', error);
+            return redirect('/login?message=Could not create new user');
+        }
 
         const { data: publicProfiles, error: publicProfilesError } =
             await supabase
@@ -84,13 +88,16 @@ export default function Login({
                 ])
                 .select();
 
-        if (error) {
-            console.log('error=========', error);
-            return redirect('/login?message=Could not create new user');
+        if (publicProfilesError) {
+            console.log('error=========', publicProfilesError);
+            return redirect(`/login?message=Could not create new user ${publicProfilesError.message}`);
         }
 
+        // return redirect(
+        //     '/login?message=Check email to continue sign in process',
+        // );
         return redirect(
-            '/login?message=Check email to continue sign in process',
+            '/dashboard/settings/username',
         );
     };
 
@@ -206,7 +213,6 @@ export default function Login({
                             name="nickname"
                             placeholder="CyberSuperMan"
                             required
-                            
                             minLength={3}
                         />
 

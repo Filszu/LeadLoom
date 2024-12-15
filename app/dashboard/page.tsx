@@ -8,7 +8,6 @@ import getPublicUser from '@/utils/supabase/getPublicUser';
 import getSession from '@/utils/supabase/getSession';
 import { publicUserSession } from '@/utils/supabase/publicUserSession';
 
-
 import { redirect } from 'next/navigation';
 import React, { Suspense } from 'react';
 
@@ -22,16 +21,18 @@ const Dashboard = async () => {
     // const userEmail = user?.email;
 
     const publicUser = await publicUserSession();
-    // console.log('publicuser',publicUser)
 
+    console.log('publicuser',publicUser)
 
     const userNickname = publicUser?.nickname;
     const userId = publicUser?.id;
 
-    if (!userNickname) redirect('/login');
-    if (!userId) redirect('/login');
-
-    if(!userId || !userNickname) return <>xxx</>;
+    // if (!userNickname) redirect(`/login?message=Could not authenticate user $no user nickname`);
+    // if (!userId) redirect(`/login?message=Could not authenticate user $no user id`);
+    // console.log('userId', userId);
+    // console.log('userNickname', userNickname);
+    if (!userId || !userNickname) redirect(`/login`);
+    if (!userId || !userNickname) return <>xxx</>;
 
     return (
         <>
@@ -46,7 +47,10 @@ const Dashboard = async () => {
             </h1>
 
             <Suspense fallback={<p>...</p>}>
-                <SummaryCardContainer userId={userId} userNickname={userNickname} />
+                <SummaryCardContainer
+                    userId={userId}
+                    userNickname={userNickname}
+                />
             </Suspense>
             <Suspense fallback={<ChartSkeleton />}>
                 <LeadsChartSection userId={userId} />

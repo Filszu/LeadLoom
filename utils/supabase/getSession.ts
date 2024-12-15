@@ -17,9 +17,13 @@ export default async function getSession() {
     // const session = await supabase.auth.getSession();
     // console.log("⚡session",session)
 
-    const { data } = await supabase.auth.getUser();
+    const { data,error } = await supabase.auth.getUser();
 
     const user = data.user;
+
+    if (error) {
+        console.log('auth.getUser', error);
+    }
 
     return user;
 }
