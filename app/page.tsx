@@ -10,6 +10,7 @@ import { LeadloomGlobe } from '@/components/ui/aceternity/globe/LeadloomGlobe';
 import { IntroText } from '@/components/ui/aceternity/text-generate/IntroText';
 import HomePageProgramsContainer from '@/components/program/HomePageProgramsContainer';
 import { SiDiscord, SiStarship } from 'react-icons/si';
+import { ReviewsContainer } from '@/components/review/reviews-container';
 export default async function Home() {
     return (
         <section className="w-full">
@@ -62,10 +63,13 @@ export default async function Home() {
                             </span>
                         </Button>
                     </Link>
-                    <Link href="/dashboard/faq" className="mt-4 underline hidden md:block">
+                    <Link
+                        href="/dashboard/faq"
+                        className="mt-4 hidden underline md:block"
+                    >
                         Learn more
                     </Link>
-                    <div className="h-14 md:h-40 lg:h-45"></div>
+                    <div className="lg:h-45 h-14 md:h-40"></div>
                     <h2 className="mb-6  flex-wrap content-center justify-center gap-2 text-center text-3xl font-bold sm:text-4xl md:flex">
                         <div className="flex items-center justify-center">
                             <span className="flex items-center">J</span>
@@ -91,10 +95,12 @@ export default async function Home() {
 
                     <div className="h-20 md:hidden"></div>
 
-                    <Link href="/dashboard/faq" className="mt-4 underline md:hidden">
+                    <Link
+                        href="/dashboard/faq"
+                        className="mt-4 underline md:hidden"
+                    >
                         Learn more
                     </Link>
-
                 </div>
             </section>
 
@@ -109,7 +115,14 @@ export default async function Home() {
             <section>
                 <LeadloomGlobe />
             </section>
-            <div className="h-80"></div>
+           
+
+            <div className="h-20"></div>
+            
+            <section className="w-full">
+                <ReviewsContainer />
+            </section>
+            <div className="h-40"></div>
             <JumpingAvatar />
         </section>
     );
