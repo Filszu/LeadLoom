@@ -72,6 +72,8 @@ export default function Login({
         }
         if (error) {
             console.log('error=========', error);
+
+            
             return redirect('/login?message=Could not create new user');
         }
 
@@ -90,7 +92,7 @@ export default function Login({
 
         if (publicProfilesError) {
             console.log('error=========', publicProfilesError);
-            return redirect(`/login?message=Could not create new user ${publicProfilesError.message}`);
+            return redirect(`/login?message=User with that nickname probably exist ${publicProfilesError.message}`);
         }
 
         // return redirect(

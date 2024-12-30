@@ -12,6 +12,7 @@ import HomePageProgramsContainer from '@/components/program/HomePageProgramsCont
 import { SiDiscord, SiStarship } from 'react-icons/si';
 import { ReviewsContainer } from '@/components/review/reviews-container';
 import { SpecialOffer } from '@/components/countdown/SpecialOfer';
+import { CountdownTimer } from '@/components/countdown';
 export default async function Home() {
     return (
         <section className="w-full">
@@ -116,10 +117,26 @@ export default async function Home() {
             <section>
                 <LeadloomGlobe />
             </section>
-           
 
             <div className="h-20"></div>
-            <SpecialOffer />
+
+            <section className="flex w-full flex-col items-center justify-center text-center px-4">
+                <h1 className="animate-pulse bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text py-2 text-center text-4xl font-black text-transparent md:py-4 md:text-7xl">
+                    JOIN NOW!
+                </h1>
+                <p className="text-2xl text-gray-600 dark:text-gray-300 md:text-4xl">
+                    and receive your
+                    <span className="font-semibold text-green-600 dark:text-green-400">
+                        {' '}
+                        $1 FREE bonus!
+                    </span>
+                </p>
+                <div className="h-10"></div>
+                <section className="flex w-11/12 md:w-6/12 ">
+                    <CountdownTimer />
+                </section>
+            </section>
+
             <section className="w-full">
                 <ReviewsContainer />
             </section>
