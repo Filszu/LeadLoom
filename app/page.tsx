@@ -11,6 +11,7 @@ import { IntroText } from '@/components/ui/aceternity/text-generate/IntroText';
 import HomePageProgramsContainer from '@/components/program/HomePageProgramsContainer';
 import { SiDiscord, SiStarship } from 'react-icons/si';
 import { ReviewsContainer } from '@/components/review/reviews-container';
+import { SpecialOffer } from '@/components/countdown/SpecialOfer';
 export default async function Home() {
     return (
         <section className="w-full">
@@ -118,7 +119,7 @@ export default async function Home() {
            
 
             <div className="h-20"></div>
-            
+            <SpecialOffer />
             <section className="w-full">
                 <ReviewsContainer />
             </section>

@@ -4,7 +4,7 @@ import NavBtn from './NavBtn';
 import signOutUser from '@/lib/dbOperations/signOut';
 import Image from 'next/image';
 
-import logo from '@/public/imgs/banners/leadloom0.jpg';
+import userIcon from '@/public/imgs/avatars/user.png';
 import logo1 from '@/public/imgs/avatars/leadloom_girl.png';
 import logo2 from '@/public/imgs/avatars/leadloom_shrek.png';
 import Link from 'next/link';
@@ -142,7 +142,7 @@ const Nav = () => {
                                     </span>
 
                                     <Image
-                                        src={logo}
+                                        src={userIcon}
                                         alt="profile Logo"
                                         width={50}
                                         height={50}
