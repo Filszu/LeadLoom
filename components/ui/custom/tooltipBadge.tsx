@@ -9,7 +9,7 @@ import { Badge, badgeVariants } from '@/components/ui/badge';
 
 interface Props {
     // variant?: typeof badgeVariants;
-    variant?: "default" | "secondary" | "destructive" | "outline";
+    variant?: "default" | "secondary" | "destructive" | "outline" | "warning";
   
     tooltipContent?: string | React.ReactNode;
     tooltipText?: string | React.ReactNode;

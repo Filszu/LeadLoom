@@ -46,7 +46,10 @@ const ProgramCard = ({
             | 'default'
             | 'secondary'
             | 'destructive'
+            | 'warning'
             | 'outline',
+            
+            
     };
 
     if (props.status === 'new') {
@@ -66,6 +69,13 @@ const ProgramCard = ({
         tootltip.text = 'Unverified';
         tootltip.variant = 'destructive';
     }
+    if (props.status === 'paused') {
+        tootltip.content =
+            'Paused program - the program is temporarily paused. That means that the reward is not available at the moment. Please check back later.';
+        tootltip.text = 'temporarily paused';
+        tootltip.variant = 'warning';
+    }
+
     return (
         <div className="overflow-hidden rounded-lg bg-gray-800 p-8 text-white shadow-lg">
             <section className="flex flex-col items-center justify-center gap-8 md:flex-row md:justify-normal">

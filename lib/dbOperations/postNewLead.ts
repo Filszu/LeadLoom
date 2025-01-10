@@ -42,6 +42,7 @@ export default async function postLead(leadData: IAdmitadLead) {
         reward_ready: Number(leadData.reward_ready??null),
         website_id: Number(leadData.website_id??null),
         time: Number(leadData.time??null),
+       
         
 
 
