@@ -1,5 +1,5 @@
 'use client';
-import { MdInfo } from "react-icons/md";
+import { MdInfo } from 'react-icons/md';
 import * as React from 'react';
 import {
     ColumnDef,
@@ -36,7 +36,7 @@ import {
     TableRow,
 } from '@/components/ui/table';
 import { IUserLeadWithLeads, Lead, TableLead } from '@/types';
-import LeadActions from "./actionSections/LeadActions";
+import LeadActions from './actionSections/LeadActions';
 
 function formatDate(date: string) {
     // 2023-12-28T17:31:22.510006+00:00
@@ -93,7 +93,7 @@ export const columns: ColumnDef<IUserLeadWithLeads>[] = [
             <div className="">{formatDate(row.getValue('created_at'))}</div>
         ),
     },
-   
+
     {
         accessorKey: 'programName',
         header: ({ column }) => {
@@ -114,7 +114,6 @@ export const columns: ColumnDef<IUserLeadWithLeads>[] = [
         ),
     },
 
-   
     {
         accessorKey: 'status',
         header: ({ column }) => {
@@ -219,7 +218,7 @@ export const columns: ColumnDef<IUserLeadWithLeads>[] = [
     },
     {
         accessorKey: 'providerStatus',
-        accessorFn: (row) => row.leads.payment_status,
+        accessorFn: (row) => row.leads?.payment_status || 'N/A',
         header: ({ column }) => {
             return (
                 <Button
@@ -241,7 +240,7 @@ export const columns: ColumnDef<IUserLeadWithLeads>[] = [
     },
     {
         accessorKey: 'providerCountry_code',
-        accessorFn: (row) => row.leads.country_code,
+        accessorFn: (row) => row.leads?.country_code || 'N/A',
         header: ({ column }) => {
             return (
                 <Button
@@ -281,37 +280,39 @@ export const columns: ColumnDef<IUserLeadWithLeads>[] = [
         },
         cell: ({ row }) => (
             <div className="lowercase">
-                {
-                    <LeadActions leadId={row.getValue("actions")}/>
-                }
+                {<LeadActions leadId={row.getValue('actions')} />}
             </div>
         ),
     },
     {
-      accessorKey: "details",
-      accessorFn: (row) => row.leads,
-      header: ({ column }) => {
-        return (
-          <Button
-            variant="ghost"
-            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          >
-            leads
-            <ArrowUpDown className="ml-2 h-4 w-4" />
-          </Button>
-        )
-      },
-      cell: ({ row }) => <div className="lowercase">
-        <>
-        <Button
-          variant="outline"
-          className="bg-primary"
-          onClick={() => console.log(row.getValue("details"))}
-        >
-          <MdInfo />
-        </Button>
-        </>
-      </div>,
+        accessorKey: 'details',
+        accessorFn: (row) => row.leads,
+        header: ({ column }) => {
+            return (
+                <Button
+                    variant="ghost"
+                    onClick={() =>
+                        column.toggleSorting(column.getIsSorted() === 'asc')
+                    }
+                >
+                    leads
+                    <ArrowUpDown className="ml-2 h-4 w-4" />
+                </Button>
+            );
+        },
+        cell: ({ row }) => (
+            <div className="lowercase">
+                <>
+                    <Button
+                        variant="outline"
+                        className="bg-primary"
+                        onClick={() => console.log(row.getValue('details'))}
+                    >
+                        <MdInfo />
+                    </Button>
+                </>
+            </div>
+        ),
     },
     // {
     //   accessorKey: "leads",
@@ -358,7 +359,7 @@ export async function DataTableUserLeadsControl(
         getFilteredRowModel: getFilteredRowModel(),
         onColumnVisibilityChange: setColumnVisibility,
         onRowSelectionChange: setRowSelection,
-        
+
         state: {
             sorting,
             columnFilters,

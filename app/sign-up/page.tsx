@@ -1,7 +1,7 @@
 import Link from 'next/link';
 // export const dynamic = "force-dynamic"
 import Image from 'next/image';
-import LeadLoomGirl from '@/public/imgs/avatars/leadloom_girl.png';
+// import LeadLoomGirl from '@/public/imgs/avatars/leadloom_girl.png';
 
 import { Button } from '@/components/ui/button';
 import JumpingAvatar from '@/components/landing/components/JumpingAvatar';
@@ -14,7 +14,7 @@ import { cookies } from 'next/headers';
 import Ref from './ref';
 import { IntroText } from '@/components/ui/aceternity/text-generate/IntroText';
 import HomePageProgramsContainer from '@/components/program/HomePageProgramsContainer';
-
+import LeadLoomShrek from '@/public/imgs/avatars/leadloom_shrek.png';
 type Props = {
     searchParams: { [key: string]: string | string[] | undefined };
 };
@@ -38,20 +38,26 @@ export default async function signUpPage({ searchParams }: Props) {
                 "
                     // md:w-8/12 lg:w-2/12
                 >
-                    <Image
-                        src={LeadLoomGirl}
-                        alt="LeadLoom Girl Avatar"
-                        width={500}
-                        // height={500}
+                    <div className="h-10"></div>
+                    <div className="relative">
+                        <Image
+                            src={LeadLoomShrek}
+                            alt="LeadLoom Girl Avatar"
+                            width={500}
+                            // height={500}
 
-                        // className="w-full"
-                        // style={{
-                        //     objectFit: 'cover', // cover, contain, none
-                        //   }}
-                    />
-
-                    <div className="bold relative bottom-10 text-center text-4xl font-extrabold tracking-tighter drop-shadow-lg md:bottom-20 md:text-8xl ">
+                            // className="w-full"
+                            // style={{
+                            //     objectFit: 'cover', // cover, contain, none
+                            //   }}
+                        ></Image>
+                        <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-white via-white/50 to-transparent blur-lg md:h-6"></div>
+                    </div>
+                    <div className="bold relative bottom-10 text-center text-5xl font-extrabold tracking-tighter drop-shadow-lg md:bottom-20 md:text-8xl ">
                         LEADLOOM
+                        {/* <p className="absolute left-0 top-full rotate-180 transform font-bold opacity-50">
+                        LEADLOOM
+                        </p> */}
                         <p className="text-xl font-bold tracking-normal md:text-2xl">
                             Earn amazing rewards by playing games
                         </p>
@@ -78,7 +84,7 @@ export default async function signUpPage({ searchParams }: Props) {
                             defaultValue={promocode ?? ''}
                             disabled={!!promocode}
                         />
-                        
+
                         <Ref code={promocode.toString()} />
                     </section>
                     {/* <Link href="/dashboard/faq" className="mt-4 underline">
@@ -95,8 +101,6 @@ export default async function signUpPage({ searchParams }: Props) {
             </article>
             <div className="h-80"></div>
             <JumpingAvatar />
-
-
         </section>
     );
 }
