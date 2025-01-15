@@ -1,6 +1,6 @@
 'use client';
 import { Cookie } from '@/types';
-import createCookie from '@/utils/appCookies';
+import {createCookie} from '@/utils/appCookies';
 import React, { useEffect } from 'react';
 
 const Ref = async ({code}:{code:string}) => {

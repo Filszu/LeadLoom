@@ -8,7 +8,7 @@ import JumpingAvatar from '@/components/landing/components/JumpingAvatar';
 import OAuthForm from '../login/OAuthForm';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import createCookie, { getCookie } from '@/utils/appCookies';
+import {createCookie,  getCookie } from '@/utils/appCookies';
 import { Cookie } from '@/types';
 import { cookies } from 'next/headers';
 import Ref from './ref';
@@ -24,6 +24,7 @@ export default async function signUpPage({ searchParams }: Props) {
 
     if (promocode && promocode !== '') {
         // await createCookie({ name: 'promocode', value: promocode } as Cookie);
+        // it has moved ot ref txt
     }
 
     const cookiePromoCode = await getCookie('promocode');

@@ -3,10 +3,11 @@
 import { Cookie } from '@/types';
 import { cookies } from 'next/headers'
 
-export default async function createCookie({ name, value }: Cookie) {
-   
-    const expires = 24 * 60 * 60 * 1000 * 10; // 10 days
-    cookies().set(name!, value!, { expires: Date.now() + expires });
+export  async function createCookie({ name, value }: Cookie) {
+   'use server';
+    const expires = 24 * 60 * 60 * 1000 * 30; // 30 days
+    const cookieStore = await cookies()
+    cookieStore.set(name!, value!, { expires: Date.now() + expires });
     // cookies().set('name', 'lee');
 }
 

@@ -13,7 +13,25 @@ import { SiDiscord, SiStarship } from 'react-icons/si';
 import { ReviewsContainer } from '@/components/review/reviews-container';
 import { SpecialOffer } from '@/components/countdown/SpecialOfer';
 import { CountdownTimer } from '@/components/countdown';
-export default async function Home() {
+import  { getCookie, createCookie } from '@/utils/appCookies';
+import { Cookie } from '@/types';
+import Ref from './sign-up/ref';
+
+type Props = {
+    searchParams: { [key: string]: string | string[] | undefined };
+};
+export default async function Home({ searchParams }: Props) {
+
+    const promocode = searchParams?.promocode ?? '';
+    const ref = searchParams?.ref ?? '';
+
+    let lastReferer = ref??promocode??"";
+ 
+
+    const cookiePromoCode = await getCookie('promocode');
+
+    console.log('cookiePromoCode🍪', cookiePromoCode);
+
     return (
         <section className="w-full">
             <section className="center flex  w-full  flex-col items-center justify-center">
@@ -120,7 +138,7 @@ export default async function Home() {
 
             <div className="h-20"></div>
 
-            <section className="flex w-full flex-col items-center justify-center text-center px-4">
+            <section className="flex w-full flex-col items-center justify-center px-4 text-center">
                 <h1 className="animate-pulse bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text py-2 text-center text-4xl font-black text-transparent md:py-4 md:text-7xl">
                     JOIN NOW!
                 </h1>
@@ -142,6 +160,7 @@ export default async function Home() {
             </section>
             <div className="h-40"></div>
             <JumpingAvatar />
+            <Ref code={promocode.toString()} />
         </section>
     );
 }
