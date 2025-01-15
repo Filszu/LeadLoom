@@ -10,6 +10,7 @@ import getInvitedFriends from '@/lib/dbOperations/getInvitedFriends';
 import { AlertBox } from '../ui/custom/alertBox';
 import Link from 'next/link';
 import DiscordInvitationCard from '../ui/custom/DiscordIvitation';
+import { OnboardingModal } from '@/app/dashboard/programs/OnboardingModal.tsx';
 
 const SummaryCardContainer = async ({
     userId,
@@ -79,6 +80,7 @@ const SummaryCardContainer = async ({
     return (
         <>
             {totalEarnings === 0 && (
+                <>
                 <AlertBox
                 
                     title="Let's get started"
@@ -90,6 +92,9 @@ const SummaryCardContainer = async ({
                         </p>
                     }
                 />
+                <OnboardingModal />
+                </>
+                
             )}
             {(completedChallenges !== 0 || completedChallenges %3=== 0) && (
             <DiscordInvitationCard />
