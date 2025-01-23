@@ -12,17 +12,15 @@ export default async function postUserLead({
     const { offer_id, subid1, subid2, subid, country_code } = { ...leadData };
 
     const userNickname = subid1;
-    let country = "PL";
-    if(country_code==="US"){
-        country = "US";
+    let country = 'PL';
+    if (country_code === 'US') {
+        country = 'US';
+    } else if (country_code === 'DE') {
+        country = 'DE';
     }
-    else if(country_code==="DE"){
-        country = "DE";
 
-    }
-    
-
-    if (userNickname && offer_id && subid === 'leadloom') {
+    // && subid === 'leadloom'
+    if (userNickname && offer_id) {
         let { data: profiles, error } = await supabase
             .from('profiles')
             .select('id, nickname')
@@ -66,7 +64,6 @@ export default async function postUserLead({
         let joinedDaysAgo = 0;
         let leadDescription = null;
 
-
         if (userLeads && userLeads.length > 0) {
             const lastLeadDate = new Date(userLeads[0].created_at);
             const today = new Date();
@@ -75,8 +72,7 @@ export default async function postUserLead({
             joinedDaysAgo = diffDays;
         }
 
-        
-        if (joinedDaysAgo < 94 && joinedDaysAgo !==0) {
+        if (joinedDaysAgo < 94 && joinedDaysAgo !== 0) {
             shouldValidTheLead = false;
             leadDescription = `duplicate / confirmation`;
         }
@@ -84,19 +80,18 @@ export default async function postUserLead({
         console.log('shouldValidTheLead', shouldValidTheLead);
 
         // valide the sum to pay and currency
-        let value=0, currency="USD";
-        if(shouldValidTheLead){
-            if(country === "PL"){
-                value = programms[0].cpaUserPL??0;
-                currency = "PLN";
-            }
-            else if(country === "US"){
-                value = programms[0].cpaUser??0;
-                currency = "USD";
-            }
-            else if(country === "DE"){
-                value = programms[0].cpaUserWEU??0;
-                currency = "USD";
+        let value = 0,
+            currency = 'USD';
+        if (shouldValidTheLead) {
+            if (country === 'PL') {
+                value = programms[0].cpaUserPL ?? 0;
+                currency = 'PLN';
+            } else if (country === 'US') {
+                value = programms[0].cpaUser ?? 0;
+                currency = 'USD';
+            } else if (country === 'DE') {
+                value = programms[0].cpaUserWEU ?? 0;
+                currency = 'USD';
             }
         }
 
@@ -112,17 +107,15 @@ export default async function postUserLead({
                     leadId: leadId,
                     // currency: leadData.currency??null,
                     currency: currency,
-                    value: !shouldValidTheLead? 0 : value,
-                    offer_name: programIDName??"",
+                    value: !shouldValidTheLead ? 0 : value,
+                    offer_name: programIDName ?? '',
                     description: leadDescription,
                 },
-            ])
-            // .select();
+            ]);
+        // .select();
 
         // insert user lead
         // console.log('userLead', data);
         // console.log('insertError', insertError);
     }
-
-    
 }
