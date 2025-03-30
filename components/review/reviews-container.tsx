@@ -8,7 +8,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 const reviews = [
     {
         "name": "ShadowBlaze",
-        "avatar": "/placeholder.svg?height=50&width=50",
+        "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=Felix",
         "rating": 5,
         "joinedDate": "Dec 2023",
         "totalWithdraw": 45,
@@ -18,7 +18,7 @@ const reviews = [
       },
       {
         "name": "PixelQueen",
-        "avatar": "/placeholder.svg?height=50&width=50",
+        "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=PixelQueen",
         "rating": 5,
         "joinedDate": "Jan 2024",
         "totalWithdraw": 30,
@@ -28,7 +28,7 @@ const reviews = [
       },
       {
         "name": "NovaSlayer",
-        "avatar": "/placeholder.svg?height=50&width=50",
+        "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=NovaSlayer",
         "rating": 5,
         "joinedDate": "Feb 2024",
         "totalWithdraw": 50,
@@ -38,7 +38,7 @@ const reviews = [
       },
       {
         "name": "EchoRogue",
-        "avatar": "/placeholder.svg?height=50&width=50",
+        "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=EchoRogue",
         "rating": 5,
         "joinedDate": "Mar 2024",
         "totalWithdraw": 15,
@@ -47,8 +47,18 @@ const reviews = [
         "content": "As a new user, I found Leadloom easy to understand and super rewarding. Withdrawals are quick, and the support team goes above and beyond to help. The Discord group is friendly and welcoming!"
       },
       {
+        "name": "PackManio",
+        "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=PackManio",
+        "rating": 4,
+        "joinedDate": "Nov 2023",
+        "totalWithdraw": 35,
+        "completedChallenges": 8,
+        "country": "JP",
+        "content": "Amazing platform! But tbh, i prefered the old logo, with that cute anime girl, for chaniging that -1 ⭐  \n but leadloom shrek logo is also nice LOL    "
+      },
+      {
         "name": "LunarAce",
-        "avatar": "/placeholder.svg?height=50&width=50",
+        "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=LunarAce",
         "rating": 5,
         "joinedDate": "Apr 2024",
         "totalWithdraw": 20,
@@ -58,7 +68,7 @@ const reviews = [
       },
       {
         "name": "SkibidiGracz",
-        "avatar": "/placeholder.svg?height=50&width=50",
+        "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=SkibidiGracz",
         "rating": 5,
         "joinedDate": "May 2024",
         "totalWithdraw": 25,
@@ -68,7 +78,7 @@ const reviews = [
       },
       {
         "name": "GwiazdorNogger",
-        "avatar": "/placeholder.svg?height=50&width=50",
+        "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=GwiazdorNogger",
         "rating": 5,
         "joinedDate": "Jun 2024",
         "totalWithdraw": 35,
@@ -78,7 +88,7 @@ const reviews = [
       },
       {
         "name": "GameMasterPL",
-        "avatar": "/placeholder.svg?height=50&width=50",
+        "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=GameMasterPL",
         "rating": 5,
         "joinedDate": "Jul 2024",
         "totalWithdraw": 40,
@@ -88,7 +98,7 @@ const reviews = [
       },
       {
         "name": "SpielMeister",
-        "avatar": "/placeholder.svg?height=50&width=50",
+        "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=SpielMeister",
         "rating": 5,
         "joinedDate": "Aug 2024",
         "totalWithdraw": 18,
@@ -98,7 +108,7 @@ const reviews = [
       },
       {
         "name": "PixelKrieger3",
-        "avatar": "/placeholder.svg?height=50&width=50",
+        "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=PixelKrieger3",
         "rating": 5,
         "joinedDate": "Sep 2024",
         "totalWithdraw": 22,
@@ -108,7 +118,7 @@ const reviews = [
       },
       {
         "name": "Lichtjäger",
-        "avatar": "/placeholder.svg?height=50&width=50",
+        "avatar": "https://api.dicebear.com/9.x/notionists/svg?seed=Lichtjager",
         "rating": 5,
         "joinedDate": "Oct 2024",
         "totalWithdraw": 30,

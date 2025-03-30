@@ -26,7 +26,7 @@
     "@react-jvectormap/unitedstates": "^1.0.1",
     "@react-three/drei": "^9.102.3",
     "@react-three/fiber": "^8.15.19",
-    "@supabase/ssr": "^0.0.10",
+    "@supabase/ssr": "^0.6.1",
     "@supabase/supabase-js": "^2.38.5",
     "@tanstack/react-table": "^8.10.7",
     "apexcharts": "^3.44.0",
