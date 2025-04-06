@@ -9,7 +9,7 @@ const World = dynamic(() => import('./globe').then((m) => m.World), {
 });
 
 // Helper: ensure a value is a valid string color
-const toValidColor = (value, fallback = '#ffffff') => {
+const toValidColor = (value: string, fallback = '#ffffff') => {
   if (typeof value === 'string') return value;
   // If it's not a string, try to convert it or use fallback
   try {
