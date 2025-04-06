@@ -2,10 +2,8 @@ import LeadsTable from '@/components/leadsTable/LeadsTable';
 import UserLeadsTable from '@/components/leadsTable/UserLeadsTable';
 import LeadsChartSection from '@/components/sections/LeadsChartSection';
 import { ChartSkeleton, TableSkeleton } from '@/components/skeletons/skeletons';
-import SummaryCard from '@/components/summaryCard/SummaryCard';
 import SummaryCardContainer from '@/components/summaryCard/SummaryCardContainer';
-import getPublicUser from '@/utils/supabase/getPublicUser';
-import getSession from '@/utils/supabase/getSession';
+
 import { publicUserSession } from '@/utils/supabase/publicUserSession';
 
 import { redirect } from 'next/navigation';

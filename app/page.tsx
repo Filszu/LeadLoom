@@ -56,10 +56,11 @@ export default async function Home({ searchParams }: Props) {
                             Earn amazing rewards by playing games
                         </p>
                     </div>
-                    <Link href="/dashboard" className="animate-bounce">
+                    <Link href="/login" className="animate-bounce">
                         <Button className="p-6 ">
                             <span className="flex items-center justify-center gap-1 text-lg uppercase text-white">
-                                begin the journey
+                                {/* begin the journey */}
+                                start earning now
                             </span>
                         </Button>
                     </Link>
@@ -72,7 +73,7 @@ export default async function Home({ searchParams }: Props) {
                     <div className="lg:h-45 h-14 md:h-40"></div>
                     <h2 className="mb-6  flex-wrap content-center justify-center gap-2 text-center text-3xl font-bold sm:text-4xl md:flex">
                         <div className="flex items-center justify-center">
-                            <span className="flex items-center">J</span>
+                            <span className="flex items-center">Also J</span>
                             <SiStarship size={30} />
                             <span className="flex items-center">IN</span>
                         </div>
@@ -112,9 +113,9 @@ export default async function Home({ searchParams }: Props) {
                     <HomePageProgramsContainer />
                 </section>
             </article>
-            <section>
+            {/* <section>
                 <LeadloomGlobe />
-            </section>
+            </section> */}
 
             <div className="h-20"></div>
 
