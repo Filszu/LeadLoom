@@ -5,6 +5,9 @@ import Image from 'next/image';
 export const revalidate = 3600;
 import ss1 from '@/public/imgs/blog/leadloomRefFriend.png';
 import Link from 'next/link';
+import getInvitedFriends from '@/lib/dbOperations/getInvitedFriends';
+import { DataTableFriends, Friend } from './FriensTable';
+import { PublicUser } from '@/types';
 const RefPage = async () => {
     // const publicUser = await getPublicUser();
     // console.log('publicuser',publicUser)
@@ -22,8 +25,30 @@ const RefPage = async () => {
 
     if (!userId || !userNickname) redirect('/dashboard/settings/username');
 
+    const invitedUsersData = await getInvitedFriends(userNickname);
+    console.log('invitedFriends', invitedUsersData) as unknown as PublicUser[];
+
+    // convert to public user
+        //     export interface Friend {
+        //   nickname: string;
+        //   referred_by: string;
+        //   withdrawn: number;
+        // }
+
+    if(!invitedUsersData) return null;
+    const invitedFriendsData: Friend[] = invitedUsersData.map((friend) => ({
+        nickname: friend.nickname ?? '',
+        referred_by: friend.referred_by ?? '',
+        withdrawn: friend.withdrawn,
+    }));
+
+
     return (
         <>
+        <section className='w-8/12 m-auto'>
+            <DataTableFriends data={invitedFriendsData ?? []} />
+
+        </section>
             <section className="m-auto md:w-6/12">
                 <h1>Affiliate program</h1>
                 <h2>
@@ -31,6 +56,9 @@ const RefPage = async () => {
                     earn more money
                 </h2>
                 <br />
+
+                {/* <DataTableFriends data={invitedFriendsData ?? []} /> */}
+
                 <h2>How it works</h2>
                 <h3>You have 2 possibilities to recommend leadloom website</h3>
 
