@@ -1,17 +1,3 @@
-// type Program = { admitadID: string | null
-//     cons: string[] | null
-//     cpa: number | null
-//     cpaPL: number | null
-//     cpaUser: number | null
-//     cpaUserPL: number | null
-//     created_at: string
-//     description: string | null
-//     id: string
-//     img: string | null
-//     programID: string | null
-//     programName: string | null
-//     pros: string[] | null
-//     url: string | null}
 import { FaLocationArrow } from 'react-icons/fa';
 import { PiNavigationArrowFill } from 'react-icons/pi';
 import { Program } from '@/types';
@@ -29,7 +15,7 @@ import { MdAccessTime } from 'react-icons/md';
 import { SiWindows } from 'react-icons/si';
 import { FcAndroidOs } from 'react-icons/fc';
 import { FaApple } from 'react-icons/fa';
-
+import {US, PL, DE, FR,} from 'country-flag-icons/react/3x2'
 const ProgramCard = ({
     props,
     nickname,
@@ -110,17 +96,25 @@ const ProgramCard = ({
                     </div>
 
                     <h3 className="text-xl uppercase">
-                        potential reward
+                        potential reward&nbsp;&nbsp;
                         {props.cpaUser && (
                             <>
-                                🗽🇺🇸:
+                            
+                                <US className="inline-block h-8 w-8" />
+                                {/* 🗽🇺🇸: */}
                                 <span className="pl-2 pr-2 text-primary">
                                     {props.cpaUser ?? ''}$ (
                                     {props.cpaUser * usdToPln} PLN)
                                 </span>
                             </>
                         )}
-                        🇵🇱:
+                        <DE className="inline-block h-8 w-8" />&nbsp;
+                        <FR className="inline-block h-8 w-8" />
+                        <span className="pl-2 pr-2 text-primary">
+                            {props.cpaUserWEU ?? ''} €
+                        </span>
+                        <PL className="inline-block h-8 w-8" />
+                        {/* 🇵🇱 */}
                         <span className="pl-2 pr-2 text-primary">
                             {props.cpaUserPL ?? ''} PLN
                         </span>
