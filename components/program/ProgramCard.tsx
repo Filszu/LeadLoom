@@ -15,7 +15,7 @@ import { MdAccessTime } from 'react-icons/md';
 import { SiWindows } from 'react-icons/si';
 import { FcAndroidOs } from 'react-icons/fc';
 import { FaApple } from 'react-icons/fa';
-import {US, PL, DE, FR,} from 'country-flag-icons/react/3x2'
+import {US, PL, DE, FR, NL, CH,NZ, NR, NO,} from 'country-flag-icons/react/3x2'
 const ProgramCard = ({
     props,
     nickname,
@@ -82,7 +82,7 @@ const ProgramCard = ({
                 </div>
 
                 <div className="flex flex-auto flex-col gap-2">
-                    <div className="flex items-center gap-2 ">
+                    <div className="flex items-center gap-2 flex-col md:flex-row">
                         <h2 className="block text-3xl font-semibold">
                             {props.programName}
                         </h2>
@@ -109,7 +109,12 @@ const ProgramCard = ({
                             </>
                         )}
                         <DE className="inline-block h-8 w-8" />&nbsp;
-                        <FR className="inline-block h-8 w-8" />
+                        <FR className="inline-block h-8 w-8" />&nbsp;
+                        <NL className="inline-block h-8 w-8" />&nbsp;
+                        <CH className="inline-block h-8 w-8" />&nbsp;
+                        <NZ className="inline-block h-8 w-8" />&nbsp;
+                        <NO className="inline-block h-8 w-8" />&nbsp;(...)
+                        
                         <span className="pl-2 pr-2 text-primary">
                             {props.cpaUserWEU ?? ''} €
                         </span>
