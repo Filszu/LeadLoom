@@ -189,7 +189,7 @@ export default function Login({
                             placeholder="you@example.com"
                             required
                         />
-                        <label className="text-md" htmlFor="firstName">
+                        {/* <label className="text-md" htmlFor="firstName">
                             First Name
                         </label>
                         <input
@@ -208,7 +208,7 @@ export default function Login({
                             placeholder="Doe"
                             required
                             minLength={1}
-                        />
+                        /> */}
                         <label className="text-md" htmlFor="nickname">
                             Nickname
                         </label>
