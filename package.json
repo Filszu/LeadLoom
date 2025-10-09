@@ -38,6 +38,7 @@
     "jsvectormap": "^1.5.3",
     "lucide-react": "^0.284.0",
     "next": "^14.0.4",
+    "node": "^24.10.0",
     "posthog-js": "^1.200.1",
     "react": "^18",
     "react-apexcharts": "^1.4.1",

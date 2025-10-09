@@ -20,7 +20,6 @@ import SubmitButton from '@/components/ui/custom/SubmitButton';
 import Link from 'next/link';
 import { SiDiscord } from 'react-icons/si';
 
-
 export const revalidate = 3600;
 
 const SettingsPage = async () => {
@@ -69,9 +68,9 @@ const SettingsPage = async () => {
 
     async function updatePass(formData: FormData) {
         'use server';
-        
+
         const newPass = formData.get('newPass')?.toString();
-        console.log(newPass)
+        console.log(newPass);
         if (newPass && newPass.length >= 6) {
             await updateUserPass({
                 pass: newPass,
@@ -133,6 +132,7 @@ const SettingsPage = async () => {
                 </ul>
             </h2>
 
+            {/* TODO: summary for every currency */}
             <div className="py-4">
                 <EarningsChart
                     earnings={summary.accepted ?? 1}
@@ -159,21 +159,22 @@ const SettingsPage = async () => {
                 <br />
                 <div className="h-3"></div>
                 <Link href="https://discord.gg/D9GDbDKDpY" target="_blank">
-                <Button
-                    type='button'
-                    className="mr-2 p-6"
-                    disabled={!(summary.accepted > 20)}
-                >
-                    <span className="flex cursor-not-allowed items-center justify-center gap-1 text-lg text-white">
-                        <SiDiscord size={22}/>Create Withdraw ticket (recommended)
-                        <FaLocationArrow size={22} />
-                    </span>
-                </Button>
+                    <Button
+                        type="button"
+                        className="mr-2 p-6"
+                        disabled={!(summary.accepted > 20)}
+                    >
+                        <span className="flex cursor-not-allowed items-center justify-center gap-1 text-lg text-white">
+                            <SiDiscord size={22} />
+                            Create Withdraw ticket (recommended)
+                            <FaLocationArrow size={22} />
+                        </span>
+                    </Button>
                 </Link>
             </form>
 
             <p>
-                Depending on the payment method, the service fee is 5-15%. 
+                Depending on the payment method, the service fee is 5-15%.
                 {/* Butat least $1.  */}
                 It does not depend on us but on the payment service
             </p>
@@ -191,12 +192,12 @@ const SettingsPage = async () => {
                         name="newPass"
                         className=" my-4"
                     ></Input>
-                    <SubmitButton className="  p-6" >
+                    <SubmitButton className="  p-6">
                         <span className="flex items-center justify-center gap-1 text-lg text-white">
                             <PiPasswordFill size={22} />
                             Update Password
                         </span>
-                    </SubmitButton >
+                    </SubmitButton>
                 </form>
             </section>
         </>
