@@ -48,7 +48,7 @@ export default function ProgramsClient(props: Props) {
         if (showAll || selectedPlatforms.length === 0) return props.programs;
         return props.programs.filter((p) => {
             if (!p.platform || !Array.isArray(p.platform)) return false;
-            return selectedPlatforms.some((id) => p.platform.includes(id));
+            return selectedPlatforms.some((id) => p.platform?.includes(id));
         });
     }, [props.programs, selectedPlatforms, showAll]);
 
