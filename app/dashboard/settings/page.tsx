@@ -19,6 +19,7 @@ import { PiPasswordFill } from 'react-icons/pi';
 import SubmitButton from '@/components/ui/custom/SubmitButton';
 import Link from 'next/link';
 import { SiDiscord } from 'react-icons/si';
+import updateUserNameSurname from '@/lib/dbOperations/putUserNameSurname';
 
 export const revalidate = 3600;
 
@@ -27,6 +28,15 @@ const SettingsPage = async () => {
 
     const userNickname = publicUser?.nickname;
     const userId = publicUser?.id;
+
+    // Add this utility function to check if a value is empty or null-like
+    const isEmpty = (val: any) =>
+        val === null || val === undefined || val === '' || val === 'null';
+
+    // This const checks if either first_name or last_name is empty/null-like
+    const isNameSurnameAvailableToEdit =
+        publicUser &&
+        (isEmpty(publicUser.first_name) || isEmpty(publicUser.last_name));
 
     if (!userId || !userNickname) redirect('/dashboard/settings/username');
 
@@ -77,6 +87,26 @@ const SettingsPage = async () => {
             });
         }
     }
+
+    async function updateNameSurname(formData: FormData) {
+        'use server';
+
+        const firstName = formData.get('first_name')?.toString();
+        const lastName = formData.get('last_name')?.toString();
+
+        if (
+            firstName &&
+            lastName &&
+            firstName.length > 0 &&
+            lastName.length > 0
+        ) {
+            await updateUserNameSurname({
+                first_name: firstName,
+                last_name: lastName,
+            });
+        }
+    }
+
     return (
         <>
             <h1>Settings</h1>
@@ -84,39 +114,51 @@ const SettingsPage = async () => {
                 Hey, {userNickname ?? ''} here you can change your personal info{' '}
             </h2>
             <section>
-                <Input
-                    className="my-4"
-                    name="first_name"
-                    required
-                    placeholder="first name"
-                    value={publicUser.first_name ?? ''}
-                    disabled
-                />
-                <Input
-                    className=" my-4"
-                    name="last_name"
-                    required
-                    placeholder="last name"
-                    value={publicUser.last_name ?? ''}
-                    disabled
-                />
+                <form action={updateNameSurname}>
+                    <Input
+                        className="my-4"
+                        name="first_name"
+                        required
+                        placeholder="first name"
+                        defaultValue={publicUser.first_name ?? ''}
+                        disabled={!isNameSurnameAvailableToEdit}
+                    />
 
-                <Input
-                    className=" my-4"
-                    name="nickname"
-                    required
-                    placeholder="nickname"
-                    value={publicUser.nickname ?? ''}
-                    disabled
-                />
-                <Input
-                    className=" my-4"
-                    name="reffered by"
-                    required
-                    placeholder="reffered by"
-                    value={'reffered by: ' + publicUser.referred_by}
-                    disabled
-                />
+                    <Input
+                        className=" my-4"
+                        name="last_name"
+                        required
+                        placeholder="last name"
+                        defaultValue={publicUser.last_name ?? ''}
+                        disabled={!isNameSurnameAvailableToEdit}
+                    />
+
+                    <Input
+                        className=" my-4"
+                        name="nickname"
+                        required
+                        placeholder="nickname"
+                        value={publicUser.nickname ?? ''}
+                        disabled
+                    />
+                    <Input
+                        className=" my-4"
+                        name="reffered by"
+                        required
+                        placeholder="reffered by"
+                        value={'reffered by: ' + publicUser.referred_by}
+                        disabled
+                    />
+
+                    {isNameSurnameAvailableToEdit && (
+                        <SubmitButton className="  p-6">
+                            <span className="flex items-center justify-center gap-1 text-lg text-white">
+                                <PiPasswordFill size={22} />
+                                Update Data
+                            </span>
+                        </SubmitButton>
+                    )}
+                </form>
             </section>
             <p></p>
 
