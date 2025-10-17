@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
  
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'LeadLoom App',
+    name: 'LeadLoom Games App',
     short_name: 'LeadLoom',
     description: 'LeadLoom - play games and win valuable prizes',
     start_url: '/',

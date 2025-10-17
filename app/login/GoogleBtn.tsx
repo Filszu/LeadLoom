@@ -11,11 +11,11 @@ type Props = {
 const GoogleBtn = (props: Props) => {
   return (
     <Button 
-                    className={`w-full p-6`}
+                    className={`w-full p-6 border-4 border-primary hover:border-secondary hover:bg-secondary/10 transition-colors duration-300`}
                     variant={"outline"}
                     onClick={props.onClickFunction}
                 >
-                    <span className="flex items-center justify-center gap-1 text-lg ">
+                    <span className="flex items-center justify-center gap-1 text-lg">
                         <FaGoogle />
 
                         Sign up with Google
