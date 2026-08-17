@@ -14,14 +14,17 @@ const AdminPage = async() => {
     // NOTE: later change to role admin
     // but now its only one admin LOL - me hahaha
 
-    if (userNickname !== 'filszu') redirect(`/dashboard`);
+    if (userNickname !== 'filszu' && userNickname !== 'mocneGranie') redirect(`/dashboard`);
     
     return (
         <section>
             <div>AdminPage</div>
-            <Link href={`./admin/user-leads-control/${userId}`} >
-               User Leads Control
-            </Link>
+            <div className="mt-4 flex flex-col gap-2">
+                <Link href={`./admin/user-leads-control/${userId}`}>
+                    User Leads Control
+                </Link>
+                <Link href="./postNewSystemLead">Post new system lead</Link>
+            </div>
         </section>
     );
 };

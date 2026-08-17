@@ -9,7 +9,7 @@ export default async function postUserLead({
     leadData: IAdmitadLead;
     leadId: number;
 }) {
-    const { offer_id, subid1, subid2, subid, country_code } = { ...leadData };
+    const { offer_id, subid1, subid2, subid3, subid, country_code, action } = { ...leadData };
 
     const userNickname = subid1;
     let country = 'PL';
@@ -19,6 +19,7 @@ export default async function postUserLead({
         country = 'DE';
     }
 
+    console.log("Posting User Lead" );
     // && subid === 'leadloom'
     if (userNickname && offer_id) {
         let { data: profiles, error } = await supabase
@@ -110,12 +111,18 @@ export default async function postUserLead({
                     value: !shouldValidTheLead ? 0 : value,
                     offer_name: programIDName ?? '',
                     description: leadDescription,
+                    leadName: subid3 ?? null,
+                    stepName: action ?? null,
+                    user_value_points: (value * 1000),
+
                 },
             ]);
-        // .select();
 
-        // insert user lead
-        // console.log('userLead', data);
-        // console.log('insertError', insertError);
+        if (insertError) {
+            console.error(insertError);
+            return null;
+        }
+        console.log('userLead', data);
+        return data;
     }
 }

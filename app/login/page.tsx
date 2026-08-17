@@ -26,10 +26,11 @@ export default function Login({
         });
 
         if (error) {
+            console.log('error=========', error);
             return redirect(
                 `/login?message=Could not authenticate user ${error.message}`,
             );
-            console.log('error=========', error);
+           
         }
 
         return redirect('/dashboard');
