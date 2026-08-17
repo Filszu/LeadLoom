@@ -3,6 +3,7 @@ import UserLeadsTable from '@/components/leadsTable/UserLeadsTable';
 import LeadsChartSection from '@/components/sections/LeadsChartSection';
 import { ChartSkeleton, TableSkeleton } from '@/components/skeletons/skeletons';
 import SummaryCardContainer from '@/components/summaryCard/SummaryCardContainer';
+import ActiveChallengesSection from '@/components/challenges/ActiveChallengesSection';
 
 import { publicUserSession } from '@/utils/supabase/publicUserSession';
 
@@ -49,6 +50,9 @@ const Dashboard = async () => {
                     userId={userId}
                     userNickname={userNickname}
                 />
+            </Suspense>
+            <Suspense fallback={<TableSkeleton />}>
+                <ActiveChallengesSection userId={userId} />
             </Suspense>
             <Suspense fallback={<ChartSkeleton />}>
                 <LeadsChartSection userId={userId} />
