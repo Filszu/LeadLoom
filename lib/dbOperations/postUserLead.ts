@@ -1,6 +1,14 @@
 import supabase from '@/config/supaBaseClient';
 
-import { IAdmitadLead, UserLead } from '@/types';
+import { IAdmitadLead } from '@/types';
+
+function mapPaymentStatusToUserLeadStatus(paymentStatus?: string | null) {
+    const status = (paymentStatus ?? '').toLowerCase();
+
+    if (status === 'approved') return 'accepted';
+    if (status === 'declined') return 'declined';
+    return 'pending';
+}
 
 export default async function postUserLead({
     leadData,
@@ -9,7 +17,10 @@ export default async function postUserLead({
     leadData: IAdmitadLead;
     leadId: number;
 }) {
-    const { offer_id, subid1, subid2, subid3, subid, country_code, action } = { ...leadData };
+    const { offer_id, subid1, subid2, subid3, country_code, action, payment_status } = {
+        ...leadData,
+    };
+    const userLeadStatus = mapPaymentStatusToUserLeadStatus(payment_status);
 
     const userNickname = subid1;
     let country = 'PL';
@@ -53,20 +64,46 @@ export default async function postUserLead({
 
         let { data: userLeads } = await supabase
             .from('userLeads')
-            .select('programmId, created_at')
-            .eq('programmId', programId)
+            .select('id, programmId, created_at, stepName')
             .eq('userId', profiles[0].id)
-            .order('created_at', { ascending: false })
-            .limit(1);
+            .order('created_at', { ascending: false });
+
+        const existingStepLead =
+            action && userLeads
+                ? userLeads.find((userLead) => userLead.stepName === action)
+                : undefined;
+
+        if (existingStepLead) {
+            const { data, error: updateError } = await supabase
+                .from('userLeads')
+                .update({
+                    status: userLeadStatus,
+                    leadName: subid3 ?? null,
+                    stepName: action ?? null,
+                    leadId,
+                })
+                .eq('id', existingStepLead.id)
+                .select();
+
+            if (updateError) {
+                console.error(updateError);
+                return null;
+            }
+            console.log('updated userLead', data);
+            return data;
+        }
 
         // check if user has already lead for this programm in last 30 days then income -> 0
 
         let shouldValidTheLead = true;
         let joinedDaysAgo = 0;
         let leadDescription = null;
+        const lastProgramLead = userLeads?.find(
+            (userLead) => userLead.programmId === programId,
+        );
 
-        if (userLeads && userLeads.length > 0) {
-            const lastLeadDate = new Date(userLeads[0].created_at);
+        if (lastProgramLead) {
+            const lastLeadDate = new Date(lastProgramLead.created_at);
             const today = new Date();
             const diffTime = Math.abs(today.getTime() - lastLeadDate.getTime());
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
@@ -104,7 +141,7 @@ export default async function postUserLead({
                     programmId: programms[0].id,
                     userRef1: subid1,
                     userRef2: subid2 ?? null,
-                    status: 'pending',
+                    status: userLeadStatus,
                     leadId: leadId,
                     // currency: leadData.currency??null,
                     currency: currency,
