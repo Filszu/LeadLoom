@@ -43,7 +43,7 @@ export default async function signUpPage({ searchParams }: Props) {
                     <div className="relative">
                         <Image
                             src={LeadLoomShrek}
-                            alt="LeadLoom Girl Avatar"
+                            alt="LeadLoom shrek avatar"
                             width={500}
                             // height={500}
 

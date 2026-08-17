@@ -40,8 +40,8 @@ export default function ChallengeProgressBar({
     steps: ActiveChallengeStep[]
 }) {
     return (
-        <div className="overflow-x-auto">
-            <div className="flex min-w-[280px] items-end gap-2 px-2 pt-8 sm:gap-3">
+        <div className="min-w-0 overflow-x-auto pb-1">
+            <div className="flex min-w-full items-end gap-1.5 px-3 pt-6 sm:min-w-[280px] sm:gap-3 sm:px-4 sm:pt-8">
                 {steps.map((step) => {
                     const style = STATUS_STYLES[step.status]
                     const showLabel =
@@ -52,11 +52,11 @@ export default function ChallengeProgressBar({
                     return (
                         <div
                             key={step.index}
-                            className="relative min-w-[4.5rem] flex-1"
+                            className="relative min-w-[2.6rem] flex-1 sm:min-w-[4.5rem]"
                         >
                             <div
                                 className={cn(
-                                    'absolute -top-7 left-0 right-0 text-center text-xs font-semibold',
+                                    'absolute -top-5 left-0 right-0 text-center text-[10px] font-semibold sm:-top-7 sm:text-xs',
                                     style.label,
                                 )}
                             >
@@ -64,7 +64,7 @@ export default function ChallengeProgressBar({
                             </div>
                             <div
                                 className={cn(
-                                    'flex h-12 items-center justify-center rounded-md border-2 skew-x-[-16deg]',
+                                    'flex h-9 items-center justify-center rounded-md border-2 skew-x-[-10deg] sm:h-12 sm:skew-x-[-16deg]',
                                     style.bar,
                                 )}
                                 style={
@@ -73,8 +73,17 @@ export default function ChallengeProgressBar({
                                         : undefined
                                 }
                             >
-                                <span className="skew-x-[16deg] text-xs font-semibold sm:text-sm">
-                                    {showLabel ? step.title : ''}
+                                <span className="skew-x-[10deg] text-[10px] font-semibold sm:skew-x-[16deg] sm:text-sm">
+                                    {showLabel ? (
+                                        <>
+                                            <span className="sm:hidden">
+                                                {step.index + 1}
+                                            </span>
+                                            <span className="hidden sm:inline">
+                                                {step.title}
+                                            </span>
+                                        </>
+                                    ) : null}
                                 </span>
                             </div>
                         </div>

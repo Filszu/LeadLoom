@@ -14,7 +14,7 @@ export default async function ActiveChallengesSection({
     )
 
     return (
-        <section className="mb-10 mt-4 w-full">
+        <section className="mb-10 mt-4 w-full min-w-0 max-w-full">
             <h1 className="mb-4">Challenges</h1>
 
             {challenges.length === 0 ? (
