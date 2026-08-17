@@ -1,13 +1,9 @@
 import { Button } from '@/components/ui/button';
-import SubmitButton from '@/components/ui/custom/SubmitButton';
-import LoadingIcon from '@/components/ui/custom/loadingIcon';
 import updateUserLeads from '@/lib/dbOperations/putUserLeads';
 import React from 'react';
 type Props = {
     leadId: string;
 };
-
-import { experimental_useOptimistic as  useOptimistic} from 'react'
 
 const LeadActions = (props: Props) => {
     async function handleSubmit(status: string) {
@@ -21,8 +17,6 @@ const LeadActions = (props: Props) => {
     return (
         <section className="flex gap-1">
             <form
-                action={() => handleSubmit}
-                //   onSubmit={(e) => {e.preventDefault();}}
                 className="flex gap-1"
             >
                
