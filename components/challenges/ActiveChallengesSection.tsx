@@ -8,14 +8,18 @@ export default async function ActiveChallengesSection({
     userId: string
 }) {
     const challenges = await getActiveChallenges(userId)
+    const firstOpenIndex = Math.max(
+        challenges.findIndex((challenge) => !challenge.completed),
+        0,
+    )
 
     return (
         <section className="mb-10 mt-4 w-full">
-            <h1 className="mb-4">Active challenges</h1>
+            <h1 className="mb-4">Challenges</h1>
 
             {challenges.length === 0 ? (
                 <p className="text-muted-foreground">
-                    No active challenges yet.{' '}
+                    No challenges yet.{' '}
                     <Link href="/dashboard/programs" className="link-underline">
                         Start a program
                     </Link>
@@ -26,7 +30,7 @@ export default async function ActiveChallengesSection({
                         <ChallengeCard
                             key={challenge.programId}
                             challenge={challenge}
-                            defaultOpen={index === 0}
+                            defaultOpen={index === firstOpenIndex}
                         />
                     ))}
                 </div>

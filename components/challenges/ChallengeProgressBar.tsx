@@ -9,28 +9,28 @@ const STATUS_STYLES: Record<
     { bar: string; label: string; pattern?: string }
 > = {
     accepted: {
-        bar: 'border-blue-600 text-white shadow-sm',
-        label: 'text-slate-800',
+        bar: 'border-primary text-primary-foreground shadow-sm',
+        label: 'text-primary',
         pattern:
-            'repeating-linear-gradient(-45deg, #3b82f6 0 8px, #1d4ed8 8px 16px)',
+            'repeating-linear-gradient(-45deg, hsl(var(--primary)) 0 8px, hsl(142 64% 28%) 8px 16px)',
     },
     pending: {
-        bar: 'border-orange-500 text-white shadow-sm',
-        label: 'text-slate-800',
+        bar: 'border-orange-400 text-white shadow-sm',
+        label: 'text-orange-400',
         pattern:
-            'repeating-linear-gradient(-45deg, #f97316 0 8px, #c2410c 8px 16px)',
+            'repeating-linear-gradient(-45deg, #fb923c 0 8px, #c2410c 8px 16px)',
     },
     declined: {
-        bar: 'border-slate-300 bg-slate-100 text-slate-400',
-        label: 'text-slate-400',
+        bar: 'border-muted bg-muted/40 text-muted-foreground',
+        label: 'text-muted-foreground',
     },
     current: {
-        bar: 'border-slate-700 bg-slate-100 text-slate-700',
-        label: 'text-slate-800',
+        bar: 'border-primary bg-secondary text-foreground',
+        label: 'text-foreground',
     },
     empty: {
-        bar: 'border-slate-200 bg-slate-50 text-transparent',
-        label: 'text-slate-400',
+        bar: 'border-muted bg-muted/20 text-transparent',
+        label: 'text-muted-foreground',
     },
 }
 

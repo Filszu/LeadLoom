@@ -22,6 +22,7 @@ export type ActiveChallenge = {
     points: number
     requiredSteps: number
     completedSteps: number
+    completed: boolean
     steps: ActiveChallengeStep[]
 }
 
@@ -105,19 +106,20 @@ function mapLeadStatus(status?: string | null): ChallengeStepStatus {
     return 'empty'
 }
 
-function isActiveChallenge(steps: ActiveChallengeStep[], requiredSteps: number) {
-    const acceptedCount = steps.filter((step) => step.status === 'accepted').length
-    const hasPending = steps.some((step) => step.status === 'pending')
-    const hasProgress = steps.some(
+function hasChallengeProgress(steps: ActiveChallengeStep[]) {
+    return steps.some(
         (step) => step.status === 'accepted' || step.status === 'pending',
     )
+}
 
-    if (!hasProgress) return false
-    if (requiredSteps > 0 && acceptedCount >= requiredSteps && !hasPending) {
-        return false
-    }
+function isCompletedChallenge(
+    steps: ActiveChallengeStep[],
+    requiredSteps: number,
+) {
+    const acceptedCount = steps.filter((step) => step.status === 'accepted').length
+    const hasPending = steps.some((step) => step.status === 'pending')
 
-    return true
+    return requiredSteps > 0 && acceptedCount >= requiredSteps && !hasPending
 }
 
 export default async function getActiveChallenges(userId: string) {
@@ -188,12 +190,18 @@ export default async function getActiveChallenges(userId: string) {
             },
         )
 
-        const firstEmptyIndex = steps.findIndex((step) => step.status === 'empty')
-        if (firstEmptyIndex >= 0) {
-            steps[firstEmptyIndex].status = 'current'
+        const completed = isCompletedChallenge(steps, requiredSteps)
+
+        if (!completed) {
+            const firstEmptyIndex = steps.findIndex(
+                (step) => step.status === 'empty',
+            )
+            if (firstEmptyIndex >= 0) {
+                steps[firstEmptyIndex].status = 'current'
+            }
         }
 
-        if (!isActiveChallenge(steps, requiredSteps)) continue
+        if (!hasChallengeProgress(steps)) continue
 
         const earnedPoints = challengeLeads.reduce(
             (sum, lead) => sum + (lead.user_value_points ?? 0),
@@ -207,9 +215,10 @@ export default async function getActiveChallenges(userId: string) {
             points: Math.round(earnedPoints || (program.cpaUser ?? 0) * 1000),
             requiredSteps,
             completedSteps: steps.filter((step) => step.status === 'accepted').length,
+            completed,
             steps,
         })
     }
 
-    return challenges
+    return challenges.sort((a, b) => Number(a.completed) - Number(b.completed))
 }

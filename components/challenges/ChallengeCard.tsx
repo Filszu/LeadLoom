@@ -6,6 +6,7 @@ import { ChevronDown, Settings } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import type { ActiveChallenge } from '@/lib/dbOperations/getActiveChallenges'
 import ChallengeProgressBar from './ChallengeProgressBar'
+import { Badge } from '@/components/ui/badge'
 
 export default function ChallengeCard({
     challenge,
@@ -17,14 +18,19 @@ export default function ChallengeCard({
     const [open, setOpen] = useState(defaultOpen)
 
     return (
-        <article className="overflow-hidden rounded-2xl bg-white text-slate-900 shadow-[0_12px_40px_rgba(15,23,42,0.12)]">
+        <article
+            className={cn(
+                'overflow-hidden rounded-lg border-2 bg-gray-800 text-white shadow-lg',
+                challenge.completed ? 'border-primary/60' : 'border-primary',
+            )}
+        >
             <button
                 type="button"
                 className="flex w-full items-center gap-3 px-5 py-4 text-left"
                 aria-expanded={open}
                 onClick={() => setOpen((current) => !current)}
             >
-                <div className="relative h-12 w-12 overflow-hidden rounded-full bg-slate-100">
+                <div className="relative h-12 w-12 overflow-hidden rounded-md bg-secondary">
                     {challenge.programImg ? (
                         <Image
                             src={challenge.programImg}
@@ -34,26 +40,41 @@ export default function ChallengeCard({
                             sizes="48px"
                         />
                     ) : (
-                        <div className="flex h-full w-full items-center justify-center text-slate-500">
+                        <div className="flex h-full w-full items-center justify-center text-muted-foreground">
                             <Settings className="h-6 w-6" />
                         </div>
                     )}
                 </div>
-                <h3 className="flex-1 text-xl font-bold tracking-tight">
-                    {challenge.programName}
-                </h3>
-                <p className="text-lg font-bold">{challenge.points} PKT</p>
+                <div className="min-w-0 flex-1">
+                    <div className="flex flex-wrap items-center gap-2">
+                        <h3 className="text-xl font-semibold tracking-tight">
+                            {challenge.programName}
+                        </h3>
+                        <Badge
+                            variant={challenge.completed ? 'default' : 'warning'}
+                        >
+                            {challenge.completed ? 'Completed' : 'In progress'}
+                        </Badge>
+                    </div>
+                    <p className="text-sm text-muted-foreground">
+                        {challenge.completedSteps}/{challenge.requiredSteps}{' '}
+                        steps
+                    </p>
+                </div>
+                <p className="text-lg font-bold text-primary">
+                    {challenge.points} PKT
+                </p>
                 <ChevronDown
                     className={cn(
-                        'h-5 w-5 text-slate-500 transition-transform',
+                        'h-5 w-5 text-muted-foreground transition-transform',
                         open && 'rotate-180',
                     )}
                 />
             </button>
 
             {open ? (
-                <div className="border-t border-slate-100 px-6 py-5">
-                    <div className="relative ml-1 border-l-2 border-dotted border-slate-300 pl-5">
+                <div className="border-t border-white/10 px-6 py-5">
+                    <div className="relative ml-1 border-l-2 border-dotted border-primary/40 pl-5">
                         {challenge.steps.map((step) => {
                             const isFaded =
                                 step.status === 'empty' ||
@@ -63,8 +84,10 @@ export default function ChallengeCard({
                                 <div key={step.index} className="mb-5 last:mb-0">
                                     <p
                                         className={cn(
-                                            'mb-1 font-bold',
-                                            isFaded && 'text-slate-400',
+                                            'mb-1 font-semibold',
+                                            isFaded
+                                                ? 'text-muted-foreground'
+                                                : 'text-white',
                                         )}
                                     >
                                         {step.title}
@@ -77,8 +100,8 @@ export default function ChallengeCard({
                                                     className={cn(
                                                         'text-sm',
                                                         isFaded
-                                                            ? 'text-slate-400'
-                                                            : 'text-slate-700',
+                                                            ? 'text-muted-foreground'
+                                                            : 'text-gray-300',
                                                     )}
                                                 >
                                                     {detail}
@@ -86,7 +109,7 @@ export default function ChallengeCard({
                                             ))}
                                         </ul>
                                     ) : (
-                                        <p className="text-sm text-slate-400">
+                                        <p className="text-sm text-muted-foreground">
                                             Complete this step to continue.
                                         </p>
                                     )}
@@ -97,7 +120,7 @@ export default function ChallengeCard({
                 </div>
             ) : null}
 
-            <div className="border-t border-slate-200 bg-slate-50/80 px-5 py-5">
+            <div className="border-t border-white/10 bg-black/20 px-5 py-5">
                 <ChallengeProgressBar steps={challenge.steps} />
             </div>
         </article>
