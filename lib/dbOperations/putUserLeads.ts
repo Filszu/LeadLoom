@@ -1,11 +1,11 @@
 'use server';
 
-// import supabase from "@/config/supaBaseClient"
 import supabase from '@/config/supaBaseClient';
-import { revalidatePath } from 'next/cache';
+import { TablesUpdate } from '@/database.types';
+
 interface IUpdateUserLeads {
     leadId: string;
-    updates: Record<string, any>; // Allows for dynamic columns and values
+    updates: TablesUpdate<'userLeads'>;
 }
 
 export default async function updateUserLeads(props: IUpdateUserLeads) {
