@@ -17,7 +17,7 @@ const UserLeadsPage = async ({ params }: { params: { userId: string } }) => {
     // NOTE: later change to role admin
     // but now its only one admin LOL - me hahaha
 
-    if (userNickname !== 'filszu') redirect('/dashboard');
+    if (userNickname !== 'filszu' && userNickname !== 'mocneGranie') redirect('/dashboard');
 
     //  I was wondering if it would be better to show leads grouped by user or just all leads
     //  I think it would be better to show all leads

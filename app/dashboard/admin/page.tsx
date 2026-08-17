@@ -23,7 +23,7 @@ const AdminPage = async() => {
                 <Link href={`./admin/user-leads-control/${userId}`}>
                     User Leads Control
                 </Link>
-                <Link href="./postNewSystemLead">Post new system lead</Link>
+                <Link href="./admin/postNewSystemLead">Post new system lead</Link>
             </div>
         </section>
     );
