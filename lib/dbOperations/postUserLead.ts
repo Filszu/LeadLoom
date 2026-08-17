@@ -73,24 +73,34 @@ export default async function postUserLead({
             .eq('userId', profiles[0].id)
             .order('created_at', { ascending: false });
 
+        const programLeads =
+            userLeads?.filter((userLead) => userLead.programmId === programId) ??
+            [];
+
         const existingStepLead =
-            action && userLeads
-                ? userLeads.find((userLead) => userLead.stepName === action)
+            action && programLeads
+                ? programLeads.find((userLead) => userLead.stepName === action)
                 : undefined;
 
-        const sameLeadNameCount =
-            userLeads?.filter(
-                (userLead) =>
-                    userLead.leadName === (subid3 ?? null) &&
-                    userLead.programmId === programId &&
-                    userLead.id !== existingStepLead?.id,
-            ).length ?? 0;
+        const sameLeadNameCount = programLeads.filter(
+            (userLead) =>
+                userLead.leadName === (subid3 ?? null) &&
+                userLead.id !== existingStepLead?.id,
+        ).length;
         const completedSteps = sameLeadNameCount + 1;
         const leadDescription = `${completedSteps}/${requiredSteps}`;
 
+        const isExtraStep =
+            requiredSteps > 0 &&
+            !existingStepLead &&
+            programLeads.length >= requiredSteps;
+
         const paymentSum = Number(payment_sum ?? 0) || 0;
-        const value = convertToUsd(paymentSum * 0.5, leadCurrency);
+        const value = isExtraStep
+            ? 0
+            : convertToUsd(paymentSum * 0.5, leadCurrency);
         const currency = 'USD';
+        const status = isExtraStep ? 'declined' : userLeadStatus;
 
         if (existingStepLead) {
             const { data, error: updateError } = await supabase
@@ -124,7 +134,7 @@ export default async function postUserLead({
                     programmId: programms[0].id,
                     userRef1: subid1,
                     userRef2: subid2 ?? null,
-                    status: userLeadStatus,
+                    status,
                     leadId: leadId,
                     currency,
                     value,

@@ -5,6 +5,8 @@ import { redirect } from 'next/navigation';
 import { TabSection } from '@/components/tabSection/TabSection';
 import OAuthForm from './OAuthForm';
 import SubmitButton from '@/components/ui/custom/SubmitButton';
+import { getCookie } from '@/utils/appCookies';
+import grantWelcomeBonus from '@/lib/dbOperations/grantWelcomeBonus';
 
 export default function Login({
     searchParams,
@@ -50,6 +52,7 @@ export default function Login({
         const firstName = formData.get('firstName') as string;
         const lastName = formData.get('lastName') as string;
         const nickname = formData.get('nickname') as string;
+        const referredBy = await getCookie('promocode');
 
         // const cookieStore = cookies();
         // const supabase = createClient_server(cookieStore);
@@ -87,6 +90,7 @@ export default function Login({
                         first_name: `${firstName}`,
                         last_name: `${lastName}`,
                         nickname: `${nickname}`,
+                        referred_by: referredBy,
                     },
                 ])
                 .select();
@@ -95,6 +99,11 @@ export default function Login({
             console.log('error=========', publicProfilesError);
             return redirect(`/login?message=User with that nickname probably exist ${publicProfilesError.message}`);
         }
+
+        await grantWelcomeBonus({
+            nickname,
+            referredBy,
+        });
 
         // return redirect(
         //     '/login?message=Check email to continue sign in process',
