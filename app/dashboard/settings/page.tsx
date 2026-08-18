@@ -168,9 +168,9 @@ const SettingsPage = async () => {
             <h2 className="cursor-not-allowed">
                 Withdrawal threshold:
                 <ul className=" list-inside list-disc">
-                    <li>🇺🇸🇬🇧🇳🇴🇱🇺 - 15$ </li>
-                    <li>🇫🇷🇩🇪🇦🇹 - 10$ </li>
-                    <li>🇵🇱 - 20PLN</li>
+                    <li>🇺🇸🇬🇧🇳🇴🇱🇺 - 10$ </li>
+                    <li>🇫🇷🇩🇪🇦🇹 - 5$ </li>
+                    <li>🇵🇱 - 3$</li>
                 </ul>
             </h2>
 
@@ -178,8 +178,8 @@ const SettingsPage = async () => {
             <div className="py-4">
                 <EarningsChart
                     earnings={summary.accepted ?? 1}
-                    treshold={20}
-                    currency={'PLN'}
+                    treshold={5}
+                    currency={'USD'}
                 />
                 <p>pending / accepted / paidout / declined</p>
                 <span className="text-orange-400">{summary.pending}</span> /

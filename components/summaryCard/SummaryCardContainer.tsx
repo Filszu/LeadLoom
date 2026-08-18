@@ -79,7 +79,7 @@ const SummaryCardContainer = async ({
 
     return (
         <>
-            {totalEarnings === 0 &&  (
+            {completedChallenges <=1 &&  (
                 <>
                 <AlertBox
                 
