@@ -22,6 +22,10 @@ To run this project, you will need to add the following environment variables to
 
 `GOOGLE_ANALYTICS_ID`
 
+`$env:NODE_TLS_REJECT_UNAUTHORIZED=0`
+
+`npm run dev`
+
 ## Authors
 
 -   [@filszu](https://www.github.com/Filszu)

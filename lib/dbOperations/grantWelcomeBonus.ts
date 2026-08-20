@@ -56,10 +56,12 @@ async function postWelcomeStep({
     nickname,
     action,
     friendNickname,
+    payment_sum,
 }: {
     nickname: string
     action: 'step1' | 'step2'
     friendNickname?: string | null
+    payment_sum?: string
 }) {
     const profile = await getProfileId(nickname)
     if (!profile) return
@@ -87,6 +89,7 @@ async function postWelcomeStep({
             action,
             subid2: friendNickname ?? '',
             subid3: leadName,
+            payment_sum: '2',
         }),
     )
 }
@@ -108,6 +111,7 @@ export default async function grantWelcomeBonus({
             nickname: userNickname,
             action: 'step1',
             friendNickname: referrer,
+            payment_sum: '2',
         })
 
         if (referrer && referrer !== userNickname) {
@@ -115,6 +119,7 @@ export default async function grantWelcomeBonus({
                 nickname: referrer,
                 action: 'step2',
                 friendNickname: userNickname,
+                payment_sum: '3',
             })
         }
     } catch (error) {

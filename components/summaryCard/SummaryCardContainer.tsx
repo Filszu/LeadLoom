@@ -62,10 +62,12 @@ const SummaryCardContainer = async ({
         (item: UserLeadsSummary) => item.status === 'pending',
     );
 
+    const paidoutValue = paidout?.total_value ?? 0;
+    const acceptedValue = accepted?.total_value ?? 0;
+    const pendingValue = pending?.total_value ?? 0;
+
     const totalEarnings =
-        (paidout?.total_value ?? 0) +
-        (accepted?.total_value ?? 0) +
-        (pending?.total_value ?? 0);
+        Math.round((paidoutValue + acceptedValue + pendingValue) * 100) / 100;
 
     const totalEarnings_accepted_paidout =
         (paidout?.total_value ?? 0) + (accepted?.total_value ?? 0);
@@ -124,7 +126,7 @@ const SummaryCardContainer = async ({
                 />
                 <SummaryCard
                     currency="$"
-                    value={paidout?.total_value ?? 0}
+                    value={paidoutValue}
                     title={'Paid out rewards'}
                     description={''}
                     icon={<TbPigMoney />}

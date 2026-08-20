@@ -16,12 +16,15 @@ const SummaryCard = (props: ISummmaryCardProps) => {
     // wyplacopno
     return (
         // <div className="flex w-full flex-col justify-between overflow-clip rounded-lg border-2 border-primary sm:w-1/2 lg:w-2lg">
-        <div className=" flex w-full flex-col justify-between overflow-clip rounded-lg border-2 border-primary sm:w-60 lg:w-2/12">
-            <div className="flex items-center justify-center gap-1 p-8">
+        <div className=" flex w-full flex-col justify-between overflow-clip rounded-lg border-2 border-primary sm:w-64 lg:w-2/12">
+            <div className="flex items-center justify-center gap-1 py-8 px-4">
                 <div className="text-5xl text-primary">{icon}</div>
 
                 <h3 className="text-3xl font-bold">
-                    {value} {currency}
+                    {currency && typeof value === 'number'
+                        ? value.toFixed(2)
+                        : value}{' '}
+                    {currency}
                 </h3>
             </div>
             <div className="bg-primary p-2 text-center text-neutral-900 font-bold">{title}</div>

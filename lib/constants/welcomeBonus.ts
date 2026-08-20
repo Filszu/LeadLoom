@@ -17,6 +17,7 @@ export function buildWelcomeBonusLead({
     action,
     subid2 = '',
     subid3,
+    payment_sum,
     paymentStatus = 'approved',
 }: {
     nickname: string
@@ -24,6 +25,7 @@ export function buildWelcomeBonusLead({
     subid2?: string
     subid3?: string
     paymentStatus?: string
+    payment_sum?: string
 }): IAdmitadLead {
     const now = String(Math.floor(Date.now() / 1000))
     const systemId = `welcome-${action}-${nickname}-${Date.now()}`
@@ -41,7 +43,7 @@ export function buildWelcomeBonusLead({
         order_id: '',
         order_sum: '1',
         payment_status: paymentStatus,
-        payment_sum: '1',
+        payment_sum: payment_sum ?? '0',
         reward_ready: '1',
         subid: 'LL',
         subid1: nickname,

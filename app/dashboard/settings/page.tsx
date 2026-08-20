@@ -20,6 +20,7 @@ import SubmitButton from '@/components/ui/custom/SubmitButton';
 import Link from 'next/link';
 import { SiDiscord } from 'react-icons/si';
 import updateUserNameSurname from '@/lib/dbOperations/putUserNameSurname';
+import IpInfoSection from './IpInfoSection';
 
 export const revalidate = 3600;
 
@@ -162,15 +163,14 @@ const SettingsPage = async () => {
             </section>
             <p></p>
 
-            <div className="h-10"></div>
-
+           
             <h1>Withdraw reward</h1>
             <h2 className="cursor-not-allowed">
                 Withdrawal threshold:
                 <ul className=" list-inside list-disc">
                     <li>🇺🇸🇬🇧🇳🇴🇱🇺 - 10$ </li>
                     <li>🇫🇷🇩🇪🇦🇹 - 5$ </li>
-                    <li>🇵🇱 - 3$</li>
+                    <li>🇵🇱 - 4$</li>
                 </ul>
             </h2>
 
@@ -242,6 +242,13 @@ const SettingsPage = async () => {
                     </SubmitButton>
                 </form>
             </section>
+
+            <div className="h-10"></div>
+
+             <IpInfoSection />
+
+            <div className="h-10"></div>
+
         </>
     );
 };
