@@ -6,6 +6,8 @@ import { FaLocationArrow } from 'react-icons/fa';
 import { useState } from 'react';
 import { Program } from '@/types';
 import { cn } from '@/lib/utils';
+import { convertToUsd, CURRENCY_UNITS_PER_USD } from '@/lib/constants/currencyRates';
+import { US, PL, DE, FR, NL, CH, NZ, NO } from 'country-flag-icons/react/3x2';
 import { PiUserCirclePlusDuotone } from 'react-icons/pi';
 import { FaUserPlus } from 'react-icons/fa';
 import { PiUserPlusBold } from 'react-icons/pi';
@@ -31,6 +33,12 @@ const CardActionsSection = ({
 
     const programUrl = `/program/${props.programID}?user=${nickname}`;
     const refName = 'BRO';
+    const usPln =
+        props.cpaUser != null
+            ? Math.round(props.cpaUser * CURRENCY_UNITS_PER_USD.PLN * 100) / 100
+            : null;
+    const plUsd =
+        props.cpaUserPL != null ? convertToUsd(props.cpaUserPL, 'PLN') : null;
     return (
         <div>
             <div className="flex flex-wrap gap-2">
@@ -137,12 +145,47 @@ const CardActionsSection = ({
                             {props.description}
                         </p>
 
-                        {/* Other program details go here */}
+                        <div className="mt-4">
+                            <h3 className="text-lg font-semibold">
+                                Potential reward
+                            </h3>
+                            <ul className="mt-2 space-y-2 text-gray-300">
+                                {props.cpaUser != null && (
+                                    <li className="flex flex-wrap items-center gap-2">
+                                        <US className="inline-block h-6 w-6" />
+                                        <span>
+                                            US: {props.cpaUser}$
+                                            {usPln != null ? ` (${usPln} PLN)` : ''}
+                                        </span>
+                                    </li>
+                                )}
+                                {props.cpaUserWEU != null && (
+                                    <li className="flex flex-wrap items-center gap-2">
+                                        <DE className="inline-block h-6 w-6" />
+                                        <FR className="inline-block h-6 w-6" />
+                                        <NL className="inline-block h-6 w-6" />
+                                        <CH className="inline-block h-6 w-6" />
+                                        <NZ className="inline-block h-6 w-6" />
+                                        <NO className="inline-block h-6 w-6" />
+                                        <span>WEU: {props.cpaUserWEU} €</span>
+                                    </li>
+                                )}
+                                {props.cpaUserPL != null && (
+                                    <li className="flex flex-wrap items-center gap-2">
+                                        <PL className="inline-block h-6 w-6" />
+                                        <span>
+                                            PL: {props.cpaUserPL} PLN
+                                            {plUsd != null ? ` (~${plUsd}$)` : ''}
+                                        </span>
+                                    </li>
+                                )}
+                            </ul>
+                        </div>
                     </section>
                     <section className="flex-1">
                         {/* Example: Pros and Cons */}
                         <div className="mt-4">
-                            <h3 className="text-lg font-semibold">Pros</h3>
+                            <h3 className="text-lg font-semibold">TODO: </h3>
                             <ul className="list-disc pl-4">
                                 {props.pros &&
                                     props.pros.map((pro, index) => (
@@ -157,7 +200,7 @@ const CardActionsSection = ({
                         </div>
 
                         <div className="mt-4">
-                            <h3 className="text-lg font-semibold">Cons</h3>
+                            <h3 className="text-lg font-semibold">Not allowed: </h3>
                             <ul className="list-disc pl-4">
                                 {props.cons &&
                                     props.cons.map((con, index) => (

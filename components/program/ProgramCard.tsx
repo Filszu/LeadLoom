@@ -15,7 +15,7 @@ import { MdAccessTime } from 'react-icons/md';
 import { SiWindows } from 'react-icons/si';
 import { FcAndroidOs } from 'react-icons/fc';
 import { FaApple } from 'react-icons/fa';
-import {US, PL, DE, FR, NL, CH,NZ, NR, NO,} from 'country-flag-icons/react/3x2'
+import { convertToUsd } from '@/lib/constants/currencyRates'
 const ProgramCard = ({
     props,
     nickname,
@@ -23,7 +23,12 @@ const ProgramCard = ({
     props: Program;
     nickname: string;
 }) => {
-    const usdToPln = 4.0;
+    const lowestUsd =
+        props.cpaUserPL != null ? convertToUsd(props.cpaUserPL, 'PLN') : null
+    const highestUsd = Math.max(
+        props.cpaUser ?? 0,
+        props.cpaUserWEU != null ? convertToUsd(props.cpaUserWEU, 'EUR') : 0,
+    )
 
     const tootltip = {
         content: '',
@@ -97,31 +102,14 @@ const ProgramCard = ({
 
                     <h3 className="text-xl uppercase">
                         potential reward&nbsp;&nbsp;
-                        {props.cpaUser && (
-                            <>
-                            
-                                <US className="inline-block h-8 w-8" />
-                                {/* 🗽🇺🇸: */}
-                                <span className="pl-2 pr-2 text-primary">
-                                    {props.cpaUser ?? ''}$ (
-                                    {props.cpaUser * usdToPln} PLN)
-                                </span>
-                            </>
-                        )}
-                        <DE className="inline-block h-8 w-8" />&nbsp;
-                        <FR className="inline-block h-8 w-8" />&nbsp;
-                        <NL className="inline-block h-8 w-8" />&nbsp;
-                        <CH className="inline-block h-8 w-8" />&nbsp;
-                        <NZ className="inline-block h-8 w-8" />&nbsp;
-                        <NO className="inline-block h-8 w-8" />&nbsp;(...)
-                        
-                        <span className="pl-2 pr-2 text-primary">
-                            {props.cpaUserWEU ?? ''} €
-                        </span>
-                        <PL className="inline-block h-8 w-8" />
-                        {/* 🇵🇱 */}
-                        <span className="pl-2 pr-2 text-primary">
-                            {props.cpaUserPL ?? ''} PLN
+                        <span className="text-primary">
+                            {lowestUsd != null && highestUsd > 0
+                                ? `${highestUsd}$ - ${lowestUsd}$`
+                                : lowestUsd != null
+                                  ? `${lowestUsd}$`
+                                  : highestUsd > 0
+                                    ? `${highestUsd}$`
+                                    : ''}
                         </span>
                         <span className="flex gap-5">
                             {props.time && (

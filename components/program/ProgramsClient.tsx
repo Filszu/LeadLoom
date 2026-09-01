@@ -2,6 +2,8 @@
 
 import { useMemo, useState } from 'react';
 import { Toggle } from '@/components/ui/toggle';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Label } from '@/components/ui/label';
 import { SiWindows } from 'react-icons/si';
 import { FcAndroidOs } from 'react-icons/fc';
 import { FaApple } from 'react-icons/fa';
@@ -21,6 +23,7 @@ const platformIds = {
 
 export default function ProgramsClient(props: Props) {
     const [showAll, setShowAll] = useState(true);
+    const [showPaused, setShowPaused] = useState(false);
     const [selectedPlatforms, setSelectedPlatforms] = useState<number[]>([]);
 
     const togglePlatform = (platformId: number) => {
@@ -45,16 +48,17 @@ export default function ProgramsClient(props: Props) {
     };
 
     const filteredPrograms = useMemo(() => {
-        if (showAll || selectedPlatforms.length === 0) return props.programs;
         return props.programs.filter((p) => {
+            if (!showPaused && p.status === 'paused') return false;
+            if (showAll || selectedPlatforms.length === 0) return true;
             if (!p.platform || !Array.isArray(p.platform)) return false;
             return selectedPlatforms.some((id) => p.platform?.includes(id));
         });
-    }, [props.programs, selectedPlatforms, showAll]);
+    }, [props.programs, selectedPlatforms, showAll, showPaused]);
 
     return (
         <div className="flex flex-col gap-4">
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
                 <Toggle
                     aria-label="Show all platforms"
                     pressed={showAll}
@@ -96,6 +100,18 @@ export default function ProgramsClient(props: Props) {
                 >
                     <FaApple className="text-xl" />
                 </Toggle>
+                <div className="ml-auto flex items-center gap-2">
+                    <Checkbox
+                        id="show-paused"
+                        checked={showPaused}
+                        onCheckedChange={(checked) =>
+                            setShowPaused(checked === true)
+                        }
+                    />
+                    <Label htmlFor="show-paused" className="cursor-pointer">
+                        Show paused
+                    </Label>
+                </div>
             </div>
 
             <section className="mb-4 mt-2 flex flex-col gap-4">
