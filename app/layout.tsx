@@ -53,28 +53,49 @@ export default function RootLayout({
 
                     <Toaster />
 
-                    <footer className="mb-10 w-full text-center  ">
-                        <h3>
-                            Created with ❣️ by{' '}
-                            <Link
-                                href={'https://lessons.ciac.me/'}
-                                className="link-underline text-primary"
-                            >
-                                Filszu
-                            </Link>{' '}
-                            2023-2026
-                        </h3>
-                        <h3 className="">
-                            Give a ⭐ on{' '}
-                            <Link
-                                href={'https://github.com/Filszu'}
-                                className="link-underline text-primary"
-                            >
-                                {/* <FiGithub size={10} />  */}
-                                Github repo
-                            </Link>
-                        </h3>
-                    </footer>
+                    <footer className="mb-10 w-full px-4 text-center">
+    <div className="mx-auto mb-6 max-w-2xl space-y-2 text-[11px] leading-relaxed text-muted-foreground">
+        <p>
+            <span className="font-medium text-foreground/80">
+                Payout terms:
+            </span>{' '}
+            The minimum payout threshold is 4000 points = $4.
+            Payouts are processed to Revolut / BLIK / gift cards 
+            within 24–48 hours of the request.
+        </p>
+        <p>
+            The service is intended exclusively for users over 18 years of age.
+        </p>
+        <p>
+            Contact:{' '}
+            <Link
+                href="mailto:info@loomgames.me"
+                className="link-underline text-primary"
+            >
+                info@loomgames.me
+            </Link>
+        </p>
+    </div>
+    <h3>
+        Created with ❣️ by{' '}
+        <Link
+            href={'https://lessons.ciac.me/'}
+            className="link-underline text-primary"
+        >
+            Filszu
+        </Link>{' '}
+        2023-2026
+    </h3>
+    <h3 className="">
+        Give a ⭐ on{' '}
+        <Link
+            href={'https://github.com/Filszu'}
+            className="link-underline text-primary"
+        >
+            Github repo
+        </Link>
+    </h3>
+</footer>
 
                     <Script
                         // strategy='lazyOnload'
